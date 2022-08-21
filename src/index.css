@@ -23,3 +23,19 @@ button {
 .nav-container {
   background-color: #e4dbf8;
 }
+
+.book_cards_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 90px;
+  max-width: 1200px;
+  gap: 40px 10px;
+  flex-wrap: wrap;
+  font-size: 2rem;
+  line-height: 2.1rem;
+  margin: 0 auto;
+}
+
+.card {
+  width: 250px;
+}
