@@ -1,9 +1,16 @@
-/*eslint-disable*/
 import React from 'react'
 import PropTypes from 'prop-types'
 import AgeLimitBadge from './ageLimitBadge'
 
-const BookInfoMainContent = ({name, author,genre, series, year, size, ageLimit, description}) => {
+const BookInfoMainContent = ({name, author, genre, series, year, size, ageLimit, description}) => {
+    const getStyleForBadge = (color) => {
+        if (color === 'warning' || color === 'info' || color === 'light') {
+            return `${color} text-dark`
+        } else {
+            return color
+        }
+    }
+
     return (
         <div className="card mb-2 shadow">
             <div className="card-body">
@@ -14,7 +21,7 @@ const BookInfoMainContent = ({name, author,genre, series, year, size, ageLimit, 
                     {series && <p className="text-secondary mb-3">{`Серия: "${series}"`}</p>}
                     <h5 className="mb-3">
                         {'Жанр: '}
-                        <span className={`badge bg-${genre.color} m-1`}>
+                        <span className={`badge bg-${getStyleForBadge(genre.color)} m-1`}>
                             {genre.name}
                         </span>
                     </h5>

@@ -1,23 +1,45 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Sorting = ({onSort}) => {
+const Sorting = ({onSort, selectedSort}) => {
+    const sortingList = [
+        {name: 'name', label: 'Название'},
+        {name: 'author', label: 'Автор'},
+        {name: 'numberOfRatings', label: 'Популярность'},
+        {name: 'year', label: 'Год'},
+        {name: 'price', label: 'Цена'}
+    ]
+
+    const renderArrow = (itemName) => {
+        if (selectedSort.iter === itemName && selectedSort.order === 'asc') {
+            return <i className="bi bi-arrow-down"/>
+        } else if (selectedSort.iter === itemName && selectedSort.order === 'desc') {
+            return <i className="bi bi-arrow-up"/>
+        }
+    }
+
     return (
         <div className="d-flex align-items-center mt-3">
             <p className="h5 me-2">Сортировка:</p>
             <ul className="list-group list-group-horizontal">
-                <li className="list-group-item" onClick={() => onSort('name')}>Название</li>
-                <li className="list-group-item" onClick={() => onSort('author')}>Автор</li>
-                <li className="list-group-item" onClick={() => onSort('numberOfRatings')}>Популярность</li>
-                <li className="list-group-item" onClick={() => onSort('year')}>Год</li>
-                <li className="list-group-item" onClick={() => onSort('price')}>Цена</li>
+                {sortingList.map((item, i) => (
+                    <li
+                        className="list-group-item"
+                        key={i}
+                        onClick={() => onSort(item.name)}
+                    >
+                        {item.label}
+                        {renderArrow(item.name)}
+                    </li>
+                ))}
             </ul>
         </div>
     )
 }
 
 Sorting.propTypes = {
-    onSort: PropTypes.func.isRequired
+    onSort: PropTypes.func.isRequired,
+    selectedSort: PropTypes.object.isRequired
 }
 
 export default Sorting

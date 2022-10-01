@@ -74,7 +74,7 @@ const Books = () => {
                         }
                     </div>
                     <div className="col-md-10">
-                        <Sorting onSort={handleSort} />
+                        <Sorting onSort={handleSort} selectedSort={sortBy} />
                         <div className="d-flex flex-wrap justify-content-between">
                             {booksCrop.map(book => (
                                 <BookCard book={book} key={book.id}/>
