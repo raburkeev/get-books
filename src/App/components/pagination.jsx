@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-const Pagination = ({ itemsCount, pageSize, currentPage, onPageChange }) => {
+const Pagination = ({itemsCount, pageSize, currentPage, onPageChange}) => {
     const pageCount = Math.ceil(itemsCount / pageSize)
 
     if (pageCount === 1) return null

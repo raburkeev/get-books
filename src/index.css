@@ -1,41 +1,23 @@
 body {
-  padding: 0;
   margin: 0;
-  background: #e9eefb;
-  min-height: 100vh;
-  max-height: 100vh;
-  height: 100vh;
-  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+  'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+  'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  font-size: 18px;
-  line-height: 10px;
-  font-family: 'Roboto', sans-serif;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
 }
 
-button {
-  background: none;
-  border: none;
-  outline: none;
+/*book images in bookCard.jsx*/
+.book_img {
+  width: 150px;
+  height: 230px;
 }
 
-.nav-container {
-  background-color: #e4dbf8;
-}
-
-.book_cards_container {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 90px;
-  max-width: 1200px;
-  gap: 40px 10px;
-  flex-wrap: wrap;
-  font-size: 2rem;
-  line-height: 2.1rem;
-  margin: 0 auto;
-}
-
-.card {
-  width: 250px;
+.text-truncate {
+  max-width: 150px;
 }
