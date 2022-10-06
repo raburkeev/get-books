@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import api from '../../api'
-import BookCard from '../components/bookCard'
 import Pagination from '../components/pagination'
 import {paginate} from '../../utils/paginate'
 import GroupList from '../components/groupList'
 import Sorting from '../components/sorting'
 import _ from 'lodash'
+import BooksList from '../components/booksList'
+import Loader from '../components/loader'
 
 const Books = () => {
     const [books, setBooks] = useState([])
@@ -60,7 +61,7 @@ const Books = () => {
                 <div className="row gutters-sm">
                     <div className="col-md-2 my-3">
                         {JSON.stringify(genres) === '{}'
-                            ? <p>loading genres...</p>
+                            ? <Loader target="genres"/>
                             : (
                                 <div className="d-flex flex-column">
                                     <GroupList
@@ -75,11 +76,7 @@ const Books = () => {
                     </div>
                     <div className="col-md-10">
                         <Sorting onSort={handleSort} selectedSort={sortBy} />
-                        <div className="d-flex flex-wrap justify-content-between">
-                            {booksCrop.map(book => (
-                                <BookCard book={book} key={book.id}/>
-                            ))}
-                        </div>
+                        <BooksList books={booksCrop} />
                     </div>
                     <Pagination
                         itemsCount={booksCount}
@@ -91,7 +88,7 @@ const Books = () => {
             </div>
         )
     }
-    return <h1>Loading...</h1>
+    return <Loader target="books" margin={5}/>
 }
 
 export default Books

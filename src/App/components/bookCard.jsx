@@ -11,7 +11,7 @@ const BookCard = ({book}) => {
     }
 
     return (
-        <div className="card my-3 shadow" key={book.id} onClick={handleBookCardClick}>
+        <div className="card my-3 shadow book_card" key={book.id} onClick={handleBookCardClick}>
             <div className="card-body">
                 <div className="d-flex flex-column align-items-center text-center">
                     <img src={book.imgUrl} className="book_img" width="250" alt="pic"/>

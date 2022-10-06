@@ -21,3 +21,12 @@ code {
 .text-truncate {
   max-width: 150px;
 }
+
+.book_card {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.book_card:hover {
+  opacity: 0.7;
+}

@@ -4,6 +4,7 @@ import api from '../../api'
 import BookImgComponent from './bookImgComponent'
 import BookRating from './bookRating'
 import BookInfoMainContent from './bookInfoMainContent'
+import Loader from './loader'
 
 const BookPage = () => {
     const params = useParams()
@@ -15,7 +16,7 @@ const BookPage = () => {
 
     return book && book.genre
         ? (
-            <div className="container">
+            <div className="container mt-3">
                 <div className="row gutters-sm">
                     <div className="col-md-4 mb-3">
                         <BookImgComponent url={book.imgUrl} />
@@ -27,7 +28,7 @@ const BookPage = () => {
                 </div>
             </div>
         )
-        : <h1>Loading...</h1>
+        : <Loader target={'book'} margin={5} />
 }
 
 export default BookPage
