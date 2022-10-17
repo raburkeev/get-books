@@ -48,7 +48,7 @@ const LoginForm = () => {
             <h3 className="mb-4">Вход в систему</h3>
             <form onSubmit={handleSubmit}>
                 <TextField
-                    label="Электронная почта:"
+                    label="Электронная почта"
                     name="email"
                     value={data.email}
                     onChange={handleChange}
@@ -56,7 +56,7 @@ const LoginForm = () => {
                 />
                 <TextField
                     type="password"
-                    label="Пароль:"
+                    label="Пароль"
                     name="password"
                     value={data.password}
                     onChange={handleChange}

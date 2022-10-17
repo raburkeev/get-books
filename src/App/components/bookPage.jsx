@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 import api from '../../api'
 import BookImgComponent from './bookImgComponent'
 import BookRating from './bookRating'
@@ -7,6 +7,7 @@ import BookInfoMainContent from './bookInfoMainContent'
 import Loader from './loader'
 
 const BookPage = () => {
+    const history = useHistory()
     const params = useParams()
     const {bookId} = params
     const [book, setBook] = useState(null)
@@ -24,7 +25,9 @@ const BookPage = () => {
                     </div>
                     <div className="col-md-8">
                         <BookInfoMainContent {...book}/>
+                        <button className="btn btn-primary" onClick={() => history.push(`/all_books/${bookId}/edit`)}>Edit</button>
                     </div>
+
                 </div>
             </div>
         )

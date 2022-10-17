@@ -57,7 +57,7 @@ const RegisterForm = () => {
             <h3 className="mb-4">Регистрация</h3>
             <form onSubmit={handleSubmit}>
                 <TextField
-                    label="Введите ваш email:"
+                    label="Введите ваш email"
                     name="email"
                     value={data.email}
                     onChange={handleChange}
@@ -65,14 +65,14 @@ const RegisterForm = () => {
                 />
                 <TextField
                     type="password"
-                    label="Введите пароль:"
+                    label="Введите пароль"
                     name="password"
                     value={data.password}
                     onChange={handleChange}
                     error={errors.password}
                 />
                 <TextField
-                    label="Введите имя:"
+                    label="Введите имя"
                     name="name"
                     value={data.name}
                     onChange={handleChange}
