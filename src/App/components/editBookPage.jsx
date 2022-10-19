@@ -86,7 +86,7 @@ const EditBookPage = () => {
                                 onChange={handleChange}
                             />
                             <NumberField
-                                label="Цена"
+                                label="Цена (руб.)"
                                 name="price"
                                 value={data.price}
                                 onChange={handleChange}

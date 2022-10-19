@@ -47,11 +47,6 @@ const RegisterForm = () => {
 
     const isValid = Object.keys(errors).length === 0 && data.license === true
 
-    // const isFormValid = () => {
-    //     if (Object.keys(errors).length === 0 && data.license === true) return true
-    //     return false
-    // }
-
     return (
         <div>
             <h3 className="mb-4">Регистрация</h3>
@@ -83,7 +78,7 @@ const RegisterForm = () => {
                     value={data.license}
                     onChange={handleChange}
                 >
-                    Соглашаюсь с <a role="button">лицензионным соглашением</a>
+                    Соглашаюсь с <a role="button" className="text-decoration-underline">лицензионным соглашением</a>
                 </CheckBoxField>
                 <button className="btn btn-success w-100 mx-auto" disabled={!isValid}>Зарегистрироваться</button>
             </form>
