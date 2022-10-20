@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {useHistory} from 'react-router-dom'
-import {calculateRating} from '../../utils/calculateRating'
+import {calculateRating} from '../../../utils/calculateRating'
 
 const BookCard = ({book}) => {
     const history = useHistory()

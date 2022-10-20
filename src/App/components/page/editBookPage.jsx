@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
-import api from '../../api'
-import TextField from './textField'
-import TextAreaField from './textAreaField'
-import NumberField from './numberField'
-import Loader from './loader'
+import api from '../../../api'
+import TextField from '../common/form/textField'
+import TextAreaField from '../common/form/textAreaField'
+import NumberField from '../common/form/numberField'
+import Loader from '../common/loader'
 import * as yup from 'yup'
-import SelectField from './selectField'
+import SelectField from '../common/form/selectField'
 import {ageLimitArray, getAgeLimit} from '../../utils/ageLimitArray'
 
 const EditBookPage = () => {

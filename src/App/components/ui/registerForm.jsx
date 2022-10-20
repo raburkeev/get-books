@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import TextField from './textField'
-import CheckBoxField from './checkBoxField'
+import TextField from '../common/form/textField'
+import CheckBoxField from '../common/form/checkBoxField'
 import * as yup from 'yup'
 
 const RegisterForm = () => {

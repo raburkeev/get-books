@@ -1,5 +1,5 @@
 import React from 'react'
-import BookCard from './bookCard'
+import BookCard from './book/bookCard'
 import PropTypes from 'prop-types'
 
 const BooksList = ({books}) => {

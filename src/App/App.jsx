@@ -1,12 +1,10 @@
 import React from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
-import NavBar from './components/navBar'
+import NavBar from './components/ui/navBar'
 import Main from './layouts/main'
 import Books from './layouts/books'
-// import BookPage from './components/bookPage'
-import Login from './components/login'
-import AddBookForm from './components/addBookForm'
-// import EditBookPage from './components/editBookPage'
+import Login from './layouts/login'
+import AddBookForm from './components/ui/addBookForm'
 
 const App = () => {
     return (

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {useParams, useHistory} from 'react-router-dom'
-import api from '../../api'
-import BookImgComponent from './bookImgComponent'
-import BookRating from './bookRating'
-import BookInfoMainContent from './bookInfoMainContent'
-import Loader from './loader'
+import api from '../../../api'
+import BookImgComponent from '../ui/book/bookImgComponent'
+import BookRating from '../ui/book/bookRating'
+import BookInfoMainContent from '../ui/book/bookInfoMainContent'
+import Loader from '../common/loader'
 
 const BookPage = () => {
     const history = useHistory()

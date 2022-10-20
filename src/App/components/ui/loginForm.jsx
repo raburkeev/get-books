@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
-import TextField from './textField'
+import TextField from '../common/form/textField'
 import * as yup from 'yup'
-import CheckBoxField from './checkBoxField'
+import CheckBoxField from '../common/form/checkBoxField'
 
 const LoginForm = () => {
     const [data, setData] = useState({

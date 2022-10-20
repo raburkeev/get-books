@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {calculateRating} from '../../utils/calculateRating'
+import {calculateRating} from '../../../utils/calculateRating'
 
 const BookRating = ({rating}) => {
     const numberOfRatings = Object.keys(rating).reduce((acc, r) => acc + rating[r], 0)

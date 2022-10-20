@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import _ from 'lodash'
 import {useHistory} from 'react-router-dom'
-import api from '../../api'
-import Pagination from '../components/pagination'
+import api from '../../../api'
+import Pagination from '../common/pagination'
 import {paginate} from '../../utils/paginate'
-import GroupList from '../components/groupList'
-import Sorting from '../components/sorting'
-import BooksList from '../components/booksList'
-import Loader from '../components/loader'
+import GroupList from '../common/groupList'
+import Sorting from '../ui/sorting'
+import BooksList from '../ui/booksList'
+import Loader from '../common/loader'
 
 const BooksListPage = () => {
     const history = useHistory()
