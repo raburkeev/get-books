@@ -32,8 +32,7 @@ NumberField.propTypes = {
     label: PropTypes.string,
     error: PropTypes.string,
     value: PropTypes.number,
-    onChange: PropTypes.func,
-    rows: PropTypes.number
+    onChange: PropTypes.func
 }
 
 export default NumberField
