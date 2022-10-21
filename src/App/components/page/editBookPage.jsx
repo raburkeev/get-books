@@ -32,7 +32,8 @@ const EditBookPage = () => {
         api.books.getById(+bookId)
             .then(data => setData(prevState => ({
                 ...prevState,
-                ...data
+                ...data,
+                genre: {label: data.name, value: data.id}
             })))
             .then(() => setIsLoaded(prevState => ({
                 ...prevState,
@@ -46,6 +47,7 @@ const EditBookPage = () => {
                 genresData: true
             })))
     }, [])
+    console.log(data.genre)
 
     const handleSubmit = (event) => {
         event.preventDefault()
