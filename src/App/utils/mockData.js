@@ -1,6 +1,7 @@
 import genres from '../mockData/genres'
 import books from '../mockData/books'
 import httpService from '../services/http.service'
+import {toast} from 'react-toastify'
 
 const useMockData = () => {
     const initialize = async () => {
@@ -12,7 +13,7 @@ const useMockData = () => {
                 await httpService.put(`genre/${genre.id}`, genre)
             }
         } catch (error) {
-            console.log(error)
+            toast.error(error.message)
         }
     }
 

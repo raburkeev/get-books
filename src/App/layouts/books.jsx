@@ -3,17 +3,25 @@ import {useParams} from 'react-router-dom'
 import EditBookPage from '../components/page/editBookPage'
 import BookPage from '../components/page/bookPage'
 import BooksListPage from '../components/page/booksListPage'
+import BooksProvider from '../hooks/useBooks'
 
 const Books = () => {
     const {bookId, edit} = useParams()
     return (
-        bookId
-            ? (
-                edit === 'edit'
-                    ? <EditBookPage />
-                    : <BookPage />
-            )
-            : <BooksListPage />
+        <>
+            <BooksProvider>
+                {
+                    bookId
+                        ? (
+                            edit === 'edit'
+                                ? <EditBookPage />
+                                : <BookPage />
+                        )
+                        : <BooksListPage />
+                }
+            </BooksProvider>
+        </>
+
     )
 }
 

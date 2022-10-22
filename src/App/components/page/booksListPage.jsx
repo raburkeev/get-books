@@ -9,8 +9,11 @@ import GroupList from '../common/groupList'
 import Sorting from '../ui/sorting'
 import BooksList from '../ui/booksList'
 import Loader from '../common/loader'
+import {useBooks} from '../../hooks/useBooks'
 
 const BooksListPage = () => {
+    const bookz = useBooks()
+    console.log(bookz)
     const history = useHistory()
     const [books, setBooks] = useState([])
     const [genres, setGenres] = useState({})
