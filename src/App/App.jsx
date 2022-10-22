@@ -1,5 +1,6 @@
 import React from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
+import {ToastContainer} from 'react-toastify'
 import NavBar from './components/ui/navBar'
 import Main from './layouts/main'
 import Books from './layouts/books'
@@ -17,11 +18,10 @@ const App = () => {
                 <Route path="/add_book" component={AddBookForm}/>
                 <Redirect to="/"/>
             </Switch>
+            <ToastContainer/>
         </>
 
     )
 }
 
 export default App
-// <Route path="/all_books/:bookId?" exact component={BookPage}/>
-// <Route path="/all_books/:bookId/edit" component={EditBookPage}/>

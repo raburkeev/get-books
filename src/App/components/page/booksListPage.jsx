@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, {useEffect, useState} from 'react'
 import _ from 'lodash'
 import {useHistory} from 'react-router-dom'
