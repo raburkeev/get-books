@@ -11,7 +11,7 @@ export const useBooks = () => {
 }
 
 const BooksProvider = ({children}) => {
-    const [bookz, setBooks] = useState([])
+    const [books, setBooks] = useState([])
     const [isLoading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
@@ -41,7 +41,7 @@ const BooksProvider = ({children}) => {
     }, [error])
 
     return (
-        <BooksContext.Provider value={{bookz}}>
+        <BooksContext.Provider value={{books}}>
             {!isLoading ? children : <Loader target={'books'}/>}
         </BooksContext.Provider>
     )
