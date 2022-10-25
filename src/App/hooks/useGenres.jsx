@@ -28,6 +28,10 @@ const GenresProvider = ({children}) => {
         }
     }
 
+    const getGenreById = (genreId) => {
+        return genres.find(genre => genre.id === genreId)
+    }
+
     function errorCatcher(error) {
         const {message} = error.response.data
         setError(message)
@@ -40,7 +44,7 @@ const GenresProvider = ({children}) => {
     }, [error])
 
     return (
-        <GenresContext.Provider value={{genres, isLoading}}>
+        <GenresContext.Provider value={{genres, isLoading, getGenreById}}>
             {children}
         </GenresContext.Provider>
     )

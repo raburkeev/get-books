@@ -29,6 +29,10 @@ const BooksProvider = ({children}) => {
         }
     }
 
+    const getBookById = (bookId) => {
+        return books.find(book => book.id === bookId)
+    }
+
     function errorCatcher(error) {
         const {message} = error.response.data
         setError(message)
@@ -41,7 +45,7 @@ const BooksProvider = ({children}) => {
     }, [error])
 
     return (
-        <BooksContext.Provider value={{books}}>
+        <BooksContext.Provider value={{books, getBookById}}>
             {!isLoading ? children : <Loader target={'books'}/>}
         </BooksContext.Provider>
     )

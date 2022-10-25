@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import {calculateRating} from '../../../utils/calculateRating'
 
 const BookRating = ({rating}) => {
+    console.log(rating)
+    console.log(Array.isArray(rating))
     const numberOfRatings = Object.keys(rating).reduce((acc, r) => acc + rating[r], 0)
 
     return (
@@ -24,7 +26,7 @@ const BookRating = ({rating}) => {
 }
 
 BookRating.propTypes = {
-    rating: PropTypes.object.isRequired
+    rating: PropTypes.array.isRequired
 }
 
 export default BookRating
