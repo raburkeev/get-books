@@ -6,7 +6,7 @@ import * as yup from 'yup'
 import api from '../../../api'
 import SelectField from '../common/form/selectField'
 import Loader from '../common/loader'
-import {ageLimitArray, getAgeLimit} from '../../utils/ageLimitArray'
+import {ageLimit, getAgeLimit} from '../../utils/ageLimit'
 
 const AddBookForm = () => {
     const [data, setData] = useState({
@@ -135,7 +135,7 @@ const AddBookForm = () => {
                                     value={data.ageLimit}
                                     onChange={handleChange}
                                     defaultOption="Выбрать возрастное ограничение..."
-                                    options={ageLimitArray}
+                                    options={ageLimit}
                                     error={errors.ageLimit}
                                 />
                                 <NumberField

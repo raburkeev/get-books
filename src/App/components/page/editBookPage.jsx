@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import TextField from '../common/form/textField'
@@ -6,11 +5,10 @@ import TextAreaField from '../common/form/textAreaField'
 import Loader from '../common/loader'
 import * as yup from 'yup'
 import SelectField from '../common/form/selectField'
-import {ageLimitArray, getAgeLimit} from '../../utils/ageLimitArray'
+import {ageLimit, getAgeLimit, getAgeLimitFormat} from '../../utils/ageLimit'
 import {useSelector} from 'react-redux'
 import {getBookById, getBooksLoadingStatus} from '../../store/books'
 import {getGenresList, getGenresLoadingStatus} from '../../store/genres'
-import {getRegexForYear} from '../../utils/getRegexForYear'
 
 const EditBookPage = () => {
     const {bookId} = useParams()
@@ -21,7 +19,6 @@ const EditBookPage = () => {
     const isGenresLoading = useSelector(getGenresLoadingStatus())
 
     const genresArray = !isGenresLoading ? genres.map(genre => ({label: genre.name, value: genre.id})) : []
-
     const [errors, setErrors] = useState({})
     const [data, setData] = useState({
         name: '',
@@ -39,7 +36,8 @@ const EditBookPage = () => {
     useEffect(() => {
         setData(prevState => ({
             ...prevState,
-            ...book
+            ...book,
+            ageLimit: !isBooksLoading ? getAgeLimitFormat(book.ageLimit) : ''
         }))
     }, [book])
 
@@ -47,11 +45,12 @@ const EditBookPage = () => {
         event.preventDefault()
         console.log({
             ...data,
-            ageLimit: getAgeLimit(data.ageLimit)
+            ageLimit: getAgeLimit(data.ageLimit),
+            year: +data.year,
+            price: +data.price,
+            size: +data.size
         })
     }
-
-    console.log(getRegexForYear())
 
     const handleChange = (target) => {
         setData(prevState => ({
@@ -63,13 +62,13 @@ const EditBookPage = () => {
         description: yup.string().required('Аннотация к книге обязательна для заполнения'),
         price: yup.string().required().matches(/^[1-9]\d*$/, 'Цена введена некорректно').matches(/^(?:[1-9]|\d{2,3}|[1-4]\d{3}|10000)$/, 'Цена слишком велика'),
         ageLimit: yup.string().required('Возрастное ограничение обязательно для заполнения'),
-        year: yup.string().required().matches(/^[1-9]\d*$/, 'Год введен некорректно').matches(/^(?:[1-9]|\d{2,3}|[1-4]\d{3}|2022)$/, 'Вы из будущего?'),
-        size: yup.number().required('Количество страниц обязательно к заполнению').positive().integer(),
+        year: yup.string().required().matches(/^[1-9]\d*$/, 'Год написания введен некорректно'),
+        size: yup.string().required().matches(/^[1-9]\d*$/, 'Кол-во страниц введено некорректно').matches(/^(?:[1-9]|\d{2,3}|[1-4]\d{3}|10000)$/, 'Кол-во страниц слишком велико'),
         author: yup.string().required('Имя автора книги обязательно к заполнению').min(3, 'Имя автора болжно быть не менее 3х символов'),
         genre: yup.string().required('Жанр обязателен к заполнению'),
         imgUrl: yup.string()
             .required('Ссылка на изображение книги обязательно к заполнению')
-            .matches(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi, 'Ссылка введена некорректно'),
+            .matches(/[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)?/gi, 'Ссылка введена некорректно'),
         name: yup.string().required('Название книги обязательно для заполнения')
     })
 
@@ -108,7 +107,7 @@ const EditBookPage = () => {
                             <SelectField
                                 label="Жанр"
                                 name="genre"
-                                value={data.genre.id}
+                                value={data.genre}
                                 onChange={handleChange}
                                 defaultOption="Выбрать жанр..."
                                 options={genresArray}
@@ -147,7 +146,7 @@ const EditBookPage = () => {
                                 value={data.ageLimit}
                                 onChange={handleChange}
                                 defaultOption="Выбрать возрастное ограничение..."
-                                options={ageLimitArray}
+                                options={ageLimit}
                                 error={errors.ageLimit}
                             />
                             <TextField
