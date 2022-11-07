@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 const GroupList = ({items, selectedItem, onItemSelect, valueProperty, contentProperty}) => {
     return (
         <ul className="list-group">
-            {Object.keys(items).map(item => {
+            {items.map(item => {
                 return (
-                    <li className={`list-group-item ${items[item] === selectedItem ? 'active' : ''}`}
-                        key={items[item][valueProperty]}
+                    <li className={`list-group-item ${item === selectedItem ? 'active' : ''}`}
+                        key={item[valueProperty]}
                         role="button"
-                        onClick={() => onItemSelect(items[item])}
+                        onClick={() => onItemSelect(item)}
                     >
-                        {items[item][contentProperty]}
+                        {item[contentProperty]}
                     </li>
                 )
             })}
@@ -25,7 +25,7 @@ GroupList.defaultProps = {
 }
 
 GroupList.propTypes = {
-    items: PropTypes.object,
+    items: PropTypes.array,
     selectedItem: PropTypes.object,
     onItemSelect: PropTypes.func,
     valueProperty: PropTypes.string,

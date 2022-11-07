@@ -1,34 +1,24 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import _ from 'lodash'
 import {useHistory} from 'react-router-dom'
-import api from '../../../api'
 import Pagination from '../common/pagination'
 import {paginate} from '../../utils/paginate'
 import GroupList from '../common/groupList'
 import Sorting from '../ui/sorting'
 import BooksList from '../ui/booksList'
 import Loader from '../common/loader'
+import {useBooks} from '../../hooks/useBooks'
+import {useGenres} from '../../hooks/useGenres'
 
 const BooksListPage = () => {
+    const {books} = useBooks()
+    const {genres, isLoading: isGenresLoading} = useGenres()
     const history = useHistory()
-    const [books, setBooks] = useState([])
-    const [genres, setGenres] = useState({})
     const [currentPage, setCurrentPage] = useState(1)
     const [selectedGenre, setSelectedGenre] = useState(null)
     const [search, setSearch] = useState('')
     const [sortBy, setSortBy] = useState({iter: 'name', order: 'asc'})
     const pageSize = 10
-
-    useEffect(() => {
-        api.books.fetchAll().then(data => {
-            setBooks(data)
-        })
-    }, [])
-    useEffect(() => {
-        api.genres.fetchAll().then(data => {
-            setGenres(data)
-        })
-    }, [])
 
     const handlePageChange = (pageIndex) => {
         setCurrentPage(pageIndex)
@@ -47,7 +37,7 @@ const BooksListPage = () => {
             )
             : (
                 selectedGenre
-                    ? books.filter(book => book.genre.id === selectedGenre.id)
+                    ? books.filter(book => book.genre === selectedGenre.id)
                     : books
             )
         const booksCount = filteredBooks.length
@@ -75,9 +65,8 @@ const BooksListPage = () => {
             <div className="container">
                 <div className="row gutters-sm">
                     <div className="col-md-2 my-3">
-                        {JSON.stringify(genres) === '{}'
-                            ? <Loader target="genres"/>
-                            : (
+                        {!isGenresLoading
+                            ? (
                                 <div className="d-flex flex-column">
                                     <GroupList
                                         items={genres}
@@ -88,6 +77,7 @@ const BooksListPage = () => {
                                     <button className="btn btn-primary mt-5" onClick={() => history.push('/add_book')}>Добавить книгу</button>
                                 </div>
                             )
+                            : <Loader target="genres"/>
                         }
                     </div>
                     <div className="col-md-10">

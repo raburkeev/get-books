@@ -1,8 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AgeLimitBadge from './ageLimitBadge'
+import {useGenres} from '../../../hooks/useGenres'
 
 const BookInfoMainContent = ({name, author, genre, series, year, size, ageLimit, description}) => {
+    const {getGenreById} = useGenres()
+    const genreObj = getGenreById(genre)
+
     const getStyleForBadge = (color) => {
         if (color === 'warning' || color === 'info' || color === 'light') {
             return `${color} text-dark`
@@ -21,8 +25,8 @@ const BookInfoMainContent = ({name, author, genre, series, year, size, ageLimit,
                     {series && <p className="text-secondary mb-3">{`Серия: "${series}"`}</p>}
                     <h5 className="mb-3">
                         {'Жанр: '}
-                        <span className={`badge bg-${getStyleForBadge(genre.color)} m-1`}>
-                            {genre.name}
+                        <span className={`badge bg-${getStyleForBadge(genreObj.color)} m-1`}>
+                            {genreObj.name}
                         </span>
                     </h5>
                     <p>{`Год написания: ${year}`}</p>
@@ -38,7 +42,7 @@ const BookInfoMainContent = ({name, author, genre, series, year, size, ageLimit,
 BookInfoMainContent.propTypes = {
     name: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
-    genre: PropTypes.object.isRequired,
+    genre: PropTypes.string.isRequired,
     series: PropTypes.string,
     year: PropTypes.number.isRequired,
     size: PropTypes.number.isRequired,
