@@ -4,14 +4,14 @@ import BookImgComponent from '../ui/book/bookImgComponent'
 import BookRating from '../ui/book/bookRating'
 import BookInfoMainContent from '../ui/book/bookInfoMainContent'
 import Loader from '../common/loader'
-import {useBooks} from '../../hooks/useBooks'
+import {useSelector} from 'react-redux'
+import {getBookById} from '../../store/books'
 
 const BookPage = () => {
     const history = useHistory()
     const params = useParams()
     const {bookId} = params
-    const {getBookById} = useBooks()
-    const book = getBookById(bookId)
+    const book = useSelector(getBookById(bookId))
 
     return book && book.genre
         ? (

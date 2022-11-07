@@ -7,12 +7,13 @@ import GroupList from '../common/groupList'
 import Sorting from '../ui/sorting'
 import BooksList from '../ui/booksList'
 import Loader from '../common/loader'
-import {useBooks} from '../../hooks/useBooks'
 import {useSelector} from 'react-redux'
 import {getGenresList, getGenresLoadingStatus} from '../../store/genres'
+import {getBooksList, getBooksLoadingStatus} from '../../store/books'
 
 const BooksListPage = () => {
-    const {books} = useBooks()
+    const books = useSelector(getBooksList())
+    const isBooksLoading = useSelector(getBooksLoadingStatus())
     const genres = useSelector(getGenresList())
     const isGenresLoading = useSelector(getGenresLoadingStatus())
     const history = useHistory()
@@ -32,7 +33,7 @@ const BooksListPage = () => {
         setSelectedGenre(null)
     }
 
-    if (JSON.stringify(books) !== '[]') {
+    if (!isBooksLoading) {
         const filteredBooks = search
             ? (
                 books.filter(book => book.name.toLowerCase().includes(search.trim().toLowerCase()))

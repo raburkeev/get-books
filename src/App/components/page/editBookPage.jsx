@@ -1,21 +1,28 @@
 /*eslint-disable*/
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
-import api from '../../../api'
 import TextField from '../common/form/textField'
 import TextAreaField from '../common/form/textAreaField'
-import NumberField from '../common/form/numberField'
 import Loader from '../common/loader'
 import * as yup from 'yup'
 import SelectField from '../common/form/selectField'
 import {ageLimitArray, getAgeLimit} from '../../utils/ageLimitArray'
+import {useSelector} from 'react-redux'
+import {getBookById, getBooksLoadingStatus} from '../../store/books'
+import {getGenresList, getGenresLoadingStatus} from '../../store/genres'
+import {getRegexForYear} from '../../utils/getRegexForYear'
 
 const EditBookPage = () => {
     const {bookId} = useParams()
-    const [isLoaded, setIsLoaded] = useState({bookData: false, genresData: false})
+
+    const book = useSelector(getBookById(bookId))
+    const genres = useSelector(getGenresList())
+    const isBooksLoading = useSelector(getBooksLoadingStatus())
+    const isGenresLoading = useSelector(getGenresLoadingStatus())
+
+    const genresArray = !isGenresLoading ? genres.map(genre => ({label: genre.name, value: genre.id})) : []
+
     const [errors, setErrors] = useState({})
-    const [genres, setGenres] = useState({})
-    const genresArray = Object.keys(genres).map(genre => ({label: genres[genre].name, value: genres[genre].id}))
     const [data, setData] = useState({
         name: '',
         imgUrl: '',
@@ -30,27 +37,11 @@ const EditBookPage = () => {
     })
 
     useEffect(() => {
-        api.books.getById(+bookId)
-            .then(data => {
-                console.log(data)
-                setData(prevState => ({
-                ...prevState,
-                ...data,
-                genre: {label: data.name, value: data.id}
-            }))})
-            .then(() => setIsLoaded(prevState => ({
-                ...prevState,
-                bookData: true
-            })))
-
-        api.genres.fetchAll()
-            .then(data => setGenres(data))
-            .then(() => setIsLoaded(prevState => ({
-                ...prevState,
-                genresData: true
-            })))
-    }, [])
-    console.log(data.genre)
+        setData(prevState => ({
+            ...prevState,
+            ...book
+        }))
+    }, [book])
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -60,6 +51,8 @@ const EditBookPage = () => {
         })
     }
 
+    console.log(getRegexForYear())
+
     const handleChange = (target) => {
         setData(prevState => ({
             ...prevState,
@@ -68,15 +61,15 @@ const EditBookPage = () => {
     }
     const validateSchema = yup.object().shape({
         description: yup.string().required('Аннотация к книге обязательна для заполнения'),
-        price: yup.number().required().positive().integer().max(10000, 'Цена слишком велика!'),
+        price: yup.string().required().matches(/^[1-9]\d*$/, 'Цена введена некорректно').matches(/^(?:[1-9]|\d{2,3}|[1-4]\d{3}|10000)$/, 'Цена слишком велика'),
         ageLimit: yup.string().required('Возрастное ограничение обязательно для заполнения'),
-        year: yup.number().required().positive().integer().max(new Date(Date.now()).getFullYear(), 'Год написания книги введен некорректно'),
+        year: yup.string().required().matches(/^[1-9]\d*$/, 'Год введен некорректно').matches(/^(?:[1-9]|\d{2,3}|[1-4]\d{3}|2022)$/, 'Вы из будущего?'),
         size: yup.number().required('Количество страниц обязательно к заполнению').positive().integer(),
         author: yup.string().required('Имя автора книги обязательно к заполнению').min(3, 'Имя автора болжно быть не менее 3х символов'),
         genre: yup.string().required('Жанр обязателен к заполнению'),
         imgUrl: yup.string()
             .required('Ссылка на изображение книги обязательно к заполнению')
-            .matches(/((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/, 'Ссылка введена некорректно'),
+            .matches(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi, 'Ссылка введена некорректно'),
         name: yup.string().required('Название книги обязательно для заполнения')
     })
 
@@ -91,7 +84,7 @@ const EditBookPage = () => {
     }, [data])
 
     const isValid = Object.keys(errors).length
-    return isLoaded.bookData && isLoaded.genresData
+    return !isBooksLoading && !isGenresLoading
         ? (
             <div className="container mt-5">
                 <div className="row">
@@ -115,7 +108,7 @@ const EditBookPage = () => {
                             <SelectField
                                 label="Жанр"
                                 name="genre"
-                                value={data.genre}
+                                value={data.genre.id}
                                 onChange={handleChange}
                                 defaultOption="Выбрать жанр..."
                                 options={genresArray}
@@ -134,17 +127,17 @@ const EditBookPage = () => {
                                 value={data.series}
                                 onChange={handleChange}
                             />
-                            <NumberField
+                            <TextField
                                 label="Количество страниц"
                                 name="size"
-                                value={+data.size}
+                                value={data.size.toString()}
                                 onChange={handleChange}
                                 error={errors.size}
                             />
-                            <NumberField
+                            <TextField
                                 label="Год написания"
                                 name="year"
-                                value={+data.year}
+                                value={data.year.toString()}
                                 onChange={handleChange}
                                 error={errors.year}
                             />
@@ -157,11 +150,12 @@ const EditBookPage = () => {
                                 options={ageLimitArray}
                                 error={errors.ageLimit}
                             />
-                            <NumberField
+                            <TextField
                                 label="Цена (руб.)"
                                 name="price"
-                                value={+data.price}
+                                value={data.price.toString()}
                                 onChange={handleChange}
+                                error={errors.price}
                             />
                             <TextAreaField
                                 label="Аннотация к книге"

@@ -5,7 +5,7 @@ import genreService from '../services/genre.service'
 const genresSlice = createSlice({
     name: 'genres',
     initialState: {
-        entities: null,
+        entities: [],
         isLoading: true,
         error: null,
         lastFetch: null
