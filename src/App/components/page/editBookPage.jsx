@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import api from '../../../api'
@@ -30,11 +31,13 @@ const EditBookPage = () => {
 
     useEffect(() => {
         api.books.getById(+bookId)
-            .then(data => setData(prevState => ({
+            .then(data => {
+                console.log(data)
+                setData(prevState => ({
                 ...prevState,
                 ...data,
                 genre: {label: data.name, value: data.id}
-            })))
+            }))})
             .then(() => setIsLoaded(prevState => ({
                 ...prevState,
                 bookData: true

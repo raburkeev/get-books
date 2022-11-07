@@ -3,17 +3,23 @@ import ReactDOM from 'react-dom/client'
 import App from './App/App'
 import reportWebVitals from './reportWebVitals'
 import {BrowserRouter} from 'react-router-dom'
+import {Provider} from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'react-toastify/dist/ReactToastify.css'
 import './index.css'
+import {createStore} from './App/store/createStore'
+
+const store = createStore()
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-    <BrowserRouter>
-        <React.StrictMode>
-            <App/>
-        </React.StrictMode>
-    </BrowserRouter>
+    <Provider store={store}>
+        <BrowserRouter>
+            <React.StrictMode>
+                <App/>
+            </React.StrictMode>
+        </BrowserRouter>
+    </Provider>
 )
 
 // If you want to start measuring performance in your app, pass a function

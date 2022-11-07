@@ -8,11 +8,13 @@ import Sorting from '../ui/sorting'
 import BooksList from '../ui/booksList'
 import Loader from '../common/loader'
 import {useBooks} from '../../hooks/useBooks'
-import {useGenres} from '../../hooks/useGenres'
+import {useSelector} from 'react-redux'
+import {getGenresList, getGenresLoadingStatus} from '../../store/genres'
 
 const BooksListPage = () => {
     const {books} = useBooks()
-    const {genres, isLoading: isGenresLoading} = useGenres()
+    const genres = useSelector(getGenresList())
+    const isGenresLoading = useSelector(getGenresLoadingStatus())
     const history = useHistory()
     const [currentPage, setCurrentPage] = useState(1)
     const [selectedGenre, setSelectedGenre] = useState(null)

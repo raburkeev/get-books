@@ -6,13 +6,13 @@ import Main from './layouts/main'
 import Books from './layouts/books'
 import Login from './layouts/login'
 import AddBookForm from './components/ui/addBookForm'
-import GenresProvider from './hooks/useGenres'
+import AppLoader from './components/ui/hoc/appLoader'
 
 const App = () => {
     return (
-        <>
-            <NavBar/>
-            <GenresProvider>
+        <div>
+            <AppLoader>
+                <NavBar/>
                 <Switch>
                     <Route path="/" exact component={Main}/>
                     <Route path="/login/:type?" component={Login}/>
@@ -20,9 +20,9 @@ const App = () => {
                     <Route path="/add_book" component={AddBookForm}/>
                     <Redirect to="/"/>
                 </Switch>
-            </GenresProvider>
-            <ToastContainer/>
-        </>
+                <ToastContainer/>
+            </AppLoader>
+        </div>
     )
 }
 
