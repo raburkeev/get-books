@@ -1,19 +1,17 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import {useParams, useHistory} from 'react-router-dom'
-import api from '../../../api'
 import BookImgComponent from '../ui/book/bookImgComponent'
 import BookRating from '../ui/book/bookRating'
 import BookInfoMainContent from '../ui/book/bookInfoMainContent'
 import Loader from '../common/loader'
+import {useBooks} from '../../hooks/useBooks'
 
 const BookPage = () => {
     const history = useHistory()
     const params = useParams()
     const {bookId} = params
-    const [book, setBook] = useState(null)
-    useEffect(() => {
-        api.books.getById(+bookId).then(data => setBook(data))
-    }, [])
+    const {getBookById} = useBooks()
+    const book = getBookById(bookId)
 
     return book && book.genre
         ? (

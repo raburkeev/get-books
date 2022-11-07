@@ -24,7 +24,7 @@ const BookRating = ({rating}) => {
 }
 
 BookRating.propTypes = {
-    rating: PropTypes.object.isRequired
+    rating: PropTypes.array.isRequired
 }
 
 export default BookRating
