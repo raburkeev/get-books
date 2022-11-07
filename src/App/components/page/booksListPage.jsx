@@ -1,8 +1,6 @@
-/*eslint-disable*/
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import _ from 'lodash'
 import {useHistory} from 'react-router-dom'
-import api from '../../../api'
 import Pagination from '../common/pagination'
 import {paginate} from '../../utils/paginate'
 import GroupList from '../common/groupList'
@@ -14,7 +12,6 @@ import {useGenres} from '../../hooks/useGenres'
 
 const BooksListPage = () => {
     const {books} = useBooks()
-    console.log(books)
     const {genres, isLoading: isGenresLoading} = useGenres()
     const history = useHistory()
     const [currentPage, setCurrentPage] = useState(1)
