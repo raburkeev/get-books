@@ -2,8 +2,11 @@ import React, {useEffect, useState} from 'react'
 import TextField from '../common/form/textField'
 import CheckBoxField from '../common/form/checkBoxField'
 import * as yup from 'yup'
+import {useDispatch} from 'react-redux'
+import {signUp} from '../../store/user'
 
 const RegisterForm = () => {
+    const dispatch = useDispatch()
     const [data, setData] = useState({
         email: '',
         password: '',
@@ -15,6 +18,7 @@ const RegisterForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log(data)
+        dispatch(signUp(data))
     }
 
     const handleChange = (target) => {
