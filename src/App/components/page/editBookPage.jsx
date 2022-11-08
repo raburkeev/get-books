@@ -6,11 +6,12 @@ import Loader from '../common/loader'
 import * as yup from 'yup'
 import SelectField from '../common/form/selectField'
 import {ageLimit, getAgeLimit, getAgeLimitFormat} from '../../utils/ageLimit'
-import {useSelector} from 'react-redux'
-import {getBookById, getBooksLoadingStatus} from '../../store/books'
+import {useDispatch, useSelector} from 'react-redux'
+import {getBookById, getBooksLoadingStatus, updateBook} from '../../store/books'
 import {getGenresList, getGenresLoadingStatus} from '../../store/genres'
 
 const EditBookPage = () => {
+    const dispatch = useDispatch()
     const {bookId} = useParams()
 
     const book = useSelector(getBookById(bookId))
@@ -43,13 +44,13 @@ const EditBookPage = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log({
+        dispatch(updateBook({
             ...data,
             ageLimit: getAgeLimit(data.ageLimit),
             year: +data.year,
             price: +data.price,
             size: +data.size
-        })
+        }))
     }
 
     const handleChange = (target) => {

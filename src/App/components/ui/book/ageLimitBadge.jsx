@@ -11,6 +11,8 @@ const AgeLimitBadge = ({ageLimit}) => {
                 return 'warning'
             case 12:
                 return 'success'
+            case 6:
+                return 'primary'
             case 0:
                 return 'info'
         }
