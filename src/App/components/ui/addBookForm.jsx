@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import TextField from '../common/form/textField'
-import NumberField from '../common/form/numberField'
 import TextAreaField from '../common/form/textAreaField'
 import * as yup from 'yup'
-import api from '../../../api'
 import SelectField from '../common/form/selectField'
 import Loader from '../common/loader'
 import {ageLimit, getAgeLimit} from '../../utils/ageLimit'
+import {useSelector} from 'react-redux'
+import {getGenresList, getGenresLoadingStatus} from '../../store/genres'
+import {nanoid} from 'nanoid'
 
 const AddBookForm = () => {
     const [data, setData] = useState({
@@ -15,26 +16,29 @@ const AddBookForm = () => {
         genre: '',
         author: '',
         series: '',
-        size: 0,
-        year: 0,
+        size: '',
+        year: '',
         ageLimit: '',
-        price: 0,
+        price: '',
         description: ''
     })
     const [errors, setErrors] = useState({})
-    const [genres, setGenres] = useState({})
-    const [isLoading, setLoading] = useState(true)
-    const genresArray = Object.keys(genres).map(genre => ({label: genres[genre].name, value: genres[genre].id}))
-
-    useEffect(() => {
-        api.genres.fetchAll().then((data) => setGenres(data)).then(() => setLoading(false))
-    }, [])
+    const genres = useSelector(getGenresList())
+    const isLoading = useSelector(getGenresLoadingStatus())
+    const genresArray = genres.map(genre => ({label: genre.name, value: genre.id}))
 
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log({
             ...data,
-            ageLimit: getAgeLimit(data.ageLimit)
+            id: nanoid(),
+            ageLimit: getAgeLimit(data.ageLimit),
+            year: +data.year,
+            price: +data.price,
+            size: +data.size,
+            numberOfRatings: 0,
+            rate: 0,
+            ratings: [0, 0, 0, 0, 0]
         })
     }
 
@@ -47,15 +51,15 @@ const AddBookForm = () => {
 
     const validateSchema = yup.object().shape({
         description: yup.string().required('Аннотация к книге обязательна для заполнения'),
-        price: yup.number().required().positive().integer().max(10000, 'Цена слишком велика!'),
+        price: yup.string().required().matches(/^[1-9]\d*$/, 'Цена введена некорректно').matches(/^(?:[1-9]|\d{2,3}|[1-4]\d{3}|10000)$/, 'Цена слишком велика'),
         ageLimit: yup.string().required('Возрастное ограничение обязательно для заполнения'),
-        year: yup.number().required().positive().integer().max(new Date(Date.now()).getFullYear(), 'Год написания книги введен некорректно'),
-        size: yup.number().required('Количество страниц обязательно к заполнению').positive().integer(),
+        year: yup.string().required().matches(/^[1-9]\d*$/, 'Год написания введен некорректно'),
+        size: yup.string().required().matches(/^[1-9]\d*$/, 'Кол-во страниц введено некорректно').matches(/^(?:[1-9]|\d{2,3}|[1-4]\d{3}|10000)$/, 'Кол-во страниц слишком велико'),
         author: yup.string().required('Имя автора книги обязательно к заполнению').min(3, 'Имя автора болжно быть не менее 3х символов'),
         genre: yup.string().required('Жанр обязателен к заполнению'),
         imgUrl: yup.string()
             .required('Ссылка на изображение книги обязательно к заполнению')
-            .matches(/((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/, 'Ссылка введена некорректно'),
+            .matches(/[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)?/gi, 'Ссылка введена некорректно'),
         name: yup.string().required('Название книги обязательно для заполнения')
     })
 
@@ -115,17 +119,17 @@ const AddBookForm = () => {
                                     value={data.series}
                                     onChange={handleChange}
                                 />
-                                <NumberField
+                                <TextField
                                     label="Количество страниц"
                                     name="size"
-                                    value={+data.size}
+                                    value={data.size}
                                     onChange={handleChange}
                                     error={errors.size}
                                 />
-                                <NumberField
+                                <TextField
                                     label="Год написания"
                                     name="year"
-                                    value={+data.year}
+                                    value={data.year}
                                     onChange={handleChange}
                                     error={errors.year}
                                 />
@@ -138,12 +142,12 @@ const AddBookForm = () => {
                                     options={ageLimit}
                                     error={errors.ageLimit}
                                 />
-                                <NumberField
+                                <TextField
                                     label="Цена (руб.)"
                                     name="price"
-                                    value={+data.price}
+                                    value={data.price}
                                     onChange={handleChange}
-                                    price={errors.price}
+                                    error={errors.price}
                                 />
                                 <TextAreaField
                                     label="Аннотация к книге"
