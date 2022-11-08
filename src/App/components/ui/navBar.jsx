@@ -1,7 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {useSelector} from 'react-redux'
+import {getIsLoggedIn} from '../../store/user'
+import NavProfile from './navProfile'
 
 const NavBar = () => {
+    const isLoggedIn = useSelector(getIsLoggedIn())
+
     return (
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
@@ -20,11 +25,13 @@ const NavBar = () => {
                             <Link className="nav-link" to="/321">321</Link>
                         </li>
                     </ul>
-                    <Link to="/login">
-                        <button type="button" className="btn btn-success m-2">
-                            Вход/Регистрация
-                        </button>
-                    </Link>
+                    {isLoggedIn ? <NavProfile/> : (
+                        <Link to="/login">
+                            <button type="button" className="btn btn-success m-2">
+                                Вход/Регистрация
+                            </button>
+                        </Link>
+                    )}
                 </div>
             </div>
         </nav>

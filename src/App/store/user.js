@@ -1,21 +1,32 @@
-/*eslint-disable*/
 import {createAction, createSlice} from '@reduxjs/toolkit'
 import authService from '../services/auth.service'
 import localStorageService from '../services/localStorage.service'
 import userService from '../services/user.service'
 import history from '../utils/history'
 
-const userSlice = createSlice({
-    name: 'user',
-    initialState: {
+const initialState = localStorageService.getAccessToken()
+    ? {
         entity: null,
         isLoading: true,
         error: null,
-        auth: null
-    },
+        auth: {userId: localStorageService.getUserId()},
+        isLoggedIn: true
+    }
+    : {
+        entity: null,
+        isLoading: true,
+        error: null,
+        auth: null,
+        isLoggedIn: false
+    }
+
+const userSlice = createSlice({
+    name: 'user',
+    initialState,
     reducers: {
         authRequestSucceeded: (state, action) => {
             state.auth = action.payload
+            state.isLoggedIn = true
         },
         authRequestFailed: (state, action) => {
             state.error = action.payload
@@ -25,6 +36,20 @@ const userSlice = createSlice({
         },
         userCreateFailed: (state, action) => {
             state.error = action.payload
+        },
+        userRequested: (state) => {
+            state.isLoading = true
+        },
+        userRequestSucceeded: (state, action) => {
+            state.entity = action.payload
+        },
+        userRequestFailed: (state, action) => {
+            state.error = action.payload
+        },
+        userLoggedOut: (state) => {
+            state.entity = null
+            state.isLoggedIn = false
+            state.auth = null
         }
     }
 })
@@ -33,7 +58,18 @@ const authRequested = createAction('user/authRequested')
 const userCreateRequested = createAction('user/userCreateRequested')
 
 const {reducer: userReducer, actions} = userSlice
-const {authRequestSucceeded, authRequestFailed, userCreated, userCreateFailed} = actions
+const {authRequestSucceeded, authRequestFailed, userCreated, userCreateFailed, userRequested, userRequestSucceeded, userRequestFailed, userLoggedOut} = actions
+
+export const loadUser = () => async (dispatch) => {
+    dispatch(userRequested())
+    try {
+        const userId = localStorageService.getUserId()
+        const {content} = await userService.getUser(userId)
+        dispatch(userRequestSucceeded(content))
+    } catch (error) {
+        dispatch(userRequestFailed(error.message))
+    }
+}
 
 export const signUp = ({email, password, ...rest}) => async (dispatch) => {
     dispatch(authRequested())
@@ -64,5 +100,14 @@ function createUser(payload) {
         }
     }
 }
+
+export const logout = () => (dispatch) => {
+    localStorageService.removeAuthData()
+    dispatch(userLoggedOut())
+    history.push('/all_books')
+}
+
+export const getUser = () => (state) => state.user.entity
+export const getIsLoggedIn = () => (state) => state.user.isLoggedIn
 
 export default userReducer
