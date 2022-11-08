@@ -10,6 +10,10 @@ const bookService = {
     update: async (payload) => {
         const {data} = await httpService.patch(`${bookEndPoint}${payload.id}`, payload)
         return data
+    },
+    addBook: async (payload) => {
+        const {data} = await httpService.put(`${bookEndPoint}${payload.id}`, payload)
+        return data
     }
 }
 

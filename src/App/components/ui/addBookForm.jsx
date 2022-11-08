@@ -5,11 +5,13 @@ import * as yup from 'yup'
 import SelectField from '../common/form/selectField'
 import Loader from '../common/loader'
 import {ageLimit, getAgeLimit} from '../../utils/ageLimit'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {getGenresList, getGenresLoadingStatus} from '../../store/genres'
 import {nanoid} from 'nanoid'
+import {createBook} from '../../store/books'
 
 const AddBookForm = () => {
+    const dispatch = useDispatch()
     const [data, setData] = useState({
         name: '',
         imgUrl: '',
@@ -40,6 +42,17 @@ const AddBookForm = () => {
             rate: 0,
             ratings: [0, 0, 0, 0, 0]
         })
+        dispatch(createBook({
+            ...data,
+            id: nanoid(),
+            ageLimit: getAgeLimit(data.ageLimit),
+            year: +data.year,
+            price: +data.price,
+            size: +data.size,
+            numberOfRatings: 0,
+            rate: 0,
+            ratings: [0, 0, 0, 0, 0]
+        }))
     }
 
     const handleChange = (target) => {

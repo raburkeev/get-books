@@ -29,14 +29,21 @@ const booksSlice = createSlice({
         },
         bookUpdateFailed: (state, action) => {
             state.error = action.payload
+        },
+        bookCreateSucceeded: (state, action) => {
+            state.entities.push(action.payload)
+        },
+        bookCreateFailed: (state, action) => {
+            state.error = action.payload
         }
     }
 })
 
 const {reducer: booksReducer, actions} = booksSlice
-const {booksRequested, booksReceived, booksRequestFailed, bookUpdateSucceeded, bookUpdateFailed} = actions
+const {booksRequested, booksReceived, booksRequestFailed, bookUpdateSucceeded, bookUpdateFailed, bookCreateSucceeded, bookCreateFailed} = actions
 
 const bookUpdateRequested = createAction('books/bookUpdateRequested')
+const bookCreateRequested = createAction('books/bookCreateRequested')
 
 export const loadBooksList = () => async (dispatch, getState) => {
     const {lastFetch} = getState().books
@@ -59,6 +66,17 @@ export const updateBook = (payload) => async (dispatch) => {
         history.push(`/all_books/${content.id}`)
     } catch (error) {
         dispatch(bookUpdateFailed())
+    }
+}
+
+export const createBook = (payload) => async (dispatch) => {
+    dispatch(bookCreateRequested())
+    try {
+        const {content} = await bookService.addBook(payload)
+        dispatch(bookCreateSucceeded(content))
+        history.push(`/all_books/${content.id}`)
+    } catch (error) {
+        dispatch(bookCreateFailed(error.message))
     }
 }
 
