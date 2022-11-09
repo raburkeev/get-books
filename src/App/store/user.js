@@ -88,6 +88,25 @@ export const signUp = ({email, password, ...rest}) => async (dispatch) => {
     }
 }
 
+export const signIn = (payload) => async (dispatch) => {
+    dispatch(authRequested())
+    const {email, password} = payload
+    try {
+        const data = await authService.login({email, password})
+        console.log(data)
+        dispatch(authRequestSucceeded({userId: data.localId}))
+        localStorageService.setTokens(data)
+
+        const userId = localStorageService.getUserId()
+        const {content} = await userService.getUser(userId)
+        dispatch(userRequestSucceeded(content))
+
+        history.push('/all_books')
+    } catch (error) {
+        dispatch(authRequestFailed(error.message))
+    }
+}
+
 function createUser(payload) {
     return async (dispatch) => {
         dispatch(userCreateRequested())

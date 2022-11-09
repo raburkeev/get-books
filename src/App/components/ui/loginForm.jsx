@@ -2,8 +2,11 @@ import React, {useEffect, useState} from 'react'
 import TextField from '../common/form/textField'
 import * as yup from 'yup'
 import CheckBoxField from '../common/form/checkBoxField'
+import {useDispatch} from 'react-redux'
+import {signIn} from '../../store/user'
 
 const LoginForm = () => {
+    const dispatch = useDispatch()
     const [data, setData] = useState({
         email: '',
         password: '',
@@ -21,6 +24,7 @@ const LoginForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log(data)
+        dispatch(signIn(data))
     }
 
     const validateSchema = yup.object().shape({
