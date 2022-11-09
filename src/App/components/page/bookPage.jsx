@@ -4,14 +4,22 @@ import BookImgComponent from '../ui/book/bookImgComponent'
 import BookRating from '../ui/book/bookRating'
 import BookInfoMainContent from '../ui/book/bookInfoMainContent'
 import Loader from '../common/loader'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {getBookById} from '../../store/books'
+import {addItemToCart, getUserCart, getUserId} from '../../store/user'
 
 const BookPage = () => {
+    const dispatch = useDispatch()
+    const userId = useSelector(getUserId())
     const history = useHistory()
     const params = useParams()
     const {bookId} = params
     const book = useSelector(getBookById(bookId))
+    const userCart = useSelector(getUserCart())
+
+    const handleAddToCartClick = () => {
+        dispatch(addItemToCart({userId, userCart: [...userCart, bookId]}))
+    }
 
     return book && book.genre
         ? (
@@ -23,9 +31,9 @@ const BookPage = () => {
                     </div>
                     <div className="col-md-8">
                         <BookInfoMainContent {...book}/>
-                        <button className="btn btn-primary" onClick={() => history.push(`/all_books/${bookId}/edit`)}>Edit</button>
+                        <button className="btn btn-primary me-1" onClick={() => history.push(`/all_books/${bookId}/edit`)}>Edit</button>
+                        <button className="btn btn-success" onClick={handleAddToCartClick}>Добвавить в корзину</button>
                     </div>
-
                 </div>
             </div>
         )

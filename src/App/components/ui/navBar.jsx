@@ -1,11 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {useSelector} from 'react-redux'
-import {getIsLoggedIn} from '../../store/user'
+import {getIsLoggedIn, getUserCart} from '../../store/user'
 import NavProfile from './navProfile'
 
 const NavBar = () => {
     const isLoggedIn = useSelector(getIsLoggedIn())
+    const userCart = useSelector(getUserCart())
+
+    const items = userCart.length - 1
 
     return (
         <nav className="navbar navbar-expand-lg bg-light">
@@ -25,7 +28,20 @@ const NavBar = () => {
                             <Link className="nav-link" to="/321">321</Link>
                         </li>
                     </ul>
-                    {isLoggedIn ? <NavProfile/> : (
+                    {isLoggedIn ? (
+                        <div className="d-flex">
+                            <button type="button" className="btn btn-primary position-relative mt-2 mx-4">
+                                <i className="bi bi-cart3"/>
+                                {'   '}
+                                Корзина
+                                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {items}
+                                    <span className="visually-hidden">items</span>
+                                </span>
+                            </button>
+                            <NavProfile/>
+                        </div>
+                    ) : (
                         <Link to="/login">
                             <button type="button" className="btn btn-success m-2">
                                 Вход/Регистрация

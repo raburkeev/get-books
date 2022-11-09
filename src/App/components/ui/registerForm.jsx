@@ -11,7 +11,8 @@ const RegisterForm = () => {
         email: '',
         password: '',
         name: '',
-        license: false
+        license: false,
+        cart: ['init']
     })
     const [errors, setErrors] = useState({})
 

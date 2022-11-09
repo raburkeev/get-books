@@ -10,6 +10,11 @@ const userService = {
     getUser: async (id) => {
         const {data} = await httpService.get(`${userEndpoint}${id}`)
         return data
+    },
+    addItem: async (payload) => {
+        const {data} = await httpService.post(`${userEndpoint}${payload.userId}/cart`, payload.userCart)
+        console.log(data)
+        return data
     }
 }
 

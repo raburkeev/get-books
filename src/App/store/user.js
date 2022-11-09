@@ -50,15 +50,19 @@ const userSlice = createSlice({
             state.entity = null
             state.isLoggedIn = false
             state.auth = null
+        },
+        userAddItemFailed: (state, action) => {
+            state.error = action.payload
         }
     }
 })
 
 const authRequested = createAction('user/authRequested')
 const userCreateRequested = createAction('user/userCreateRequested')
+const addItemRequested = createAction('user/addItemRequested')
 
 const {reducer: userReducer, actions} = userSlice
-const {authRequestSucceeded, authRequestFailed, userCreated, userCreateFailed, userRequested, userRequestSucceeded, userRequestFailed, userLoggedOut} = actions
+const {authRequestSucceeded, authRequestFailed, userCreated, userCreateFailed, userRequested, userRequestSucceeded, userRequestFailed, userLoggedOut, userAddItemFailed} = actions
 
 export const loadUser = () => async (dispatch) => {
     dispatch(userRequested())
@@ -93,7 +97,6 @@ export const signIn = (payload) => async (dispatch) => {
     const {email, password} = payload
     try {
         const data = await authService.login({email, password})
-        console.log(data)
         dispatch(authRequestSucceeded({userId: data.localId}))
         localStorageService.setTokens(data)
 
@@ -104,6 +107,16 @@ export const signIn = (payload) => async (dispatch) => {
         history.push('/all_books')
     } catch (error) {
         dispatch(authRequestFailed(error.message))
+    }
+}
+
+export const addItemToCart = ({userId, userCart}) => async (dispatch) => {
+    dispatch(addItemRequested())
+    try {
+        const data = await userService.addItem({userId, userCart})
+        console.log('content from user.js', data)
+    } catch (error) {
+        dispatch(userAddItemFailed(error.message))
     }
 }
 
@@ -127,6 +140,8 @@ export const logout = () => (dispatch) => {
 }
 
 export const getUser = () => (state) => state.user.entity
+export const getUserId = () => (state) => state.user.auth ? state.user.auth.userId : null
 export const getIsLoggedIn = () => (state) => state.user.isLoggedIn
+export const getUserCart = () => (state) => state.user.entity ? state.user.entity.cart : ['init']
 
 export default userReducer
