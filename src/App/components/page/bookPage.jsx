@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react'
 import {useParams, useHistory} from 'react-router-dom'
 import BookImgComponent from '../ui/book/bookImgComponent'
@@ -11,14 +12,16 @@ import {addItemToCart, getUserCart, getUserId} from '../../store/user'
 const BookPage = () => {
     const dispatch = useDispatch()
     const userId = useSelector(getUserId())
+    const userCard = useSelector(getUserCart())
+    console.log(userCard)
     const history = useHistory()
     const params = useParams()
     const {bookId} = params
     const book = useSelector(getBookById(bookId))
-    const userCart = useSelector(getUserCart())
 
     const handleAddToCartClick = () => {
-        dispatch(addItemToCart({userId, userCart: [...userCart, bookId]}))
+        // console.log({userId, itemId: bookId})
+        dispatch(addItemToCart({userId, items: [bookId]}))
     }
 
     return book && book.genre

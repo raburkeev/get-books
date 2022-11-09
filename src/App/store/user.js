@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import {createAction, createSlice} from '@reduxjs/toolkit'
 import authService from '../services/auth.service'
 import localStorageService from '../services/localStorage.service'
@@ -53,6 +54,9 @@ const userSlice = createSlice({
         },
         userAddItemFailed: (state, action) => {
             state.error = action.payload
+        },
+        cardItemsAdded: (state, action) => {
+            state.entity.cart.push(action.payload[0])
         }
     }
 })
@@ -62,7 +66,7 @@ const userCreateRequested = createAction('user/userCreateRequested')
 const addItemRequested = createAction('user/addItemRequested')
 
 const {reducer: userReducer, actions} = userSlice
-const {authRequestSucceeded, authRequestFailed, userCreated, userCreateFailed, userRequested, userRequestSucceeded, userRequestFailed, userLoggedOut, userAddItemFailed} = actions
+const {authRequestSucceeded, authRequestFailed, userCreated, userCreateFailed, userRequested, userRequestSucceeded, userRequestFailed, userLoggedOut, userAddItemFailed, cardItemsAdded} = actions
 
 export const loadUser = () => async (dispatch) => {
     dispatch(userRequested())
@@ -110,11 +114,13 @@ export const signIn = (payload) => async (dispatch) => {
     }
 }
 
-export const addItemToCart = ({userId, userCart}) => async (dispatch) => {
+export const addItemToCart = (payload) => async (dispatch, getState) => {
+    dispatch(cardItemsAdded(payload.items))
     dispatch(addItemRequested())
     try {
-        const data = await userService.addItem({userId, userCart})
-        console.log('content from user.js', data)
+        const cartItems = getState().user.entity.cart
+        const data = await userService.addItem({userId: payload.userId, items: cartItems})
+        console.log(data)
     } catch (error) {
         dispatch(userAddItemFailed(error.message))
     }

@@ -12,8 +12,19 @@ const userService = {
         return data
     },
     addItem: async (payload) => {
-        const {data} = await httpService.post(`${userEndpoint}${payload.userId}/cart`, payload.userCart)
-        console.log(data)
+        // const {data: userCart} = await httpService.get(`${userEndpoint}${payload.userId}/cart`)
+        // console.log(payload.itemId)
+        // const id = []
+        // console.log(Object.keys(userCart.content))
+        // Object.keys(userCart.content).forEach(key => {
+        //     // console.log(key)
+        //     id.push(userCart.content[key])
+        // })
+        // console.log(id)
+        // console.log([...userCart.content])
+        // const q = [userCart.content, payload.itemId]
+        // console.log(q)
+        const {data} = await httpService.put(`${userEndpoint}${payload.userId}/cart`, payload.items)
         return data
     }
 }
