@@ -55,8 +55,8 @@ const userSlice = createSlice({
         userAddItemFailed: (state, action) => {
             state.error = action.payload
         },
-        cardItemsAdded: (state, action) => {
-            state.entity.cart.push(action.payload[0])
+        cartItemsAdded: (state, action) => {
+            state.entity.cart = action.payload
         }
     }
 })
@@ -66,7 +66,7 @@ const userCreateRequested = createAction('user/userCreateRequested')
 const addItemRequested = createAction('user/addItemRequested')
 
 const {reducer: userReducer, actions} = userSlice
-const {authRequestSucceeded, authRequestFailed, userCreated, userCreateFailed, userRequested, userRequestSucceeded, userRequestFailed, userLoggedOut, userAddItemFailed, cardItemsAdded} = actions
+const {authRequestSucceeded, authRequestFailed, userCreated, userCreateFailed, userRequested, userRequestSucceeded, userRequestFailed, userLoggedOut, userAddItemFailed, cartItemsAdded} = actions
 
 export const loadUser = () => async (dispatch) => {
     dispatch(userRequested())
@@ -115,12 +115,11 @@ export const signIn = (payload) => async (dispatch) => {
 }
 
 export const addItemToCart = (payload) => async (dispatch, getState) => {
-    dispatch(cardItemsAdded(payload.items))
     dispatch(addItemRequested())
     try {
-        const cartItems = getState().user.entity.cart
-        const data = await userService.addItem({userId: payload.userId, items: cartItems})
-        console.log(data)
+        const {content} = await userService.addItem({userId: payload.userId, items: [...getState().user.entity.cart, ...payload.items]})
+        const newUserCart = content.map(el => Object.keys(el).map(index => el[index]).join(''))
+        dispatch(cartItemsAdded(newUserCart))
     } catch (error) {
         dispatch(userAddItemFailed(error.message))
     }

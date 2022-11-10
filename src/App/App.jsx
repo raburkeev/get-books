@@ -9,6 +9,7 @@ import AddBookForm from './components/ui/addBookForm'
 import AppLoader from './components/ui/hoc/appLoader'
 import Logout from './layouts/logout'
 import UserPage from './components/page/userPage'
+import CartPage from './components/page/cartPage'
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                     <Route path="/" exact component={Main}/>
                     <Route path="/login/:type?" component={Login}/>
                     <Route path="/logout" component={Logout}/>
+                    <Route path="/cart" component={CartPage}/>
                     <Route path="/user/:userId" component={UserPage}/>
                     <Route path="/all_books/:bookId?/:edit?" component={Books}/>
                     <Route path="/add_book" component={AddBookForm}/>
