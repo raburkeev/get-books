@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react'
 import {useParams, useHistory} from 'react-router-dom'
 import BookImgComponent from '../ui/book/bookImgComponent'
@@ -7,20 +6,17 @@ import BookInfoMainContent from '../ui/book/bookInfoMainContent'
 import Loader from '../common/loader'
 import {useDispatch, useSelector} from 'react-redux'
 import {getBookById} from '../../store/books'
-import {addItemToCart, getUserCart, getUserId} from '../../store/user'
+import {addItemToCart, getUserId} from '../../store/user'
 
 const BookPage = () => {
     const dispatch = useDispatch()
     const userId = useSelector(getUserId())
-    // const userCard = useSelector(getUserCart())
-    // console.log(userCard)
     const history = useHistory()
     const params = useParams()
     const {bookId} = params
     const book = useSelector(getBookById(bookId))
 
     const handleAddToCartClick = () => {
-        // console.log({userId, itemId: bookId})
         dispatch(addItemToCart({userId, items: [bookId]}))
     }
 

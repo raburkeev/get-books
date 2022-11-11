@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {loadGenresList} from '../../../store/genres'
 import {loadBooksList} from '../../../store/books'
 import {getIsLoggedIn, loadUser} from '../../../store/user'
+import {loadOrdersList} from '../../../store/orders'
 
 const AppLoader = ({children}) => {
     const dispatch = useDispatch()
@@ -12,6 +13,7 @@ const AppLoader = ({children}) => {
     useEffect(() => {
         dispatch(loadGenresList())
         dispatch(loadBooksList())
+        dispatch(loadOrdersList())
         if (isLoggedIn) {
             dispatch(loadUser())
         }

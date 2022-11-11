@@ -3,8 +3,10 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getBooksByIds, getBooksLoadingStatus} from '../../store/books'
 import Loader from '../common/loader'
 import CartTable from '../ui/cartTable'
-import {clearUserCart, getUserCart, getUserId} from '../../store/user'
+import {getUserCart, getUserId} from '../../store/user'
 import {Link} from 'react-router-dom'
+import {nanoid} from 'nanoid'
+import {createOrder} from '../../store/orders'
 
 const CartPage = () => {
     const dispatch = useDispatch()
@@ -15,7 +17,12 @@ const CartPage = () => {
     const indexedBooksFromCart = booksFromCart.map((book, index) => ({...book, index: index + 1}))
 
     const handleClick = () => {
-        dispatch(clearUserCart({userId}))
+        dispatch(createOrder({
+            id: nanoid(),
+            userId,
+            userCart: userCart.filter(el => el !== 'init')
+        }))
+        // dispatch(clearUserCart({userId}))
     }
 
     return !isBooksLoading
@@ -33,7 +40,7 @@ const CartPage = () => {
                     <div className="container mt-3 alert alert-primary text-center" role="alert">
                         <h4>
                             Ваша корзона пуста! Пожалуйста перейдите в
-                            <span className="fs-3 fst-italic"><Link to="/all_books">  каталог </Link></span>
+                            <span className="fs-3 fst-italic"><Link to="/all_books"> каталог </Link></span>
                             и выберите интересующие вас книги.
                         </h4>
                     </div>
