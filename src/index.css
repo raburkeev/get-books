@@ -18,6 +18,12 @@ code {
   height: 230px;
 }
 
+/*book images in bookCartImg.jsx*/
+.book_cart_img {
+  width: 50px;
+  height: 80px;
+}
+
 .text-truncate {
   max-width: 150px;
 }

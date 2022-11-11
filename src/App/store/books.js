@@ -85,5 +85,19 @@ export const getBooksLoadingStatus = () => (state) => state.books.isLoading
 export const getBookById = (bookId) => (state) => {
     return state.books.entities ? state.books.entities.find(book => book.id === bookId) : ''
 }
+export const getBooksByIds = (booksIds) => (state) => {
+    if (state.books.entities) {
+        const resultBooks = []
+        for (const bookId of booksIds) {
+            for (const book of state.books.entities) {
+                if (book.id === bookId) {
+                    resultBooks.push(book)
+                }
+            }
+        }
+        return resultBooks
+    }
+    return []
+}
 
 export default booksReducer

@@ -12,8 +12,8 @@ import {addItemToCart, getUserCart, getUserId} from '../../store/user'
 const BookPage = () => {
     const dispatch = useDispatch()
     const userId = useSelector(getUserId())
-    const userCard = useSelector(getUserCart())
-    console.log(userCard)
+    // const userCard = useSelector(getUserCart())
+    // console.log(userCard)
     const history = useHistory()
     const params = useParams()
     const {bookId} = params
