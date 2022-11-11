@@ -1,9 +1,9 @@
-/*eslint-disable*/
 import {createAction, createSlice} from '@reduxjs/toolkit'
 import authService from '../services/auth.service'
 import localStorageService from '../services/localStorage.service'
 import userService from '../services/user.service'
 import history from '../utils/history'
+import {toast} from 'react-toastify'
 
 const initialState = localStorageService.getAccessToken()
     ? {
@@ -57,6 +57,12 @@ const userSlice = createSlice({
         },
         cartItemsAdded: (state, action) => {
             state.entity.cart = action.payload
+        },
+        userCartCleared: (state, action) => {
+            state.entity.cart = action.payload
+        },
+        userCartClearRequestFailed: (state, action) => {
+            state.error = action.payload
         }
     }
 })
@@ -64,9 +70,10 @@ const userSlice = createSlice({
 const authRequested = createAction('user/authRequested')
 const userCreateRequested = createAction('user/userCreateRequested')
 const addItemRequested = createAction('user/addItemRequested')
+const clearCartRequested = createAction('user/clearCartRequested')
 
 const {reducer: userReducer, actions} = userSlice
-const {authRequestSucceeded, authRequestFailed, userCreated, userCreateFailed, userRequested, userRequestSucceeded, userRequestFailed, userLoggedOut, userAddItemFailed, cartItemsAdded} = actions
+const {authRequestSucceeded, authRequestFailed, userCreated, userCreateFailed, userRequested, userRequestSucceeded, userRequestFailed, userLoggedOut, userAddItemFailed, cartItemsAdded, userCartCleared, userCartClearRequestFailed} = actions
 
 export const loadUser = () => async (dispatch) => {
     dispatch(userRequested())
@@ -122,6 +129,27 @@ export const addItemToCart = (payload) => async (dispatch, getState) => {
         dispatch(cartItemsAdded(newUserCart))
     } catch (error) {
         dispatch(userAddItemFailed(error.message))
+    }
+}
+
+export const clearUserCart = (payload) => async (dispatch) => {
+    dispatch(clearCartRequested())
+    try {
+        const {content} = await userService.clearCart(payload)
+        const initialUserCart = content.map(el => Object.keys(el).map(index => el[index]).join(''))
+        dispatch(userCartCleared(initialUserCart))
+        toast.success('Спасибо за покупку!', {
+            position: 'bottom-center',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: 'light'
+        })
+    } catch (error) {
+        dispatch(userCartClearRequestFailed(error.message))
     }
 }
 

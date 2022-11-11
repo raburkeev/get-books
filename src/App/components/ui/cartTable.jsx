@@ -1,15 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Table from './table'
-import {useSelector} from 'react-redux'
-import {getUserCart} from '../../store/user'
-import {getBooksByIds} from '../../store/books'
 import {Link} from 'react-router-dom'
 import BookCartImg from './bookCartImg'
 
-const CartTable = () => {
-    const userCart = useSelector(getUserCart())
-    const booksFromCart = useSelector(getBooksByIds(userCart))
-    const indexedBooksFromCart = booksFromCart.map((book, index) => ({...book, index: index + 1}))
+const CartTable = ({books}) => {
     const columns = {
         index: {
             path: 'index',
@@ -39,7 +34,11 @@ const CartTable = () => {
         }
     }
 
-    return <Table data={indexedBooksFromCart} columns={columns}/>
+    return <Table data={books} columns={columns}/>
+}
+
+CartTable.propTypes = {
+    books: PropTypes.array.isRequired
 }
 
 export default CartTable

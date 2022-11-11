@@ -1,34 +1,44 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
-import {getBooksLoadingStatus} from '../../store/books'
+import {useDispatch, useSelector} from 'react-redux'
+import {getBooksByIds, getBooksLoadingStatus} from '../../store/books'
 import Loader from '../common/loader'
 import CartTable from '../ui/cartTable'
-import {toast} from 'react-toastify'
+import {clearUserCart, getUserCart, getUserId} from '../../store/user'
+import {Link} from 'react-router-dom'
 
 const CartPage = () => {
+    const dispatch = useDispatch()
     const isBooksLoading = useSelector(getBooksLoadingStatus())
+    const userId = useSelector(getUserId())
+    const userCart = useSelector(getUserCart())
+    const booksFromCart = useSelector(getBooksByIds(userCart))
+    const indexedBooksFromCart = booksFromCart.map((book, index) => ({...book, index: index + 1}))
 
     const handleClick = () => {
-        toast.success('Спасибо за покупку!', {
-            position: 'bottom-center',
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-            theme: 'light'
-        })
+        dispatch(clearUserCart({userId}))
     }
 
     return !isBooksLoading
         ? (
-            <div className="container mt-3">
-                <CartTable/>
-                <div className="d-flex justify-content-center">
-                    <button className="btn btn-primary w-25" onClick={handleClick}>Перейти к оплате</button>
-                </div>
-            </div>
+            booksFromCart.length
+                ? (
+                    <div className="container mt-3">
+                        <CartTable books={indexedBooksFromCart}/>
+                        <div className="d-flex justify-content-center">
+                            <button className="btn btn-primary w-25" onClick={handleClick}>Оплатить</button>
+                        </div>
+                    </div>
+                )
+                : (
+                    <div className="container mt-3 alert alert-primary text-center" role="alert">
+                        <h4>
+                            Ваша корзона пуста! Пожалуйста перейдите в
+                            <span className="fs-3 fst-italic"><Link to="/all_books">  каталог </Link></span>
+                            и выберите интересующие вас книги.
+                        </h4>
+                    </div>
+                )
+
         )
         : <Loader target={'cart'}/>
 }
