@@ -10,6 +10,7 @@ import AppLoader from './components/ui/hoc/appLoader'
 import Logout from './layouts/logout'
 import UserPage from './components/page/userPage'
 import CartPage from './components/page/cartPage'
+import ProtectedRoute from './components/common/potectedRoute'
 
 const App = () => {
     return (
@@ -19,11 +20,11 @@ const App = () => {
                 <Switch>
                     <Route path="/" exact component={Main}/>
                     <Route path="/login/:type?" component={Login}/>
-                    <Route path="/logout" component={Logout}/>
-                    <Route path="/cart" component={CartPage}/>
-                    <Route path="/user/:userId" component={UserPage}/>
+                    <ProtectedRoute path="/logout" component={Logout}/>
+                    <ProtectedRoute path="/cart" isAdmin component={CartPage}/>
+                    <ProtectedRoute path="/user/:userId" component={UserPage}/>
                     <Route path="/all_books/:bookId?/:edit?" component={Books}/>
-                    <Route path="/add_book" component={AddBookForm}/>
+                    <ProtectedRoute path="/add_book" component={AddBookForm}/>
                     <Redirect to="/"/>
                 </Switch>
                 <ToastContainer/>

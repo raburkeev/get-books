@@ -199,5 +199,6 @@ export const getUserId = () => (state) => state.user.auth ? state.user.auth.user
 export const getIsLoggedIn = () => (state) => state.user.isLoggedIn
 export const getUserCart = () => (state) => state.user.entity ? state.user.entity.cart : ['init']
 export const getPurchasedBooks = () => (state) => state.user.entity ? state.user.entity.purchasedBooks : []
+export const getIsAdmin = () => (state) => state.user.entity ? state.user.entity.isAdmin : null
 
 export default userReducer
