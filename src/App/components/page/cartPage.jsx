@@ -3,10 +3,8 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getBooksByIds, getBooksLoadingStatus} from '../../store/books'
 import Loader from '../common/loader'
 import CartTable from '../ui/cartTable'
-import {getUserCart, getUserId} from '../../store/user'
+import {addPurchasedBooks, getPurchasedBooks, getUserCart, getUserId} from '../../store/user'
 import {Link} from 'react-router-dom'
-import {nanoid} from 'nanoid'
-import {createOrder} from '../../store/orders'
 
 const CartPage = () => {
     const dispatch = useDispatch()
@@ -15,14 +13,14 @@ const CartPage = () => {
     const userCart = useSelector(getUserCart())
     const booksFromCart = useSelector(getBooksByIds(userCart))
     const indexedBooksFromCart = booksFromCart.map((book, index) => ({...book, index: index + 1}))
+    const purchasedBooks = useSelector(getPurchasedBooks()) || []
 
     const handleClick = () => {
-        dispatch(createOrder({
-            id: nanoid(),
+        dispatch(addPurchasedBooks({
             userId,
-            userCart: userCart.filter(el => el !== 'init')
+            items: userCart.filter(el => el !== 'init'),
+            purchasedItems: purchasedBooks
         }))
-        // dispatch(clearUserCart({userId}))
     }
 
     return !isBooksLoading

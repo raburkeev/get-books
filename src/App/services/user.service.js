@@ -18,6 +18,10 @@ const userService = {
     clearCart: async (payload) => {
         const {data} = await httpService.put(`${userEndpoint}${payload.userId}/cart`, ['init'])
         return data
+    },
+    addPurchasedBooks: async (payload) => {
+        const {data} = await httpService.put(`${userEndpoint}${payload.userId}/purchasedBooks`, [...payload.purchasedItems, ...payload.items])
+        return data
     }
 }
 
