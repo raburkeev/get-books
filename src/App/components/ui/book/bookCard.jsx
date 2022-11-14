@@ -3,15 +3,19 @@ import PropTypes from 'prop-types'
 import {useHistory} from 'react-router-dom'
 import {calculateRating} from '../../../utils/calculateRating'
 
-const BookCard = ({book}) => {
+const BookCard = ({book, isCatalogCard}) => {
     const history = useHistory()
 
     const handleBookCardClick = () => {
-        history.push(`/all_books/${book.id}`)
+        if (isCatalogCard) {
+            history.push(`/all_books/${book.id}`)
+        } else {
+            history.push(`/reader/${book.id}`)
+        }
     }
 
     return (
-        <div className="card my-3 shadow book_card" key={book.id} onClick={handleBookCardClick}>
+        <div className="card my-3 shadow book_card" onClick={handleBookCardClick}>
             <div className="card-body">
                 <div className="d-flex flex-column align-items-center text-center">
                     <img src={book.imgUrl} className="book_img" width="250" alt="pic"/>
@@ -21,7 +25,7 @@ const BookCard = ({book}) => {
                         </span>
                         <p className="text-secondary mb-1 text-truncate">{book.author}</p>
                         <p className="text-secondary text-truncate">{`(${book.year}г.)`}</p>
-                        <div className="d-flex justify-content-between">
+                        {isCatalogCard && <div className="d-flex justify-content-between">
                             <div className="fs-5">
                                 <i className="bi bi-star"/>
                                 {' '}
@@ -30,7 +34,7 @@ const BookCard = ({book}) => {
                             <div>
                                 <span className="badge bg-success">{`${book.price}р`}</span>
                             </div>
-                        </div>
+                        </div>}
                     </div>
                 </div>
             </div>
@@ -38,8 +42,13 @@ const BookCard = ({book}) => {
     )
 }
 
+BookCard.defaultProps = {
+    isCatalogCard: true
+}
+
 BookCard.propTypes = {
-    book: PropTypes.object.isRequired
+    book: PropTypes.object.isRequired,
+    isCatalogCard: PropTypes.bool.isRequired
 }
 
 export default BookCard

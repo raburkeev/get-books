@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getBooksByIds, getBooksLoadingStatus} from '../../store/books'
 import Loader from '../common/loader'
 import CartTable from '../ui/cartTable'
-import {addPurchasedBooks, getPurchasedBooks, getUserCart, getUserId} from '../../store/user'
+import {addPurchasedBooks, getUserPurchasedBooks, getUserCart, getUserId} from '../../store/user'
 import {Link} from 'react-router-dom'
 
 const CartPage = () => {
@@ -13,7 +13,7 @@ const CartPage = () => {
     const userCart = useSelector(getUserCart())
     const booksFromCart = useSelector(getBooksByIds(userCart))
     const indexedBooksFromCart = booksFromCart.map((book, index) => ({...book, index: index + 1}))
-    const purchasedBooks = useSelector(getPurchasedBooks()) || []
+    const purchasedBooks = useSelector(getUserPurchasedBooks()) || []
 
     const handleClick = () => {
         dispatch(addPurchasedBooks({

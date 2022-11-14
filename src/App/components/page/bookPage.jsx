@@ -6,7 +6,8 @@ import BookInfoMainContent from '../ui/book/bookInfoMainContent'
 import Loader from '../common/loader'
 import {useDispatch, useSelector} from 'react-redux'
 import {getBookById} from '../../store/books'
-import {addItemToCart, getUserId} from '../../store/user'
+import {addItemToCart, getUserCart, getUserId, getUserPurchasedBooks} from '../../store/user'
+import AddToCartButton from '../ui/addToCartButton'
 
 const BookPage = () => {
     const dispatch = useDispatch()
@@ -15,6 +16,8 @@ const BookPage = () => {
     const params = useParams()
     const {bookId} = params
     const book = useSelector(getBookById(bookId))
+    const isUserHasBook = useSelector(getUserPurchasedBooks()).includes(bookId)
+    const isBookInUserCart = useSelector(getUserCart()).includes(bookId)
 
     const handleAddToCartClick = () => {
         dispatch(addItemToCart({userId, items: [bookId]}))
@@ -31,7 +34,7 @@ const BookPage = () => {
                     <div className="col-md-8">
                         <BookInfoMainContent {...book}/>
                         <button className="btn btn-primary me-1" onClick={() => history.push(`/all_books/${bookId}/edit`)}>Edit</button>
-                        <button className="btn btn-success" onClick={handleAddToCartClick}>Добвавить в корзину</button>
+                        <AddToCartButton className="btn btn-success" isUserHasBook={isUserHasBook} isBookInUserCart={isBookInUserCart} price={book.price} onClick={handleAddToCartClick}/>
                     </div>
                 </div>
             </div>

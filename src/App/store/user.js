@@ -43,14 +43,17 @@ const userSlice = createSlice({
         },
         userRequestSucceeded: (state, action) => {
             state.entity = action.payload
+            state.isLoading = false
         },
         userRequestFailed: (state, action) => {
             state.error = action.payload
+            state.isLoading = false
         },
         userLoggedOut: (state) => {
             state.entity = null
             state.isLoggedIn = false
             state.auth = null
+            state.isLoading = false
         },
         userAddItemFailed: (state, action) => {
             state.error = action.payload
@@ -68,7 +71,7 @@ const userSlice = createSlice({
             if (!state.entity.purchasedBooks) {
                 state.entity.purchasedBooks = []
             }
-            state.entity.purchasedBooks = [...state.entity.purchasedBooks, ...action.payload]
+            state.entity.purchasedBooks = action.payload
         },
         userAddPurchasedBooksFailed: (state, action) => {
             state.error = action.payload
@@ -195,10 +198,11 @@ export const logout = () => (dispatch) => {
 }
 
 export const getUser = () => (state) => state.user.entity
+export const getUserLoadingStatus = () => (state) => state.user.isLoading
 export const getUserId = () => (state) => state.user.auth ? state.user.auth.userId : null
 export const getIsLoggedIn = () => (state) => state.user.isLoggedIn
 export const getUserCart = () => (state) => state.user.entity ? state.user.entity.cart : ['init']
-export const getPurchasedBooks = () => (state) => state.user.entity ? state.user.entity.purchasedBooks : []
+export const getUserPurchasedBooks = () => (state) => state.user.entity ? state.user.entity.purchasedBooks : []
 export const getIsAdmin = () => (state) => state.user.entity ? state.user.entity.isAdmin : null
 
 export default userReducer
