@@ -1,5 +1,5 @@
 import React from 'react'
-import {Redirect, useParams} from 'react-router-dom'
+import {Link, Redirect, useParams} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import {getUserPurchasedBooks} from '../../store/user'
 import {getBookById, getBooksLoadingStatus} from '../../store/books'
@@ -16,12 +16,19 @@ const Reader = () => {
         ? (
             isReadingAvailable
                 ? (
-                    <div className="container text-center mt-3">
-                        <div className="alert alert-success" role="alert">
-                            {`Здесь должно быть содержимое книги "${name}", автора: ${author}`}
+                    <>
+                        <div className="container text-center mt-3 fs-3">
+                            <div className="alert alert-success" role="alert">
+                                {`Здесь должно быть содержимое книги "${name}", автора: ${author}`}
+                            </div>
                         </div>
-                    </div>
-
+                        <div className="container text-center mt-3 fs-3">
+                            <div className="alert alert-primary" role="alert">
+                                Если вы хотите поставить оценку данному произведению, пожалуйста, перейдите
+                                <span className="fs-3 fst-italic"><Link to={`/ratings/${bookId}`}> сюда </Link></span>.
+                            </div>
+                        </div>
+                    </>
                 )
                 : <Redirect to="/all_books"/>
         )

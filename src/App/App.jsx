@@ -12,6 +12,7 @@ import UserPage from './components/page/userPage'
 import CartPage from './components/page/cartPage'
 import ProtectedRoute from './components/common/potectedRoute'
 import Reader from './components/ui/reader'
+import RateBook from './components/ui/rateBook'
 
 const App = () => {
     return (
@@ -27,6 +28,7 @@ const App = () => {
                     <Route path="/all_books/:bookId?/:edit?" component={Books}/>
                     <ProtectedRoute path="/add_book" component={AddBookForm}/>
                     <Route path="/reader/:bookId" component={Reader}/>
+                    <Route path="/ratings/:bookId" component={RateBook}/>
                     <Redirect to="/"/>
                 </Switch>
                 <ToastContainer/>

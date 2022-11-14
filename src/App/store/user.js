@@ -151,9 +151,9 @@ export const clearUserCart = (payload) => async (dispatch) => {
         const {content} = await userService.clearCart(payload)
         const initialUserCart = content.map(el => Object.keys(el).map(index => el[index]).join(''))
         dispatch(userCartCleared(initialUserCart))
-        toast.success('Спасибо за покупку!', {
+        toast.success('Спасибо за покупку! Купленные книги Вы можете найти у себя в профиле.', {
             position: 'bottom-center',
-            autoClose: 3000,
+            autoClose: 4000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: false,

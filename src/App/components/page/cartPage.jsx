@@ -41,6 +41,10 @@ const CartPage = () => {
                             <span className="fs-3 fst-italic"><Link to="/all_books"> каталог </Link></span>
                             и выберите интересующие вас книги.
                         </h4>
+                        <h4>
+                            Если Вы уже преобретали у нас книги, то можете их найти на странице вашего
+                            <span className="fs-3 fst-italic"><Link to={`/user/${userId}`}> профиля. </Link></span>
+                        </h4>
                     </div>
                 )
 
