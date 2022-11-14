@@ -1,15 +1,18 @@
 /*eslint-disable*/
 import React, {useState} from 'react'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {useParams} from 'react-router-dom'
-import {getBookById, getBooksLoadingStatus} from '../../store/books'
+import {getBookById, getBooksLoadingStatus, updateBookRate} from '../../store/books'
 import {getStyleForGenreBadge} from '../../utils/getStyleForGenreBadge'
 import {getGenreById, getGenresLoadingStatus} from '../../store/genres'
 import SelectField from '../common/form/selectField'
 import Loader from '../common/loader'
+import {getUserId} from '../../store/user'
 
 const RateBook = () => {
+    const dispatch = useDispatch()
     const {bookId} = useParams()
+    const userId = useSelector(getUserId())
     const book = useSelector(getBookById(bookId))
     const isBooksLoading = useSelector(getBooksLoadingStatus())
     const genre = useSelector(getGenreById(book.genre))
@@ -29,7 +32,15 @@ const RateBook = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(data)
+        console.log({
+            bookId,
+            rate: data.rate
+        })
+        dispatch(updateBookRate({
+            bookId,
+            rate: +data.rate,
+            userId
+        }))
     }
 
     const handleChange = (target) => {

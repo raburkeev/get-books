@@ -22,6 +22,10 @@ const userService = {
     addPurchasedBooks: async (payload) => {
         const {data} = await httpService.put(`${userEndpoint}${payload.userId}/purchasedBooks`, [...payload.purchasedItems, ...payload.items])
         return data
+    },
+    addRatedBook: async (payload) => {
+        const {data} = await httpService.put(`${userEndpoint}${payload.userId}/ratedBooks`, payload.items)
+        return data
     }
 }
 

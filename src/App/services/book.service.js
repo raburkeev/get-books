@@ -14,6 +14,10 @@ const bookService = {
     addBook: async (payload) => {
         const {data} = await httpService.put(`${bookEndPoint}${payload.id}`, payload)
         return data
+    },
+    updateRating: async (payload) => {
+        const {data} = await httpService.put(`${bookEndPoint}${payload.id}/ratings`, payload.bookRating)
+        return data
     }
 }
 

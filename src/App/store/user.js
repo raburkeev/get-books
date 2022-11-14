@@ -75,6 +75,15 @@ const userSlice = createSlice({
         },
         userAddPurchasedBooksFailed: (state, action) => {
             state.error = action.payload
+        },
+        userBooksRated: (state, action) => {
+            if (!state.entity.ratedBooks) {
+                state.entity.ratedBooks = []
+            }
+            state.entity.ratedBooks = action.payload
+        },
+        userAddRatedBookFailed: (state, action) => {
+            state.error = action.payload
         }
     }
 })
@@ -84,9 +93,10 @@ const userCreateRequested = createAction('user/userCreateRequested')
 const addItemRequested = createAction('user/addItemRequested')
 const clearCartRequested = createAction('user/clearCartRequested')
 const userAddPurchasedBooksRequested = createAction('user/userAddPurchasedBooksRequested')
+const userAddRatedBookRequested = createAction('user/userAddRatedBookRequested')
 
 const {reducer: userReducer, actions} = userSlice
-const {authRequestSucceeded, authRequestFailed, userCreated, userCreateFailed, userRequested, userRequestSucceeded, userRequestFailed, userLoggedOut, userAddItemFailed, cartItemsAdded, userCartCleared, userCartClearRequestFailed, userAddPurchasedBooksSucceeded, userAddPurchasedBooksFailed} = actions
+const {authRequestSucceeded, authRequestFailed, userCreated, userCreateFailed, userRequested, userRequestSucceeded, userRequestFailed, userLoggedOut, userAddItemFailed, cartItemsAdded, userCartCleared, userCartClearRequestFailed, userAddPurchasedBooksSucceeded, userAddPurchasedBooksFailed, userBooksRated, userAddRatedBookFailed} = actions
 
 export const loadUser = () => async (dispatch) => {
     dispatch(userRequested())
@@ -178,6 +188,21 @@ export const addPurchasedBooks = (payload) => async (dispatch) => {
     }
 }
 
+export const userAddRatedBook = (payload) => async (dispatch, getState) => {
+    dispatch(userAddRatedBookRequested())
+    const updatedUser = {...getState().user.entity}
+    if (!updatedUser.ratedBooks) {
+        updatedUser.ratedBooks = []
+    }
+    try {
+        const {content} = await userService.addRatedBook({userId: payload.userId, items: [...updatedUser.ratedBooks, payload.bookId]})
+        const ratedBookId = content.map(el => Object.keys(el).map(index => el[index]).join(''))
+        dispatch(userBooksRated(ratedBookId))
+    } catch (error) {
+        dispatch(userAddRatedBookFailed(error.message))
+    }
+}
+
 function createUser(payload) {
     return async (dispatch) => {
         dispatch(userCreateRequested())
@@ -202,7 +227,7 @@ export const getUserLoadingStatus = () => (state) => state.user.isLoading
 export const getUserId = () => (state) => state.user.auth ? state.user.auth.userId : null
 export const getIsLoggedIn = () => (state) => state.user.isLoggedIn
 export const getUserCart = () => (state) => state.user.entity ? state.user.entity.cart : ['init']
-export const getUserPurchasedBooks = () => (state) => state.user.entity ? state.user.entity.purchasedBooks : []
+export const getUserPurchasedBooks = () => (state) => state.user?.entity?.purchasedBooks ? state.user.entity.purchasedBooks : []
 export const getIsAdmin = () => (state) => state.user.entity ? state.user.entity.isAdmin : null
 
 export default userReducer
