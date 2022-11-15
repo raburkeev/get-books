@@ -19,7 +19,6 @@ const RegisterForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(data)
         dispatch(signUp(data))
     }
 

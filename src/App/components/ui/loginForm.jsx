@@ -23,7 +23,6 @@ const LoginForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(data)
         dispatch(signIn(data))
     }
 

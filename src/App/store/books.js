@@ -4,6 +4,7 @@ import {isOutDated} from '../utils/isOutdated'
 import bookService from '../services/book.service'
 import history from '../utils/history'
 import {logout, userAddRatedBook} from './user'
+import {toast} from 'react-toastify'
 
 const booksSlice = createSlice({
     name: 'books',
@@ -99,7 +100,16 @@ export const updateBookRate = (payload) => async (dispatch, getState) => {
             dispatch(bookRateUpdateSucceeded({bookId: payload.bookId, rate: payload.rate}))
         }
         dispatch(userAddRatedBook({bookId: payload.bookId, userId: payload.userId}))
-
+        toast.success('Спасибо за Вашу оценку!', {
+            position: 'bottom-center',
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: 'light'
+        })
     } catch (error) {
         dispatch(bookRateUpdateFailed(error.message))
     }

@@ -78,7 +78,7 @@ const BooksListPage = () => {
                                         selectedItem={selectedGenre}
                                         onItemSelect={handleGenreSelect}
                                     />
-                                    <button className="btn btn-secondary mt-2" onClick={clearFilter}>Очистить</button>
+                                    <button className="btn btn-secondary mt-2" onClick={clearFilter}>Сбросить</button>
                                     {isAdmin && (
                                         <button className="btn btn-primary mt-5" onClick={() => history.push('/add_book')}>Добавить книгу</button>
                                     )}

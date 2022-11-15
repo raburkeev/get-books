@@ -6,8 +6,9 @@ import BookInfoMainContent from '../ui/book/bookInfoMainContent'
 import Loader from '../common/loader'
 import {useDispatch, useSelector} from 'react-redux'
 import {getBookById} from '../../store/books'
-import {addItemToCart, getUserCart, getUserId, getUserPurchasedBooks} from '../../store/user'
+import {addItemToCart, getRatedBooks, getUserCart, getUserId, getUserPurchasedBooks} from '../../store/user'
 import AddToCartButton from '../ui/addToCartButton'
+import RateBook from '../ui/rateBook'
 
 const BookPage = () => {
     const dispatch = useDispatch()
@@ -18,6 +19,8 @@ const BookPage = () => {
     const book = useSelector(getBookById(bookId))
     const isUserHasBook = useSelector(getUserPurchasedBooks()).includes(bookId)
     const isBookInUserCart = useSelector(getUserCart()).includes(bookId)
+    const purchasedBooks = useSelector(getUserPurchasedBooks())
+    const ratedBooks = useSelector(getRatedBooks())
 
     const handleAddToCartClick = () => {
         dispatch(addItemToCart({userId, items: [bookId]}))
@@ -30,6 +33,7 @@ const BookPage = () => {
                     <div className="col-md-4 mb-3">
                         <BookImgComponent url={book.imgUrl} />
                         <BookRating rating={book.ratings}/>
+                        {purchasedBooks.includes(bookId) && !ratedBooks.includes(bookId) && <RateBook />}
                     </div>
                     <div className="col-md-8">
                         <BookInfoMainContent {...book}/>

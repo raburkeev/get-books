@@ -1,28 +1,40 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 import {useSelector} from 'react-redux'
-import {getIsLoggedIn} from '../../store/user'
+import {getIsAdmin, getIsLoggedIn} from '../../store/user'
 import NavProfile from './navProfile'
 
 const NavBar = () => {
     const isLoggedIn = useSelector(getIsLoggedIn())
+    const isUserAdmin = useSelector(getIsAdmin())
+
+    const location = useLocation()
+
+    const navItems = isUserAdmin
+        ? [
+            {path: '/admin', label: 'Панель администратора'},
+            {path: '/all_books', label: 'Каталог книг'}
+        ]
+        : [
+            {path: '/all_books', label: 'Каталог книг'}
+        ]
+
+    const getStylesForNavItem = (path) => {
+        return `nav-link ${location.pathname.includes(path) ? ' active' : ''}`
+    }
+
     return (
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
                 <div className="collapse justify-content-between navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <Link className="nav-link active" to="/">Main</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/all_books">All Books</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/123">123</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/321">321</Link>
-                        </li>
+                        {navItems.map(item => (
+                            <li className="nav-item" key={item.path}>
+                                <h5>
+                                    <Link to={item.path} className={getStylesForNavItem(item.path)} >{item.label}</Link>
+                                </h5>
+                            </li>
+                        ))}
                     </ul>
                     {isLoggedIn ? (
                         <div className="d-flex">

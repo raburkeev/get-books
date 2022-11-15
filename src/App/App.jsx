@@ -2,7 +2,6 @@ import React from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {ToastContainer} from 'react-toastify'
 import NavBar from './components/ui/navBar'
-import Main from './layouts/main'
 import Books from './layouts/books'
 import Login from './layouts/login'
 import AddBookForm from './components/ui/addBookForm'
@@ -12,7 +11,7 @@ import UserPage from './components/page/userPage'
 import CartPage from './components/page/cartPage'
 import ProtectedRoute from './components/common/potectedRoute'
 import Reader from './components/ui/reader'
-import RateBook from './components/ui/rateBook'
+import AdminPanel from './layouts/main'
 
 const App = () => {
     return (
@@ -20,7 +19,7 @@ const App = () => {
             <AppLoader>
                 <NavBar/>
                 <Switch>
-                    <Route path="/" exact component={Main}/>
+                    <ProtectedRoute path="/admin" component={AdminPanel}/>
                     <Route path="/login/:type?" component={Login}/>
                     <ProtectedRoute path="/logout" component={Logout}/>
                     <ProtectedRoute path="/cart" isAdmin component={CartPage}/>
@@ -28,8 +27,7 @@ const App = () => {
                     <Route path="/all_books/:bookId?/:edit?" component={Books}/>
                     <ProtectedRoute path="/add_book" component={AddBookForm}/>
                     <Route path="/reader/:bookId" component={Reader}/>
-                    <Route path="/ratings/:bookId" component={RateBook}/>
-                    <Redirect to="/"/>
+                    <Redirect to="/all_books"/>
                 </Switch>
                 <ToastContainer/>
             </AppLoader>
