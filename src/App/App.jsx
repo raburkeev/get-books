@@ -11,7 +11,7 @@ import UserPage from './components/page/userPage'
 import CartPage from './components/page/cartPage'
 import ProtectedRoute from './components/common/potectedRoute'
 import Reader from './components/ui/reader'
-import AdminPanel from './layouts/main'
+import AdminPanel from './layouts/adminPanel'
 
 const App = () => {
     return (
@@ -19,7 +19,7 @@ const App = () => {
             <AppLoader>
                 <NavBar/>
                 <Switch>
-                    <ProtectedRoute path="/admin" component={AdminPanel}/>
+                    <ProtectedRoute path="/admin/:type?" component={AdminPanel}/>
                     <Route path="/login/:type?" component={Login}/>
                     <ProtectedRoute path="/logout" component={Logout}/>
                     <ProtectedRoute path="/cart" isAdmin component={CartPage}/>

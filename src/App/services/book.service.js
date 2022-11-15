@@ -18,6 +18,10 @@ const bookService = {
     updateRating: async (payload) => {
         const {data} = await httpService.put(`${bookEndPoint}${payload.id}/ratings`, payload.bookRating)
         return data
+    },
+    deleteBook: async (payload) => {
+        const {data} = await httpService.delete(`${bookEndPoint}${payload.bookId}`)
+        return data
     }
 }
 

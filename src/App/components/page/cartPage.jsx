@@ -5,6 +5,7 @@ import Loader from '../common/loader'
 import CartTable from '../ui/cartTable'
 import {addPurchasedBooks, getUserPurchasedBooks, getUserCart, getUserId} from '../../store/user'
 import {Link} from 'react-router-dom'
+import CartFooter from '../ui/cartFooter'
 
 const CartPage = () => {
     const dispatch = useDispatch()
@@ -29,6 +30,7 @@ const CartPage = () => {
                 ? (
                     <div className="container mt-3">
                         <CartTable books={indexedBooksFromCart}/>
+                        <CartFooter data={indexedBooksFromCart}/>
                         <div className="d-flex justify-content-center">
                             <button className="btn btn-primary w-25" onClick={handleClick}>Оплатить</button>
                         </div>

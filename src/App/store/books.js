@@ -44,16 +44,33 @@ const booksSlice = createSlice({
         },
         bookRateUpdateFailed: (state, action) => {
             state.error = action.payload
+        },
+        bookDeleteSucceeded: (state, action) => {
+            state.entities = state.entities.filter(book => book.id !== action.payload)
+        },
+        bookDeleteFailed: (state, action) => {
+            state.error = action.payload
         }
     }
 })
 
 const {reducer: booksReducer, actions} = booksSlice
-const {booksRequested, booksReceived, booksRequestFailed, bookUpdateSucceeded, bookUpdateFailed, bookCreateSucceeded, bookCreateFailed, bookRateUpdateSucceeded, bookRateUpdateFailed} = actions
+const {booksRequested,
+    booksReceived,
+    booksRequestFailed,
+    bookUpdateSucceeded,
+    bookUpdateFailed,
+    bookCreateSucceeded,
+    bookCreateFailed,
+    bookRateUpdateSucceeded,
+    bookRateUpdateFailed,
+    bookDeleteSucceeded,
+    bookDeleteFailed} = actions
 
 const bookUpdateRequested = createAction('books/bookUpdateRequested')
 const bookCreateRequested = createAction('books/bookCreateRequested')
 const bookRateUpdateRequested = createAction('books/bookRateUpdateRequested')
+const bookDeleteRequested = createAction('books/bookDeleteRequested')
 
 export const loadBooksList = () => async (dispatch, getState) => {
     const {lastFetch} = getState().books
@@ -68,12 +85,24 @@ export const loadBooksList = () => async (dispatch, getState) => {
     }
 }
 
+export const deleteBook = (payload) => async (dispatch) => {
+    dispatch(bookDeleteRequested())
+    try {
+        const {content} = await bookService.deleteBook(payload)
+        if (content === null) {
+            dispatch(bookDeleteSucceeded(payload.bookId))
+        }
+    } catch (error) {
+        dispatch(bookDeleteFailed())
+    }
+}
+
 export const updateBook = (payload) => async (dispatch) => {
     dispatch(bookUpdateRequested())
     try {
         const {content} = await bookService.update(payload)
         dispatch(bookUpdateSucceeded(content))
-        history.push(`/all_books/${content.id}`)
+        history.push(`/admin/editBooksList`)
     } catch (error) {
         dispatch(bookUpdateFailed())
     }

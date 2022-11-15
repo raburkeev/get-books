@@ -44,13 +44,6 @@ const EditBookPage = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log({
-            ...data,
-            ageLimit: getAgeLimit(data.ageLimit),
-            year: +data.year,
-            price: +data.price,
-            size: +data.size
-        })
         dispatch(updateBook({
             ...data,
             ageLimit: getAgeLimit(data.ageLimit),
