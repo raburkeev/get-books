@@ -2,8 +2,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {useSelector} from 'react-redux'
-import {getUserCart} from '../../store/user'
-import {getBooksByIds} from '../../store/books'
+import {getUserCart} from '../../../store/user'
+import {getBooksByIds} from '../../../store/books'
 // import _ from 'lodash'
 
 const TableBody = ({data, columns}) => {

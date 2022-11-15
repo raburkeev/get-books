@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Table from './table'
+import Table from '../common/table/table'
 
 const BooksTable = ({books, onDelete, onEdit}) => {
     const columns = {
