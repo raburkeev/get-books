@@ -1,19 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AgeLimitBadge from './ageLimitBadge'
-import {useGenres} from '../../../hooks/useGenres'
+import {useSelector} from 'react-redux'
+import {getGenreById} from '../../../store/genres'
+import {getStyleForGenreBadge} from '../../../utils/getStyleForGenreBadge'
 
 const BookInfoMainContent = ({name, author, genre, series, year, size, ageLimit, description}) => {
-    const {getGenreById} = useGenres()
-    const genreObj = getGenreById(genre)
-
-    const getStyleForBadge = (color) => {
-        if (color === 'warning' || color === 'info' || color === 'light') {
-            return `${color} text-dark`
-        } else {
-            return color
-        }
-    }
+    const genreObj = useSelector(getGenreById(genre))
 
     return (
         <div className="card mb-2 shadow">
@@ -25,7 +18,7 @@ const BookInfoMainContent = ({name, author, genre, series, year, size, ageLimit,
                     {series && <p className="text-secondary mb-3">{`Серия: "${series}"`}</p>}
                     <h5 className="mb-3">
                         {'Жанр: '}
-                        <span className={`badge bg-${getStyleForBadge(genreObj.color)} m-1`}>
+                        <span className={`badge bg-${getStyleForGenreBadge(genreObj.color)} m-1`}>
                             {genreObj.name}
                         </span>
                     </h5>

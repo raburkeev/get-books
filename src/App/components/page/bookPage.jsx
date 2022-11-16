@@ -4,14 +4,27 @@ import BookImgComponent from '../ui/book/bookImgComponent'
 import BookRating from '../ui/book/bookRating'
 import BookInfoMainContent from '../ui/book/bookInfoMainContent'
 import Loader from '../common/loader'
-import {useBooks} from '../../hooks/useBooks'
+import {useDispatch, useSelector} from 'react-redux'
+import {getBookById} from '../../store/books'
+import {addItemToCart, getRatedBooks, getUserCart, getUserId, getUserPurchasedBooks} from '../../store/user'
+import AddToCartButton from '../ui/addToCartButton'
+import RateBook from '../ui/rateBook'
 
 const BookPage = () => {
+    const dispatch = useDispatch()
+    const userId = useSelector(getUserId())
     const history = useHistory()
     const params = useParams()
     const {bookId} = params
-    const {getBookById} = useBooks()
-    const book = getBookById(bookId)
+    const book = useSelector(getBookById(bookId))
+    const isUserHasBook = useSelector(getUserPurchasedBooks()).includes(bookId)
+    const isBookInUserCart = useSelector(getUserCart()).includes(bookId)
+    const purchasedBooks = useSelector(getUserPurchasedBooks())
+    const ratedBooks = useSelector(getRatedBooks())
+
+    const handleAddToCartClick = () => {
+        dispatch(addItemToCart({userId, items: [bookId]}))
+    }
 
     return book && book.genre
         ? (
@@ -20,12 +33,13 @@ const BookPage = () => {
                     <div className="col-md-4 mb-3">
                         <BookImgComponent url={book.imgUrl} />
                         <BookRating rating={book.ratings}/>
+                        {purchasedBooks.includes(bookId) && !ratedBooks.includes(bookId) && <RateBook />}
                     </div>
                     <div className="col-md-8">
                         <BookInfoMainContent {...book}/>
-                        <button className="btn btn-primary" onClick={() => history.push(`/all_books/${bookId}/edit`)}>Edit</button>
+                        <button className="btn btn-primary me-1" onClick={() => history.push(`/all_books/${bookId}/edit`)}>Edit</button>
+                        <AddToCartButton className="btn btn-success" isUserHasBook={isUserHasBook} isBookInUserCart={isBookInUserCart} price={book.price} onClick={handleAddToCartClick}/>
                     </div>
-
                 </div>
             </div>
         )

@@ -1,19 +1,20 @@
 import React, {useState} from 'react'
 import _ from 'lodash'
-import {useHistory} from 'react-router-dom'
 import Pagination from '../common/pagination'
 import {paginate} from '../../utils/paginate'
 import GroupList from '../common/groupList'
 import Sorting from '../ui/sorting'
 import BooksList from '../ui/booksList'
 import Loader from '../common/loader'
-import {useBooks} from '../../hooks/useBooks'
-import {useGenres} from '../../hooks/useGenres'
+import {useSelector} from 'react-redux'
+import {getGenresList, getGenresLoadingStatus} from '../../store/genres'
+import {getBooksList, getBooksLoadingStatus} from '../../store/books'
 
 const BooksListPage = () => {
-    const {books} = useBooks()
-    const {genres, isLoading: isGenresLoading} = useGenres()
-    const history = useHistory()
+    const books = useSelector(getBooksList())
+    const isBooksLoading = useSelector(getBooksLoadingStatus())
+    const genres = useSelector(getGenresList())
+    const isGenresLoading = useSelector(getGenresLoadingStatus())
     const [currentPage, setCurrentPage] = useState(1)
     const [selectedGenre, setSelectedGenre] = useState(null)
     const [search, setSearch] = useState('')
@@ -30,7 +31,7 @@ const BooksListPage = () => {
         setSelectedGenre(null)
     }
 
-    if (JSON.stringify(books) !== '[]') {
+    if (!isBooksLoading) {
         const filteredBooks = search
             ? (
                 books.filter(book => book.name.toLowerCase().includes(search.trim().toLowerCase()))
@@ -73,8 +74,7 @@ const BooksListPage = () => {
                                         selectedItem={selectedGenre}
                                         onItemSelect={handleGenreSelect}
                                     />
-                                    <button className="btn btn-secondary mt-2" onClick={clearFilter}>Очистить</button>
-                                    <button className="btn btn-primary mt-5" onClick={() => history.push('/add_book')}>Добавить книгу</button>
+                                    <button className="btn btn-secondary mt-2" onClick={clearFilter}>Сбросить</button>
                                 </div>
                             )
                             : <Loader target="genres"/>

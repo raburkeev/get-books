@@ -20,7 +20,7 @@ const Sorting = ({onSort, selectedSort}) => {
 
     return (
         <div className="d-flex align-items-center mt-3">
-            <p className="h5 me-2">Сортировка:</p>
+            <p className="h5 me-2">Сортировать:</p>
             <ul className="list-group list-group-horizontal">
                 {sortingList.map((item, i) => (
                     <li

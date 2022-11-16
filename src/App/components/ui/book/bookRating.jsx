@@ -8,7 +8,7 @@ const BookRating = ({rating}) => {
     return (
         <div className="card mb-3 shadow">
             <div className="card-body">
-                <div className=" d-flex flex-column justify-content-center text-center position-relative">
+                <div className="d-flex flex-column justify-content-center text-center position-relative">
                     <h5 className="card-title">
                         <span>Рейтинг</span>
                     </h5>
