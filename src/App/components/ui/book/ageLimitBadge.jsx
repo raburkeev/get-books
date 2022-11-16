@@ -1,22 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import useStyles from '../../../hooks/useStyles'
 
 const AgeLimitBadge = ({ageLimit}) => {
-    const getBadgeClasses = (ageLimit) => {
-        ageLimit = +ageLimit.split('').splice(0, ageLimit.length - 1).join('')
-        switch (ageLimit) {
-            case 18:
-                return 'danger'
-            case 16:
-                return 'warning'
-            case 12:
-                return 'success'
-            case 6:
-                return 'primary'
-            case 0:
-                return 'info'
-        }
-    }
+    const {getBadgeClasses} = useStyles()
 
     return (
         <h3>

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link, Redirect, useParams} from 'react-router-dom'
-import useMockData from '../utils/mockData'
+import useMockData from '../hooks/useMockData'
 import {useSelector} from 'react-redux'
 import {getIsAdmin, getUserLoadingStatus} from '../store/user'
 import EditBooksList from '../components/ui/editBooksList'

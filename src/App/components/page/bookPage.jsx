@@ -1,5 +1,5 @@
 import React from 'react'
-import {useParams, useHistory} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import BookImgComponent from '../ui/book/bookImgComponent'
 import BookRating from '../ui/book/bookRating'
 import BookInfoMainContent from '../ui/book/bookInfoMainContent'
@@ -13,7 +13,6 @@ import RateBook from '../ui/rateBook'
 const BookPage = () => {
     const dispatch = useDispatch()
     const userId = useSelector(getUserId())
-    const history = useHistory()
     const params = useParams()
     const {bookId} = params
     const book = useSelector(getBookById(bookId))
@@ -35,9 +34,8 @@ const BookPage = () => {
                         <BookRating rating={book.ratings}/>
                         {purchasedBooks.includes(bookId) && !ratedBooks.includes(bookId) && <RateBook />}
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 d-flex flex-column align-items-end">
                         <BookInfoMainContent {...book}/>
-                        <button className="btn btn-primary me-1" onClick={() => history.push(`/all_books/${bookId}/edit`)}>Edit</button>
                         <AddToCartButton className="btn btn-success" isUserHasBook={isUserHasBook} isBookInUserCart={isBookInUserCart} price={book.price} onClick={handleAddToCartClick}/>
                     </div>
                 </div>

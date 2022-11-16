@@ -9,6 +9,7 @@ import {ageLimit, getAgeLimit, getAgeLimitFormat} from '../../utils/ageLimit'
 import {useDispatch, useSelector} from 'react-redux'
 import {getBookById, getBooksLoadingStatus, updateBook} from '../../store/books'
 import {getGenresList, getGenresLoadingStatus} from '../../store/genres'
+import BackHistoryButton from '../common/backHistoryButton'
 
 const EditBookPage = () => {
     const dispatch = useDispatch()
@@ -86,91 +87,94 @@ const EditBookPage = () => {
     const isValid = Object.keys(errors).length
     return !isBooksLoading && !isGenresLoading
         ? (
-            <div className="container mt-5">
-                <div className="row">
-                    <div className="col-md-6 offset-md-3 p-4 shadow">
-                        <form onSubmit={handleSubmit}>
-                            <h1>EditBook</h1>
-                            <TextField
-                                label="Название"
-                                name="name"
-                                value={data.name}
-                                onChange={handleChange}
-                                error={errors.name}
-                            />
-                            <TextField
-                                label="Ссылка на изображение книги"
-                                name="imgUrl"
-                                value={data.imgUrl}
-                                onChange={handleChange}
-                                error={errors.imgUrl}
-                            />
-                            <SelectField
-                                label="Жанр"
-                                name="genre"
-                                value={data.genre}
-                                onChange={handleChange}
-                                defaultOption="Выбрать жанр..."
-                                options={genresArray}
-                                error={errors.genre}
-                            />
-                            <TextField
-                                label="Автор"
-                                name="author"
-                                value={data.author}
-                                onChange={handleChange}
-                                error={errors.author}
-                            />
-                            <TextField
-                                label="Серия"
-                                name="series"
-                                value={data.series}
-                                onChange={handleChange}
-                            />
-                            <TextField
-                                label="Количество страниц"
-                                name="size"
-                                value={data.size.toString()}
-                                onChange={handleChange}
-                                error={errors.size}
-                            />
-                            <TextField
-                                label="Год написания"
-                                name="year"
-                                value={data.year.toString()}
-                                onChange={handleChange}
-                                error={errors.year}
-                            />
-                            <SelectField
-                                label="Возрастное ограничение"
-                                name="ageLimit"
-                                value={data.ageLimit}
-                                onChange={handleChange}
-                                defaultOption="Выбрать возрастное ограничение..."
-                                options={ageLimit}
-                                error={errors.ageLimit}
-                            />
-                            <TextField
-                                label="Цена (руб.)"
-                                name="price"
-                                value={data.price.toString()}
-                                onChange={handleChange}
-                                error={errors.price}
-                            />
-                            <TextAreaField
-                                label="Аннотация к книге"
-                                rows={10}
-                                name="description"
-                                value={data.description}
-                                onChange={handleChange}
-                            />
-                            <button className="btn btn-primary w-100 mx-auto" disabled={isValid}>Обновить</button>
-                        </form>
+            <>
+                <div className="container mt-5">
+                    <BackHistoryButton/>
+                    <div className="row">
+                        <div className="col-md-6 offset-md-3 p-4 shadow">
+                            <form onSubmit={handleSubmit}>
+                                <h1>EditBook</h1>
+                                <TextField
+                                    label="Название"
+                                    name="name"
+                                    value={data.name}
+                                    onChange={handleChange}
+                                    error={errors.name}
+                                />
+                                <TextField
+                                    label="Ссылка на изображение книги"
+                                    name="imgUrl"
+                                    value={data.imgUrl}
+                                    onChange={handleChange}
+                                    error={errors.imgUrl}
+                                />
+                                <SelectField
+                                    label="Жанр"
+                                    name="genre"
+                                    value={data.genre}
+                                    onChange={handleChange}
+                                    defaultOption="Выбрать жанр..."
+                                    options={genresArray}
+                                    error={errors.genre}
+                                />
+                                <TextField
+                                    label="Автор"
+                                    name="author"
+                                    value={data.author}
+                                    onChange={handleChange}
+                                    error={errors.author}
+                                />
+                                <TextField
+                                    label="Серия"
+                                    name="series"
+                                    value={data.series}
+                                    onChange={handleChange}
+                                />
+                                <TextField
+                                    label="Количество страниц"
+                                    name="size"
+                                    value={data.size.toString()}
+                                    onChange={handleChange}
+                                    error={errors.size}
+                                />
+                                <TextField
+                                    label="Год написания"
+                                    name="year"
+                                    value={data.year.toString()}
+                                    onChange={handleChange}
+                                    error={errors.year}
+                                />
+                                <SelectField
+                                    label="Возрастное ограничение"
+                                    name="ageLimit"
+                                    value={data.ageLimit}
+                                    onChange={handleChange}
+                                    defaultOption="Выбрать возрастное ограничение..."
+                                    options={ageLimit}
+                                    error={errors.ageLimit}
+                                />
+                                <TextField
+                                    label="Цена (руб.)"
+                                    name="price"
+                                    value={data.price.toString()}
+                                    onChange={handleChange}
+                                    error={errors.price}
+                                />
+                                <TextAreaField
+                                    label="Аннотация к книге"
+                                    rows={10}
+                                    name="description"
+                                    value={data.description}
+                                    onChange={handleChange}
+                                />
+                                <button className="btn btn-primary w-100 mx-auto" disabled={isValid}>Обновить</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </>
         )
-        : <Loader target="book info" />
+        : <Loader target="book info"/>
 }
 
 export default EditBookPage

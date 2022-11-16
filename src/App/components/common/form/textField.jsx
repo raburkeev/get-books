@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
+import useStyles from '../../../hooks/useStyles'
 
 const TextField = ({label, name, error, type, value, onChange}) => {
     const [showPassword, setShowPassword] = useState(false)
@@ -8,9 +9,7 @@ const TextField = ({label, name, error, type, value, onChange}) => {
         onChange({name: target.name, value: target.value})
     }
 
-    const getInputClasses = () => {
-        return `form-control ${error ? 'is-invalid' : ''}`
-    }
+    const {getInputTextClasses} = useStyles()
 
     const toggleShowPassword = () => {
         setShowPassword(prevState => !prevState)
@@ -20,7 +19,7 @@ const TextField = ({label, name, error, type, value, onChange}) => {
             <label htmlFor={name}>{label}:</label>
             <div className="input-group has-validation">
                 <input
-                    className={getInputClasses()}
+                    className={getInputTextClasses(error)}
                     type={showPassword ? 'text' : type}
                     id={name}
                     name={name}

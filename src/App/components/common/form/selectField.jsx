@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import useStyles from '../../../hooks/useStyles'
 
 const SelectField = ({label, value, onChange, defaultOption, options, error, name}) => {
     const optionsArray =
@@ -11,15 +12,13 @@ const SelectField = ({label, value, onChange, defaultOption, options, error, nam
         onChange({name: target.name, value: target.value})
     }
 
-    const getInputClasses = () => {
-        return `form-select ${error ? 'is-invalid' : ''}`
-    }
+    const {getInputSelectClasses} = useStyles()
 
     return (
         <div className="mb-4">
             <label htmlFor={name} className="form-label">{label}</label>
             <select
-                className={getInputClasses()}
+                className={getInputSelectClasses(error)}
                 id={name}
                 name={name}
                 value={value}

@@ -1,20 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import useStyles from '../../../hooks/useStyles'
 
 const CheckBoxField = ({children, name, value, onChange, error}) => {
+    const {getInputCheckClasses} = useStyles()
+
     const handleChange = () => {
         onChange({name: name, value: !value})
-    }
-
-    const getInputClasses = () => {
-        return `form-check-input ${error ? 'is-invalid' : ''}`
     }
 
     return (
         <div className="mb-4">
             <div className="form-check">
                 <input
-                    className={getInputClasses()}
+                    className={getInputCheckClasses(error)}
                     type="checkbox"
                     value=""
                     id={name}

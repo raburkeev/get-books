@@ -27,7 +27,7 @@ const EditBooksList = () => {
     return !isLoading
         ? (
             <>
-                <input className="form-control m-2" type="search" placeholder="Поиск книги по названию или ID" aria-label="Search" value={search} onChange={handleSearchChange}/>
+                <input className="form-control m-2 mt-4" type="search" placeholder="Поиск книги по названию или ID" aria-label="Search" value={search} onChange={handleSearchChange}/>
                 <BooksTable books={filteredBooks} onDelete={handleDelete} onEdit={handleEdit} />
             </>
         )

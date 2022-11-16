@@ -1,20 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import useStyles from '../../../hooks/useStyles'
 
 const TextAreaField = ({label, name, rows, error, value, onChange}) => {
     const handleChange = ({target}) => {
         onChange({name: target.name, value: target.value})
     }
 
-    const getInputClasses = () => {
-        return `form-control ${error ? 'is-invalid' : ''}`
-    }
+    const {getInputTextClasses} = useStyles()
+
     return (
         <div className="mb-4">
             <label htmlFor={name}>{label}:</label>
             <div className="input-group has-validation">
                 <textarea
-                    className={getInputClasses()}
+                    className={getInputTextClasses(error)}
                     id={name}
                     name={name}
                     value={value}
