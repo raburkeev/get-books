@@ -31,17 +31,6 @@ const AddBookForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log({
-            ...data,
-            id: nanoid(),
-            ageLimit: getAgeLimit(data.ageLimit),
-            year: +data.year,
-            price: +data.price,
-            size: +data.size,
-            numberOfRatings: 0,
-            rate: 0,
-            ratings: [0, 0, 0, 0, 0]
-        })
         dispatch(createBook({
             ...data,
             id: nanoid(),

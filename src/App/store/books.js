@@ -1,9 +1,8 @@
-/*eslint-disable*/
 import {createAction, createSlice} from '@reduxjs/toolkit'
 import {isOutDated} from '../utils/isOutdated'
 import bookService from '../services/book.service'
 import history from '../utils/history'
-import {logout, userAddRatedBook} from './user'
+import {userAddRatedBook} from './user'
 import {toast} from 'react-toastify'
 
 const booksSlice = createSlice({
@@ -55,7 +54,8 @@ const booksSlice = createSlice({
 })
 
 const {reducer: booksReducer, actions} = booksSlice
-const {booksRequested,
+const {
+    booksRequested,
     booksReceived,
     booksRequestFailed,
     bookUpdateSucceeded,
@@ -65,7 +65,8 @@ const {booksRequested,
     bookRateUpdateSucceeded,
     bookRateUpdateFailed,
     bookDeleteSucceeded,
-    bookDeleteFailed} = actions
+    bookDeleteFailed
+} = actions
 
 const bookUpdateRequested = createAction('books/bookUpdateRequested')
 const bookCreateRequested = createAction('books/bookCreateRequested')
@@ -113,7 +114,17 @@ export const createBook = (payload) => async (dispatch) => {
     try {
         const {content} = await bookService.addBook(payload)
         dispatch(bookCreateSucceeded(content))
-        history.push(`/all_books/${content.id}`)
+        history.push(`/admin`)
+        toast.success('Книга успешно добавлена', {
+            position: 'bottom-center',
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: 'light'
+        })
     } catch (error) {
         dispatch(bookCreateFailed(error.message))
     }

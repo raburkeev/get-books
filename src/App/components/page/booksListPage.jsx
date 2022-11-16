@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import _ from 'lodash'
-import {useHistory} from 'react-router-dom'
 import Pagination from '../common/pagination'
 import {paginate} from '../../utils/paginate'
 import GroupList from '../common/groupList'
@@ -10,15 +9,12 @@ import Loader from '../common/loader'
 import {useSelector} from 'react-redux'
 import {getGenresList, getGenresLoadingStatus} from '../../store/genres'
 import {getBooksList, getBooksLoadingStatus} from '../../store/books'
-import {getIsAdmin} from '../../store/user'
 
 const BooksListPage = () => {
     const books = useSelector(getBooksList())
     const isBooksLoading = useSelector(getBooksLoadingStatus())
     const genres = useSelector(getGenresList())
     const isGenresLoading = useSelector(getGenresLoadingStatus())
-    const history = useHistory()
-    const isAdmin = useSelector(getIsAdmin())
     const [currentPage, setCurrentPage] = useState(1)
     const [selectedGenre, setSelectedGenre] = useState(null)
     const [search, setSearch] = useState('')
@@ -79,9 +75,6 @@ const BooksListPage = () => {
                                         onItemSelect={handleGenreSelect}
                                     />
                                     <button className="btn btn-secondary mt-2" onClick={clearFilter}>Сбросить</button>
-                                    {isAdmin && (
-                                        <button className="btn btn-primary mt-5" onClick={() => history.push('/add_book')}>Добавить книгу</button>
-                                    )}
                                 </div>
                             )
                             : <Loader target="genres"/>
