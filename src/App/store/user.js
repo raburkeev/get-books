@@ -229,6 +229,6 @@ export const getIsLoggedIn = () => (state) => state.user.isLoggedIn
 export const getUserCart = () => (state) => state.user.entity ? state.user.entity.cart : ['init']
 export const getUserPurchasedBooks = () => (state) => state.user?.entity?.purchasedBooks ? state.user.entity.purchasedBooks : []
 export const getIsAdmin = () => (state) => state.user.entity ? state.user.entity.isAdmin : null
-export const getRatedBooks = () => (state) => state.user.entity ? state.user.entity.ratedBooks : []
+export const getRatedBooks = () => (state) => state.user?.entity?.ratedBooks ? state.user.entity.ratedBooks : []
 
 export default userReducer
