@@ -34,7 +34,7 @@ const BooksListPage = () => {
     if (!isBooksLoading) {
         const filteredBooks = search
             ? (
-                books.filter(book => book.name.toLowerCase().includes(search.trim().toLowerCase()))
+                books.filter(book => book.name.toLowerCase().includes(search.trim().toLowerCase()) || book.author.toLowerCase().includes(search.trim().toLowerCase()))
             )
             : (
                 selectedGenre
@@ -81,7 +81,7 @@ const BooksListPage = () => {
                         }
                     </div>
                     <div className="col-md-10">
-                        <input className="form-control m-2" type="search" placeholder="Поиск книги по названию" aria-label="Search" value={search} onChange={handleSearchChange}/>
+                        <input className="form-control m-2" type="search" placeholder="Поиск книги по названию или автору" aria-label="Search" value={search} onChange={handleSearchChange}/>
                         <Sorting onSort={handleSort} selectedSort={sortBy} />
                         <BooksList books={booksCrop} />
                     </div>

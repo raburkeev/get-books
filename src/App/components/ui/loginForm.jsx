@@ -8,7 +8,6 @@ import {getUserError, signIn} from '../../store/user'
 const LoginForm = () => {
     const dispatch = useDispatch()
     const error = useSelector(getUserError())
-    console.log(error)
     const [data, setData] = useState({
         email: '',
         password: '',
