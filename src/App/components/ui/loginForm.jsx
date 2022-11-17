@@ -2,11 +2,13 @@ import React, {useEffect, useState} from 'react'
 import TextField from '../common/form/textField'
 import * as yup from 'yup'
 import CheckBoxField from '../common/form/checkBoxField'
-import {useDispatch} from 'react-redux'
-import {signIn} from '../../store/user'
+import {useDispatch, useSelector} from 'react-redux'
+import {getUserError, signIn} from '../../store/user'
 
 const LoginForm = () => {
     const dispatch = useDispatch()
+    const error = useSelector(getUserError())
+    console.log(error)
     const [data, setData] = useState({
         email: '',
         password: '',
@@ -72,6 +74,7 @@ const LoginForm = () => {
                 >
                     Оставаться в системе
                 </CheckBoxField>
+                {error && <p className="text-danger text-center">{error}</p>}
                 <button className="btn btn-success w-100 mx-auto" disabled={isValid}>Войти</button>
             </form>
         </div>

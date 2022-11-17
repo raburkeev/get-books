@@ -4,6 +4,7 @@ import localStorageService from '../services/localStorage.service'
 import userService from '../services/user.service'
 import history from '../utils/history'
 import {toast} from 'react-toastify'
+import {generateAuthError} from '../utils/generateAuthError'
 
 const initialState = localStorageService.getAccessToken()
     ? {
@@ -140,7 +141,13 @@ export const signIn = (payload) => async (dispatch) => {
 
         history.push('/all_books')
     } catch (error) {
-        dispatch(authRequestFailed(error.message))
+        const {code, message} = error.response.data.error
+        if (code === 400) {
+            const errorMessage = generateAuthError(message)
+            dispatch(authRequestFailed(errorMessage))
+        } else {
+            dispatch(authRequestFailed(error.message))
+        }
     }
 }
 
@@ -224,6 +231,7 @@ export const logout = () => (dispatch) => {
 
 export const getUser = () => (state) => state.user.entity
 export const getUserLoadingStatus = () => (state) => state.user.isLoading
+export const getUserError = () => (state) => state.user.error
 export const getUserId = () => (state) => state.user.auth ? state.user.auth.userId : null
 export const getIsLoggedIn = () => (state) => state.user.isLoggedIn
 export const getUserCart = () => (state) => state.user.entity ? state.user.entity.cart : ['init']

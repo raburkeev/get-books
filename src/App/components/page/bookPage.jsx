@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, {useState} from 'react'
 import {useParams, useHistory} from 'react-router-dom'
 import BookImgComponent from '../ui/book/bookImgComponent'
