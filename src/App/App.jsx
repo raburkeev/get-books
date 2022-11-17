@@ -19,7 +19,7 @@ const App = () => {
                 <NavBar/>
                 <Switch>
                     <ProtectedRoute path="/admin/:type?" component={AdminPanel}/>
-                    <Route path="/login/:type?" component={Login}/>
+                    <Route path="/login" component={Login}/>
                     <ProtectedRoute path="/logout" component={Logout}/>
                     <ProtectedRoute path="/cart" isAdmin component={CartPage}/>
                     <ProtectedRoute path="/user/:userId" component={UserPage}/>
