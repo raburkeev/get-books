@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="26222be2-7d6d-4e44-ad3e-3b0df06e7eb6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/client/.env.development" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/client/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/logo192.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/logo512.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/common/backHistoryButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/common/backHistoryButton.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/common/form/checkBoxField.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/common/form/checkBoxField.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/common/form/selectField.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/common/form/selectField.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/common/form/textAreaField.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/common/form/textAreaField.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/common/form/textField.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/common/form/textField.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/common/groupList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/common/groupList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/common/loader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/common/loader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/common/modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/common/modal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/common/pagination.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/common/pagination.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/common/potectedRoute.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/common/potectedRoute.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/common/table/table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/common/table/table.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/common/table/tableBody.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/common/table/tableBody.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/common/table/tableHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/common/table/tableHeader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/page/bookPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/page/bookPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/page/booksListPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/page/booksListPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/page/cartPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/page/cartPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/page/editBookPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/page/editBookPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/page/userPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/page/userPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/addBookForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/addBookForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/addToCartButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/addToCartButton.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/book/ageLimitBadge.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/book/ageLimitBadge.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/book/bookCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/book/bookCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/book/bookImgComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/book/bookImgComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/book/bookInfoMainContent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/book/bookInfoMainContent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/book/bookRating.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/book/bookRating.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/bookCartImg.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/bookCartImg.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/booksList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/booksList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/booksTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/booksTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/cartFooter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/cartFooter.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/cartTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/cartTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/editBooksList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/editBooksList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/hoc/appLoader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/hoc/appLoader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/loginForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/loginForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/navBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/navProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/navProfile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/rateBook.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/rateBook.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/reader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/reader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/registerForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/registerForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/sorting.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/sorting.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/userBooksCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/userBooksCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/ui/userInfoCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/components/ui/userInfoCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/hooks/useMockData.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/hooks/useMockData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/hooks/useStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/hooks/useStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/layouts/adminPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/layouts/adminPanel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/layouts/books.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/layouts/books.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/layouts/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/layouts/login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/layouts/logout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/layouts/logout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/mockData/books.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/mockData/books.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/mockData/genres.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/mockData/genres.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/services/auth.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/services/book.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/services/book.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/services/genre.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/services/genre.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/services/http.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/services/http.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/services/localStorage.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/services/localStorage.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/services/user.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/services/user.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/store/books.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/store/books.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/store/createStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/store/createStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/store/genres.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/store/genres.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/store/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/store/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/utils/ageLimit.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/utils/ageLimit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/utils/calculateRating.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/utils/calculateRating.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/utils/generateAuthError.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/utils/generateAuthError.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/utils/getStyleForGenreBadge.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/utils/getStyleForGenreBadge.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/utils/history.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/utils/history.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/utils/isOutdated.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/utils/isOutdated.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/utils/paginate.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App/utils/paginate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/fake.api/books.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/fake.api/books.api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/fake.api/genres.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/fake.api/genres.api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/reportWebVitals.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2GMMRu8CwjtcPUaMIiCguApC6z2" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\WebStorm Projects\get-books\client" />
+      <recent name="C:\WebStorm Projects\get-books\src\App\components\common" />
+      <recent name="C:\WebStorm Projects\get-books\src\App\hooks" />
+      <recent name="C:\WebStorm Projects\get-books\src\App\layouts" />
+      <recent name="C:\WebStorm Projects\get-books\src\App\components\ui" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="26222be2-7d6d-4e44-ad3e-3b0df06e7eb6" name="Default Changelist" comment="" />
+      <created>1666193994498</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666193994498</updated>
+      <workItem from="1666193995718" duration="8079000" />
+      <workItem from="1666278141502" duration="9485000" />
+      <workItem from="1666371849160" duration="93000" />
+      <workItem from="1666371947136" duration="1282000" />
+      <workItem from="1666631888465" duration="427000" />
+      <workItem from="1666703062832" duration="6759000" />
+      <workItem from="1667826350150" duration="13759000" />
+      <workItem from="1667917058870" duration="10142000" />
+      <workItem from="1668003821234" duration="11125000" />
+      <workItem from="1668096227568" duration="6178000" />
+      <workItem from="1668175104007" duration="12065000" />
+      <workItem from="1668432605825" duration="16880000" />
+      <workItem from="1668527896039" duration="8705000" />
+      <workItem from="1668613420341" duration="6989000" />
+      <workItem from="1668692595665" duration="9062000" />
+      <workItem from="1669381836330" duration="3909000" />
+      <workItem from="1669647683859" duration="89000" />
+      <workItem from="1669737283713" duration="6953000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="845" y="383" width="304" height="336" key="#Notifications" timestamp="1666703110645">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="845" y="383" width="304" height="336" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1666703110645" />
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1666194260771">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1666194260771" />
+    <state x="670" y="225" width="585" height="530" key="find.popup" timestamp="1668700252243">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="670" y="225" width="585" height="530" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1668700252243" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1668613795989">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1668613795989" />
+  </component>
+</project>
