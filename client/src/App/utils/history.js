@@ -1,4 +1,4 @@
-import {createBrowserHistory} from 'client/src/App/utils/history'
+import {createBrowserHistory} from 'history'
 
 const history = createBrowserHistory()
 
