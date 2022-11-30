@@ -22,11 +22,12 @@ router.put('/:userId/cart', auth, async (req, res) => {
         const user = await User.findById(userId)
         //todo: изменить логичку так, чтобы в пэйлоад приходил полностью обновленный юзер, чтобы ниже сделать User.findByIdAndUpdate()
         user.cart = payload
-        console.log(user.cart)
+        // await user.save()
+        console.log(user)
         res.send(user.cart)
     } catch (error) {
         res.status(500).json({
-            message: 'На сервере произошла ошибка. Попробуйте позже.'
+            message: 'На сервере произошла ошибка. Попробуйте позже.123'
         })
     }
 

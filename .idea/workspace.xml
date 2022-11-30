@@ -19,15 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26222be2-7d6d-4e44-ad3e-3b0df06e7eb6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/get-books.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="2e0e2de3-3974-4aca-8f9a-21a49db582fd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/get-books-v2.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/services/tokenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/services/tokenService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/user.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/user.routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +34,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2GMMRu8CwjtcPUaMIiCguApC6z2" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -52,7 +48,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -81,7 +79,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="26222be2-7d6d-4e44-ad3e-3b0df06e7eb6" name="Default Changelist" comment="" />
+      <changelist id="2e0e2de3-3974-4aca-8f9a-21a49db582fd" name="Default Changelist" comment="" />
       <created>1666193994498</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -103,8 +101,8 @@
       <workItem from="1668692595665" duration="9062000" />
       <workItem from="1669381836330" duration="3909000" />
       <workItem from="1669647683859" duration="89000" />
-      <workItem from="1669737283713" duration="8965000" />
-      <workItem from="1669830211510" duration="3832000" />
+      <workItem from="1669737283713" duration="8584000" />
+      <workItem from="1669836510070" duration="2994000" />
     </task>
     <servers />
   </component>
@@ -132,10 +130,6 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1666194260771" />
-    <state x="714" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1669831062616">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="714" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1669831062616" />
     <state x="670" y="225" width="585" height="530" key="find.popup" timestamp="1668700252243">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
