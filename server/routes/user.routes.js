@@ -19,18 +19,40 @@ router.put('/:userId/cart', auth, async (req, res) => {
     try {
         const {userId} = req.params
         const payload = req.body
-        const user = await User.findById(userId)
-        //todo: изменить логичку так, чтобы в пэйлоад приходил полностью обновленный юзер, чтобы ниже сделать User.findByIdAndUpdate()
-        user.cart = payload
-        // await user.save()
-        console.log(user)
+        const user = await User.findByIdAndUpdate(userId, {cart: [...payload]}, {new: true})
         res.send(user.cart)
     } catch (error) {
         res.status(500).json({
-            message: 'На сервере произошла ошибка. Попробуйте позже.123'
+            message: 'На сервере произошла ошибка. Попробуйте позже.'
         })
     }
 
+})
+
+router.put('/:userId/purchasedBooks', auth, async (req, res) => {
+    try {
+        const {userId} = req.params
+        const payload = req.body
+        const user = await User.findByIdAndUpdate(userId, {purchasedBooks: [...payload]}, {new: true})
+        res.send(user.purchasedBooks)
+    } catch (error) {
+        res.status(500).json({
+            message: 'На сервере произошла ошибка. Попробуйте позже.'
+        })
+    }
+})
+
+router.put('/:userId/ratedBooks', auth, async (req, res) => {
+    try {
+        const {userId} = req.params
+        const payload = req.body
+        const user = await User.findByIdAndUpdate(userId, {ratedBooks: [...payload]}, {new: true})
+        res.send(user.ratedBooks)
+    } catch (error) {
+        res.status(500).json({
+            message: 'На сервере произошла ошибка. Попробуйте позже.'
+        })
+    }
 })
 
 module.exports = router
