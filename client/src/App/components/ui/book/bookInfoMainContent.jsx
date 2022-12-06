@@ -7,8 +7,6 @@ import {getStyleForGenreBadge} from '../../../utils/getStyleForGenreBadge'
 
 const BookInfoMainContent = ({name, author, genre, series, year, size, ageLimit, description}) => {
     const genreObj = useSelector(getGenreById(genre))
-    console.log('genre', genre)
-    console.log('genreObj', genreObj)
 
     return (
         <div className="card mb-2 shadow">
