@@ -38,7 +38,7 @@ const BooksListPage = () => {
             )
             : (
                 selectedGenre
-                    ? books.filter(book => book.genre === selectedGenre.id)
+                    ? books.filter(book => book.genre === selectedGenre._id)
                     : books
             )
         const booksCount = filteredBooks.length

@@ -8,9 +8,9 @@ const BookCard = ({book, isCatalogCard}) => {
 
     const handleBookCardClick = () => {
         if (isCatalogCard) {
-            history.push(`/all_books/${book.id}`)
+            history.push(`/all_books/${book._id}`)
         } else {
-            history.push(`/reader/${book.id}`)
+            history.push(`/reader/${book._id}`)
         }
     }
 

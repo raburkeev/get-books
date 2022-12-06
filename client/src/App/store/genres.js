@@ -45,7 +45,7 @@ export const loadGenresList = () => async (dispatch, getState) => {
 export const getGenresList = () => (state) => state.genres.entities
 export const getGenresLoadingStatus = () => (state) => state.genres.isLoading
 export const getGenreById = (genreId) => (state) => {
-    return state.genres.entities ? state.genres.entities.find(genre => genre.id === genreId) : ''
+    return state.genres.entities ? state.genres.entities.find(genre => genre._id === genreId) : ''
 }
 
 export default genresReducer

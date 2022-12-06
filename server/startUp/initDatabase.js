@@ -1,15 +1,15 @@
-const genresMock = require('../mock/genres')
+const genresMock = require('../mock/genres.json')
 const booksMock = require('../mock/books')
 const Book = require('../models/Book')
 const Genre = require('../models/Genre')
 
 module.exports = async () => {
-    const books = await Book.find()
-    if (!books.length) {
-        await createInitialEntity(Book, booksMock)
-    }
+    // const books = await Book.find()
+    // if (!books.length) {
+    //     await createInitialEntity(Book, booksMock)
+    // }
 
- const genres = await Genre.find()
+    const genres = await Genre.find()
     if (genres.length !== genresMock.length) {
         await createInitialEntity(Genre, genresMock)
     }

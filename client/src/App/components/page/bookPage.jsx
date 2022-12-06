@@ -6,7 +6,14 @@ import BookInfoMainContent from '../ui/book/bookInfoMainContent'
 import Loader from '../common/loader'
 import {useDispatch, useSelector} from 'react-redux'
 import {getBookById} from '../../store/books'
-import {addItemToCart, getRatedBooks, getUser, getUserCart, getUserId, getUserPurchasedBooks} from '../../store/user'
+import {
+    addItemToCart,
+    getRatedBooks,
+    getUser,
+    getUserCart,
+    getUserId,
+    getUserPurchasedBooks
+} from '../../store/user'
 import AddToCartButton from '../ui/addToCartButton'
 import RateBook from '../ui/rateBook'
 import Modal from '../common/modal'

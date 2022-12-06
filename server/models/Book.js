@@ -12,6 +12,8 @@ const schema = new Schema({
     series: {type: String},
     size: {type: Number},
     year: {type: Number}
+}, {
+    timestamps: true
 })
 
 module.exports = model('Book', schema)

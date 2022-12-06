@@ -1,8 +1,6 @@
-const {nanoid} = require('nanoid')
-
 const books = [
     {
-        id: nanoid(),
+        id: "#",
         name: 'Месяц за Рубиконом',
         imgUrl: 'https://cv9.litres.ru/pub/c/elektronnaya-kniga/cover_415/66732098-sergey-lukyanenko-mesyac-za-rubikonom.webp',
         genre: '28db9cfcc3ee',
@@ -22,7 +20,7 @@ const books = [
         price: 369
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Дюна',
         imgUrl: 'https://cv2.litres.ru/pub/c/elektronnaya-kniga/cover_415/25440524-frenk-gerbert-duna-pervaya-trilogiya.webp',
         genre: '28db9cfcc3ee',
@@ -42,7 +40,7 @@ const books = [
         price: 799
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Институт',
         imgUrl: 'https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_415/51598283-stiven-king-institut.webp',
         genre: '28db9cfcc3ee',
@@ -64,7 +62,7 @@ const books = [
         price: 479
     },
     {
-        id: nanoid(),
+        id: "#",
         name: '1984',
         imgUrl: 'https://cv3.litres.ru/pub/c/elektronnaya-kniga/cover_415/63805032--.webp',
         genre: '28db9cfcc3ee',
@@ -80,7 +78,7 @@ const books = [
         price: 169
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Рассказ Служанки',
         imgUrl: 'https://cv4.litres.ru/pub/c/elektronnaya-kniga/cover_415/140846-margaret-etvud-rasskaz-sluzhanki.webp',
         genre: '28db9cfcc3ee',
@@ -100,7 +98,7 @@ const books = [
         price: 389
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Бесконечная шутка',
         imgUrl: 'https://cv7.litres.ru/pub/c/elektronnaya-kniga/cover_415/24055677-devid-foster-uolles-beskonechnaya-shutka.webp',
         genre: '28db9cfcc3ee',
@@ -118,7 +116,7 @@ const books = [
         price: 539
     },
     {
-        id: nanoid(),
+        id: "#",
         name: '451 градус по Фаренгейту',
         imgUrl: 'https://cv6.litres.ru/pub/c/elektronnaya-kniga/cover_415/39507162--.webp',
         genre: '28db9cfcc3ee',
@@ -134,7 +132,7 @@ const books = [
         price: 289
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Пересеку время ради тебя',
         imgUrl: 'https://cv4.litres.ru/pub/c/elektronnaya-kniga/cover_415/67592349-li-kkonnim-pereseku-vremya-radi-tebya.webp',
         genre: '28db9cfcc3ee',
@@ -152,7 +150,7 @@ const books = [
         price: 379
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Дверь в Лето',
         imgUrl: 'https://cv5.litres.ru/pub/c/elektronnaya-kniga/cover_415/122455-robert-haynlayn-dver-v-leto.webp',
         genre: '28db9cfcc3ee',
@@ -168,7 +166,7 @@ const books = [
         price: 279
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Ведьмак',
         imgUrl: 'https://cv6.litres.ru/pub/c/elektronnaya-kniga/cover_415/6375365-andzhey-sapkovskiy-vedmak.webp',
         genre: '0aa006fb066d',
@@ -196,7 +194,7 @@ const books = [
         price: 1499
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Оккульттрегер',
         imgUrl: 'https://cv3.litres.ru/pub/c/elektronnaya-kniga/cover_415/67740137-aleksey-salnikov-okkulttreger.webp',
         genre: '0aa006fb066d',
@@ -216,7 +214,7 @@ const books = [
         price: 339
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'На той стороне',
         imgUrl: 'https://cv1.litres.ru/pub/c/elektronnaya-kniga/cover_415/67850817-kirill-sharapov-na-toy-storone.webp',
         genre: '0aa006fb066d',
@@ -232,7 +230,7 @@ const books = [
         price: 149
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Факультет драконьих наездниц',
         imgUrl: 'https://cv4.litres.ru/pub/c/elektronnaya-kniga/cover_415/67411446-natalya-mamleeva-fakultet-drakonih-naezdnic.webp',
         genre: '0aa006fb066d',
@@ -260,7 +258,7 @@ const books = [
         price: 199
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Черная Призма',
         imgUrl: 'https://cv6.litres.ru/pub/c/elektronnaya-kniga/cover_415/67333365-brent-uiks-chernaya-prizma.webp',
         genre: '0aa006fb066d',
@@ -280,7 +278,7 @@ const books = [
         price: 399
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Мара и Морок',
         imgUrl: 'https://cv2.litres.ru/pub/c/elektronnaya-kniga/cover_415/51388928-liya-arden-mara-i-morok.webp',
         genre: '0aa006fb066d',
@@ -300,7 +298,7 @@ const books = [
         price: 279
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Орден Лино. Эра исполнения желаний',
         imgUrl: 'https://cv1.litres.ru/pub/c/elektronnaya-kniga/cover_415/65550216-marina-surzhevskaya-22364624-orden-lino-era-ispolneniya-zhelaniy.webp',
         genre: '0aa006fb066d',
@@ -316,7 +314,7 @@ const books = [
         price: 349
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Нечто из Рютте',
         imgUrl: 'https://cv3.litres.ru/pub/c/elektronnaya-kniga/cover_415/38976130-boris-konofalskiy-nechto-iz-rutte.webp',
         genre: '0aa006fb066d',
@@ -332,7 +330,7 @@ const books = [
         price: 219
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Часовой ключ',
         imgUrl: 'https://cv2.litres.ru/pub/c/elektronnaya-kniga/cover_415/2691325-natalya-scherba-chasovoy-kluch.webp',
         genre: '0aa006fb066d',
@@ -348,7 +346,7 @@ const books = [
         price: 277
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Джонатан Стрендж и мистер Норрелл',
         imgUrl: 'https://cv5.litres.ru/pub/c/elektronnaya-kniga/cover_415/140659-suzanna-klark-dzhonatan-strendzh-i-mister-norrell.webp',
         genre: '0aa006fb066d',
@@ -368,7 +366,7 @@ const books = [
         price: 389
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Эксцесс исполнителя',
         imgUrl: 'https://cv3.litres.ru/pub/c/elektronnaya-kniga/cover_415/67304631-maks-alekseevich-glebov-ekscess-ispolnitelya.webp',
         genre: 'babb51543b8a',
@@ -384,7 +382,7 @@ const books = [
         price: 249
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Ванька-взводный',
         imgUrl: 'https://cv7.litres.ru/pub/c/elektronnaya-kniga/cover_415/67781679-kombat-naytov-vanka-vzvodnyy.webp',
         genre: 'babb51543b8a',
@@ -402,7 +400,7 @@ const books = [
         price: 249
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Дом на краю темноты',
         imgUrl: 'https://cv1.litres.ru/pub/c/elektronnaya-kniga/cover_415/66194317-rayli-seyger-dom-na-krau-temnoty.webp',
         genre: 'babb51543b8a',
@@ -420,7 +418,7 @@ const books = [
         price: 329
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Боевой 1918 год. Комбриг',
         imgUrl: 'https://cv7.litres.ru/pub/c/elektronnaya-kniga/cover_415/67779671-vladislav-konushevskiy-boevoy-1918-god-kombrig.webp',
         genre: 'babb51543b8a',
@@ -436,7 +434,7 @@ const books = [
         price: 119
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Вечная жизнь Смерти',
         imgUrl: 'https://cv9.litres.ru/pub/c/elektronnaya-kniga/cover_415/36481897-lu-cysin-vechnaya-zhizn-smerti.webp',
         genre: 'babb51543b8a',
@@ -456,7 +454,7 @@ const books = [
         price: 389
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Черный старатель',
         imgUrl: 'https://cv3.litres.ru/pub/c/elektronnaya-kniga/cover_415/67077536-maks-alekseevich-glebov-chernyy-staratel.webp',
         genre: 'babb51543b8a',
@@ -472,7 +470,7 @@ const books = [
         price: 249
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Стальные Волки. Рождение Земной Федерации',
         imgUrl: 'https://cv4.litres.ru/pub/c/elektronnaya-kniga/cover_415/66543240-valeriy-uvalov-stalnye-volki-rozhdenie-zemnoy-federacii.webp',
         genre: 'babb51543b8a',
@@ -488,7 +486,7 @@ const books = [
         price: 199
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Нулевая планета: Нулевая планета. Пепел на обелиске',
         imgUrl: 'https://cv9.litres.ru/pub/c/elektronnaya-kniga/cover_415/67231091-erofey-trofimov-nulevaya-planeta-nulevaya-planeta-pepel-na-obeliske.webp',
         genre: 'babb51543b8a',
@@ -504,7 +502,7 @@ const books = [
         price: 439
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Во сне и наяву. Титан',
         imgUrl: 'https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_415/67919585-boris-konofalskiy-vo-sne-i-nayavu-titan.webp',
         genre: 'babb51543b8a',
@@ -520,7 +518,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Code. Носители',
         imgUrl: 'https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_415/67132084-dzhon-marrs-code-nositeli.webp',
         genre: 'babb51543b8a',
@@ -538,7 +536,7 @@ const books = [
         price: 389
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Лисьи броды',
         imgUrl: 'https://cv5.litres.ru/pub/c/elektronnaya-kniga/cover_415/67813653-anna-starobinec-lisi-brody.webp',
         genre: 'f5adac689084',
@@ -554,7 +552,7 @@ const books = [
         price: 399
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Внутри убийцы',
         imgUrl: 'https://cv3.litres.ru/pub/c/elektronnaya-kniga/cover_415/47453330-mayk-omer-vnutri-ubiycy.webp',
         genre: 'f5adac689084',
@@ -580,7 +578,7 @@ const books = [
         price: 459
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Судьба по книге перемен',
         imgUrl: 'https://cv9.litres.ru/pub/c/elektronnaya-kniga/cover_415/66768993-tatyana-ustinova-sudba-po-knige-peremen.webp',
         genre: 'f5adac689084',
@@ -596,7 +594,7 @@ const books = [
         price: 439
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Метка смерти',
         imgUrl: 'https://cv2.litres.ru/pub/c/elektronnaya-kniga/cover_415/67615223-andreas-gruber-metka-smerti.webp',
         genre: 'f5adac689084',
@@ -612,7 +610,7 @@ const books = [
         price: 490
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Там, где раки поют',
         imgUrl: 'https://cv3.litres.ru/pub/c/elektronnaya-kniga/cover_415/48882939-deliya-ouens-tam-gde-raki-pout.webp',
         genre: 'f5adac689084',
@@ -628,7 +626,7 @@ const books = [
         price: 350
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Сумрак',
         imgUrl: 'https://cv2.litres.ru/pub/c/elektronnaya-kniga/cover_415/67896128-penelopa-duglas-sumrak.webp',
         genre: 'f5adac689084',
@@ -658,7 +656,7 @@ const books = [
         price: 359
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Ложь без срока годности',
         imgUrl: 'https://cv2.litres.ru/pub/c/elektronnaya-kniga/cover_415/51836224-uliya-efimova-17531856-lozh-bez-sroka-godnosti.webp',
         genre: 'f5adac689084',
@@ -674,7 +672,7 @@ const books = [
         price: 249
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Исчезнувшая',
         imgUrl: 'https://cv0.litres.ru/pub/c/elektronnaya-kniga/cover_415/6028900-gillian-flinn-ischeznuvshaya.webp',
         genre: 'f5adac689084',
@@ -692,7 +690,7 @@ const books = [
         price: 329
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Дорога в Китеж',
         imgUrl: 'https://cv9.litres.ru/pub/c/elektronnaya-kniga/cover_415/65484696-boris-akunin-doroga-v-kitezh.webp',
         genre: 'f5adac689084',
@@ -710,7 +708,7 @@ const books = [
         price: 439
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Стамбул. Подслушанное убийство',
         imgUrl: 'https://cv6.litres.ru/pub/c/elektronnaya-kniga/cover_415/67025660-anna-orehova-stambul-podslushannoe-ubiistvo.webp',
         genre: 'f5adac689084',
@@ -732,7 +730,7 @@ const books = [
         price: 249
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Путешествие на «Кон-Тики»',
         imgUrl: 'https://cv6.litres.ru/pub/c/elektronnaya-kniga/cover_415/63078367-tur-heyerdal-puteshestvie-na-kon-tiki-63078367.webp',
         genre: 'd39bd7d1b49a',
@@ -748,7 +746,7 @@ const books = [
         price: 269
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Шантарам',
         imgUrl: 'https://cv1.litres.ru/pub/c/elektronnaya-kniga/cover_415/5815016-gregori-devid-roberts-shantaram.webp',
         genre: 'd39bd7d1b49a',
@@ -764,7 +762,7 @@ const books = [
         price: 419
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Террор',
         imgUrl: 'https://cv6.litres.ru/pub/c/elektronnaya-kniga/cover_415/167867-den-simmons-terror.webp',
         genre: 'd39bd7d1b49a',
@@ -780,7 +778,7 @@ const books = [
         price: 419
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Сёгун',
         imgUrl: 'https://cv7.litres.ru/pub/c/elektronnaya-kniga/cover_415/128175-dzheyms-klavell-segun.webp',
         genre: 'd39bd7d1b49a',
@@ -796,7 +794,7 @@ const books = [
         price: 419
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Жизнь после смерти: как это было',
         imgUrl: 'https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_415/65104586-lera-nekrasova-zhizn-posle-smerti-kak-eto-bylo.webp',
         genre: 'd39bd7d1b49a',
@@ -826,7 +824,7 @@ const books = [
         price: 399
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Тайпан',
         imgUrl: 'https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_415/121383-dzheyms-klavell-taypan.webp',
         genre: 'd39bd7d1b49a',
@@ -844,7 +842,7 @@ const books = [
         price: 389
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Песнь Ахилла',
         imgUrl: 'https://cv7.litres.ru/pub/c/elektronnaya-kniga/cover_415/48408172-madlen-miller-pesn-ahilla.webp',
         genre: 'd39bd7d1b49a',
@@ -862,7 +860,7 @@ const books = [
         price: 379
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Город Ниен',
         imgUrl: 'https://cv1.litres.ru/pub/c/elektronnaya-kniga/cover_415/67676415-ingvi-akison-gorod-nien.webp',
         genre: 'd39bd7d1b49a',
@@ -878,7 +876,7 @@ const books = [
         price: 149
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Дорога в Рим',
         imgUrl: 'https://cv3.litres.ru/pub/c/elektronnaya-kniga/cover_415/67862538-ben-keyn-doroga-v-rim.webp',
         genre: 'd39bd7d1b49a',
@@ -898,7 +896,7 @@ const books = [
         price: 389
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Послание из прошлого',
         imgUrl: 'https://cv6.litres.ru/pub/c/elektronnaya-kniga/cover_415/66685364-sergey-milushkin-poslanie-iz-proshlogo.webp',
         genre: 'd39bd7d1b49a',
@@ -914,7 +912,7 @@ const books = [
         price: 149
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Двойняшки по ошибке',
         imgUrl: 'https://cv5.litres.ru/pub/c/elektronnaya-kniga/cover_415/67821552-veronika-lesnevskaya-dvoynyashki-po-oshibke.webp',
         genre: '6063521203ed',
@@ -950,7 +948,7 @@ const books = [
         price: 176
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Пари, миледи?',
         imgUrl: 'https://cv1.litres.ru/pub/c/elektronnaya-kniga/cover_415/67893311-deliya-rossi-21753416-pari-miledi.webp',
         genre: '6063521203ed',
@@ -966,7 +964,7 @@ const books = [
         price: 164
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Халим. В плену у шейха',
         imgUrl: 'https://cv5.litres.ru/pub/c/elektronnaya-kniga/cover_415/67184153-anastasiya-sherr-17008642-halim-v-plenu-u-sheyha.webp',
         genre: '6063521203ed',
@@ -992,7 +990,7 @@ const books = [
         price: 249
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Дом на краю ночи',
         imgUrl: 'https://cv4.litres.ru/pub/c/elektronnaya-kniga/cover_415/24615144-ketrin-benner-dom-na-krau-nochi.webp',
         genre: '6063521203ed',
@@ -1008,7 +1006,7 @@ const books = [
         price: 350
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Все, что мы когда-то любили',
         imgUrl: 'https://cv2.litres.ru/pub/c/elektronnaya-kniga/cover_415/67469025-mariya-metlickaya-vse-chto-my-kogda-to-lubili.webp',
         genre: '6063521203ed',
@@ -1026,7 +1024,7 @@ const books = [
         price: 289
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Первая леди для Президента',
         imgUrl: 'https://cv5.litres.ru/pub/c/elektronnaya-kniga/cover_415/67808457-sobolevaulyana-pervaya-ledi-dlya-prezidenta.webp',
         genre: '6063521203ed',
@@ -1042,7 +1040,7 @@ const books = [
         price: 299
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Полтора года жизни',
         imgUrl: 'https://cv2.litres.ru/pub/c/elektronnaya-kniga/cover_415/67259723-anne-dar-poltora-goda-zhizni-67259723.webp',
         genre: '6063521203ed',
@@ -1058,7 +1056,7 @@ const books = [
         price: 399
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Ненастоящая семья',
         imgUrl: 'https://cv9.litres.ru/pub/c/elektronnaya-kniga/cover_415/67939790-mariya-manich-32098181-nenastoyaschaya-semya.webp',
         genre: '6063521203ed',
@@ -1074,7 +1072,7 @@ const books = [
         price: 176
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Одиночество в Сети',
         imgUrl: 'https://cv0.litres.ru/pub/c/elektronnaya-kniga/cover_415/133009-yanush-vishnevskiy-odinochestvo-v-seti.webp',
         genre: '6063521203ed',
@@ -1092,7 +1090,7 @@ const books = [
         price: 299
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'После тебя',
         imgUrl: 'https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_415/12239686-dzhodzho-moyes-posle-tebya.webp',
         genre: '6063521203ed',
@@ -1112,7 +1110,7 @@ const books = [
         price: 279
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Леди из Фроингема',
         imgUrl: 'https://cv2.litres.ru/pub/c/elektronnaya-kniga/cover_415/66846728-sharlotta-brandish-ledi-iz-froingema.webp',
         genre: '5c2a658cf9ec',
@@ -1132,7 +1130,7 @@ const books = [
         price: 249
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Шерлок Холмс',
         imgUrl: 'https://cv7.litres.ru/pub/c/elektronnaya-kniga/cover_415/23571677-arthur-konan-doyle-ves-sherlok-holms.webp',
         genre: '5c2a658cf9ec',
@@ -1150,7 +1148,7 @@ const books = [
         price: 639
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Хоббит',
         imgUrl: 'https://cv1.litres.ru/pub/c/elektronnaya-kniga/cover_415/150515-dzhon-tolkin-hobbit-150515.webp',
         genre: '5c2a658cf9ec',
@@ -1168,7 +1166,7 @@ const books = [
         price: 359
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Дом кривых стен',
         imgUrl: 'https://cv9.litres.ru/pub/c/elektronnaya-kniga/cover_415/43656195-sodzi-simada-dom-krivyh-sten.webp',
         genre: 'f5adac689084',
@@ -1188,7 +1186,7 @@ const books = [
         price: 319
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Сильмариллион',
         imgUrl: 'https://cv4.litres.ru/pub/c/elektronnaya-kniga/cover_415/10743047-dzhon-tolkin-silmarillion.webp',
         genre: '5c2a658cf9ec',
@@ -1212,7 +1210,7 @@ const books = [
         price: 439
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Дети капитана Гранта',
         imgUrl: 'https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_415/7003280-zhul-vern-deti-kapitana-granta-7003280.webp',
         genre: '5c2a658cf9ec',
@@ -1228,7 +1226,7 @@ const books = [
         price: 261
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Дикая собака динго, или Повесть о первой любви',
         imgUrl: 'https://cv4.litres.ru/pub/c/elektronnaya-kniga/cover_415/11008548-ruvim-isaevich-fraerman-dikaya-sobaka-dingo-11008548.webp',
         genre: '5c2a658cf9ec',
@@ -1244,7 +1242,7 @@ const books = [
         price: 160
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Война миров',
         imgUrl: 'https://cv0.litres.ru/pub/c/elektronnaya-kniga/cover_415/126706-gerbert-uells-voyna-mirov.webp',
         genre: '5c2a658cf9ec',
@@ -1260,7 +1258,7 @@ const books = [
         price: 159
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Скотный двор',
         imgUrl: 'https://cv0.litres.ru/pub/c/elektronnaya-kniga/cover_415/8685806-dzhordzh-oruell-skotnyy-dvor.webp',
         genre: '5c2a658cf9ec',
@@ -1276,7 +1274,7 @@ const books = [
         price: 299
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Убийство на улице Морг',
         imgUrl: 'https://cv5.litres.ru/pub/c/elektronnaya-kniga/cover_415/132751-edgar-po-ubiystvo-na-ulice-morg.webp',
         genre: '5c2a658cf9ec',
@@ -1294,7 +1292,7 @@ const books = [
         price: 59
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Семь смертей Эвелины Хардкасл',
         imgUrl: 'https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_415/39482186-stuart-terton-sem-smertey-eveliny-hardkasl.webp',
         genre: '8cbd0613168f',
@@ -1310,7 +1308,7 @@ const books = [
         price: 329
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Солнце полуночи',
         imgUrl: 'https://cv5.litres.ru/pub/c/elektronnaya-kniga/cover_415/65857650-stefani-mayer-solnce-polunochi.webp',
         genre: '8cbd0613168f',
@@ -1340,7 +1338,7 @@ const books = [
         price: 439
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Мощи святого Леопольда',
         imgUrl: 'https://cv2.litres.ru/pub/c/elektronnaya-kniga/cover_415/40148524-boris-konofalskiy-inkvizitor-moschi-svyatogo-leopolda.webp',
         genre: '8cbd0613168f',
@@ -1356,7 +1354,7 @@ const books = [
         price: 169
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Ведьмина Кюля',
         imgUrl: 'https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_415/66344484-mariya-kartasheva-vedmina-kulya.webp',
         genre: '8cbd0613168f',
@@ -1376,7 +1374,7 @@ const books = [
         price: 249
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Пока течет река',
         imgUrl: 'https://cv0.litres.ru/pub/c/elektronnaya-kniga/cover_415/42555508-diana-setterfild-poka-techet-reka.webp',
         genre: '8cbd0613168f',
@@ -1392,7 +1390,7 @@ const books = [
         price: 329
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Ночной садовник',
         imgUrl: 'https://cv6.litres.ru/pub/c/elektronnaya-kniga/cover_415/42605666-dzhonatan-okse-nochnoy-sadovnik.webp',
         genre: '8cbd0613168f',
@@ -1414,7 +1412,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Лабиринт Медузы',
         imgUrl: 'https://cv0.litres.ru/pub/c/elektronnaya-kniga/cover_415/38837709-tatyana-korsakova-labirint-meduzy.webp',
         genre: '8cbd0613168f',
@@ -1430,7 +1428,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Болотница',
         imgUrl: 'https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_415/37661489-tatyana-mastrukova-bolotnica-37661489.webp',
         genre: '8cbd0613168f',
@@ -1446,7 +1444,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Тайник',
         imgUrl: 'https://cv9.litres.ru/pub/c/elektronnaya-kniga/cover_415/57400492-mariya-kartasheva-taynik-57400492.webp',
         genre: '8cbd0613168f',
@@ -1464,7 +1462,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Детишки в доме на холме',
         imgUrl: 'https://cv2.litres.ru/pub/c/elektronnaya-kniga/cover_415/67751025-dzhennifer-makmahon-detishki-v-dome-na-holme.webp',
         genre: '8cbd0613168f',
@@ -1500,7 +1498,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Лето в маленькой пекарне',
         imgUrl: 'https://cv6.litres.ru/pub/c/elektronnaya-kniga/cover_415/67899966-dzhenni-kolgan-leto-v-malenkoy-pekarne.webp',
         genre: 'b8bd4a074046',
@@ -1516,7 +1514,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Квартира на двоих',
         imgUrl: 'https://cv1.litres.ru/pub/c/elektronnaya-kniga/cover_415/51593714-bet-o-liri-kvartira-na-dvoih.webp',
         genre: 'b8bd4a074046',
@@ -1546,7 +1544,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Манюня',
         imgUrl: 'https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_415/632685-narine-abgaryan-manunya.webp',
         genre: 'b8bd4a074046',
@@ -1562,7 +1560,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Шоколад',
         imgUrl: 'https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_415/121580-dzhoann-harris-shokolad.webp',
         genre: 'b8bd4a074046',
@@ -1578,7 +1576,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Мандариновый лес',
         imgUrl: 'https://cv9.litres.ru/pub/c/elektronnaya-kniga/cover_415/65923997-mariya-metlickaya-mandarinovyy-les.webp',
         genre: 'b8bd4a074046',
@@ -1598,7 +1596,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Книжный магазинчик счастья',
         imgUrl: 'https://cv1.litres.ru/pub/c/elektronnaya-kniga/cover_415/50287016-dzhenni-kolgan-knizhnyy-magazinchik-schastya.webp',
         genre: 'b8bd4a074046',
@@ -1614,7 +1612,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: '28 лет, каждое лето',
         imgUrl: 'https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_415/65902281--.webp',
         genre: 'b8bd4a074046',
@@ -1632,7 +1630,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Посмотри на меня',
         imgUrl: 'https://cv5.litres.ru/pub/c/elektronnaya-kniga/cover_415/66642252-masha-traub-posmotri-na-menya.webp',
         genre: 'b8bd4a074046',
@@ -1650,7 +1648,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Колдовской апрель',
         imgUrl: 'https://cv3.litres.ru/pub/c/elektronnaya-kniga/cover_415/66909730-elizabet-fon-arnim-koldovskoy-aprel.webp',
         genre: 'b8bd4a074046',
@@ -1668,7 +1666,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: '180 секунд',
         imgUrl: 'https://cv2.litres.ru/pub/c/elektronnaya-kniga/cover_415/43015320--.webp',
         genre: 'b8bd4a074046',
@@ -1692,7 +1690,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Режиссёр сказал: одевайся теплее, тут холодно',
         imgUrl: 'https://cv4.litres.ru/pub/c/elektronnaya-kniga/cover_415/42604940-alesya-kazanceva-rezhisser-skazal-odevaysya-teplee-tut-holodno.webp',
         genre: '85d74174e596',
@@ -1710,7 +1708,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Тяготы домохозяйства',
         imgUrl: 'https://cv2.litres.ru/pub/c/elektronnaya-kniga/cover_415/67823327-aleksandr-rayn-tyagoty-domohozyaystva.webp',
         genre: '85d74174e596',
@@ -1726,7 +1724,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Один день мисс Петтигрю',
         imgUrl: 'https://cv0.litres.ru/pub/c/elektronnaya-kniga/cover_415/36972703-uinifred-uotson-odin-den-miss-pettigru.webp',
         genre: '85d74174e596',
@@ -1742,7 +1740,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Маленькая опера',
         imgUrl: 'https://cv2.litres.ru/pub/c/elektronnaya-kniga/cover_415/64489426-slava-se-malenkaya-opera.webp',
         genre: '85d74174e596',
@@ -1762,7 +1760,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Дневник Домового',
         imgUrl: 'https://cv6.litres.ru/pub/c/elektronnaya-kniga/cover_415/11965062-evgeniy-cheshirko-dnevnik-domovogo-s-prodolzheniyami.webp',
         genre: '85d74174e596',
@@ -1778,7 +1776,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Новые записки Хендрика Груна из амстердамской богадельни',
         imgUrl: 'https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_415/54081282-hendrik-grun-1761193-novye-zapiski-hendrika-gruna-iz-amsterdamskoy-bogadel.webp',
         genre: '85d74174e596',
@@ -1798,7 +1796,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Дом до свиданий и новые беспринцЫпные истории',
         imgUrl: 'https://cv7.litres.ru/pub/c/elektronnaya-kniga/cover_415/18116078-aleksandr-cypkin-5721275-dom-do-svidaniy-i-novye-besprincypnye-istorii.webp',
         genre: '85d74174e596',
@@ -1816,7 +1814,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Большое собрание юмористических рассказов',
         imgUrl: 'https://cv9.litres.ru/pub/c/elektronnaya-kniga/cover_415/65519692-anton-chehov-bolshoe-sobranie-umoristicheskih-rasskazov.webp',
         genre: '85d74174e596',
@@ -1832,7 +1830,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Премия Дарвина',
         imgUrl: 'https://cv6.litres.ru/pub/c/elektronnaya-kniga/cover_415/66881068-natalya-milyavskaya-premiya-darvina.webp',
         genre: '85d74174e596',
@@ -1848,7 +1846,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Академия родная',
         imgUrl: 'https://cv8.litres.ru/pub/c/elektronnaya-kniga/cover_415/158883-andrey-lomachinskiy-akademiya-rodnaya.webp',
         genre: '85d74174e596',
@@ -1864,7 +1862,7 @@ const books = [
         price: 100
     },
     {
-        id: nanoid(),
+        id: "#",
         name: 'Полные записки кота Шашлыка',
         imgUrl: 'https://cv4.litres.ru/pub/c/elektronnaya-kniga/cover_415/122241-aleks-eksler-polnye-zapiski-kota-shashlyka.webp',
         genre: '85d74174e596',
