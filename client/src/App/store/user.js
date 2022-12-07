@@ -126,7 +126,7 @@ export const signIn = (payload) => async (dispatch) => {
     const {email, password} = payload
     try {
         const data = await authService.login({email, password})
-        dispatch(authRequestSucceeded({userId: data.localId}))
+        dispatch(authRequestSucceeded({userId: data.userId}))
         localStorageService.setTokens(data)
 
         const userId = localStorageService.getUserId()

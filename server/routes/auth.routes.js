@@ -21,6 +21,7 @@ router.post('/signUp', [
                 })
             }
 
+            req.body.email = req.body.email.toLowerCase()
             const {email, password} = req.body
 
             const existingUser = await User.findOne({email})
@@ -35,7 +36,6 @@ router.post('/signUp', [
             }
 
             const hashedPassword = await bcrypt.hash(password, 12)
-
 
             const newUser = await User.create({
                 ...generateUserData(),
@@ -69,11 +69,13 @@ router.post('/signInWithPassword', [
                 res.status(400).json({
                     error: {
                         message: 'INVALID_DATA',
-                        code: 400
+                        code: 400,
+                        errors: errors.array()
                     }
                 })
             }
 
+            req.body.email = req.body.email.toLowerCase()
             const {email, password} = req.body
 
             const existingUser = await User.findOne({email})
