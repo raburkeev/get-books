@@ -90,14 +90,13 @@ const userSlice = createSlice({
 })
 
 const authRequested = createAction('user/authRequested')
-const userCreateRequested = createAction('user/userCreateRequested')
 const addItemRequested = createAction('user/addItemRequested')
 const clearCartRequested = createAction('user/clearCartRequested')
 const userAddPurchasedBooksRequested = createAction('user/userAddPurchasedBooksRequested')
 const userAddRatedBookRequested = createAction('user/userAddRatedBookRequested')
 
 const {reducer: userReducer, actions} = userSlice
-const {authRequestSucceeded, authRequestFailed, userCreated, userCreateFailed, userRequested, userRequestSucceeded, userRequestFailed, userLoggedOut, userAddItemFailed, cartItemsAdded, userCartCleared, userCartClearRequestFailed, userAddPurchasedBooksSucceeded, userAddPurchasedBooksFailed, userBooksRated, userAddRatedBookFailed} = actions
+const {authRequestSucceeded, authRequestFailed, userRequested, userRequestSucceeded, userRequestFailed, userLoggedOut, userAddItemFailed, cartItemsAdded, userCartCleared, userCartClearRequestFailed, userAddPurchasedBooksSucceeded, userAddPurchasedBooksFailed, userBooksRated, userAddRatedBookFailed} = actions
 
 export const loadUser = () => async (dispatch) => {
     dispatch(userRequested())
@@ -110,18 +109,13 @@ export const loadUser = () => async (dispatch) => {
     }
 }
 
-export const signUp = ({email, password, ...rest}) => async (dispatch) => {
+export const signUp = (payload) => async (dispatch) => {
     dispatch(authRequested())
     try {
-        const data = await authService.register({email, password})
+        const data = await authService.register(payload)
         localStorageService.setTokens(data)
-        dispatch(authRequestSucceeded({userId: data.localId}))
-        dispatch(createUser({
-            id: data.localId,
-            email,
-            img: `https://avatars.dicebear.com/api/avataaars/${(Math.random() + 1).toString(36).substring(7)}.svg`,
-            ...rest
-        }))
+        dispatch(authRequestSucceeded({userId: data.userId}))
+        history.push('/all_books')
     } catch (error) {
         dispatch(authRequestFailed(error.message))
     }
@@ -207,19 +201,6 @@ export const userAddRatedBook = (payload) => async (dispatch, getState) => {
         dispatch(userBooksRated(ratedBookId))
     } catch (error) {
         dispatch(userAddRatedBookFailed(error.message))
-    }
-}
-
-function createUser(payload) {
-    return async (dispatch) => {
-        dispatch(userCreateRequested())
-        try {
-            const {content} = await userService.create(payload)
-            dispatch(userCreated(content))
-            history.push('/all_books')
-        } catch (error) {
-            dispatch(userCreateFailed(error.message))
-        }
     }
 }
 

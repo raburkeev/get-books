@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 const {check, validationResult} = require('express-validator')
 const User = require('../models/User')
 const tokenService = require('../services/tokenService')
+const {generateUserData} = require('../utils/generateUserData')
 const router = express.Router({mergeParams: true})
 
 router.post('/signUp', [
@@ -16,7 +17,6 @@ router.post('/signUp', [
                     error: {
                         message: 'INVALID_DATA',
                         code: 400,
-                        // errors: errors.array()
                     }
                 })
             }
@@ -36,7 +36,9 @@ router.post('/signUp', [
 
             const hashedPassword = await bcrypt.hash(password, 12)
 
+
             const newUser = await User.create({
+                ...generateUserData(),
                 ...req.body,
                 password: hashedPassword
             })
