@@ -19,7 +19,7 @@ const CartPage = () => {
     const handleClick = () => {
         dispatch(addPurchasedBooks({
             userId,
-            items: userCart.filter(el => el !== 'init'),
+            items: userCart,
             purchasedItems: purchasedBooks
         }))
     }

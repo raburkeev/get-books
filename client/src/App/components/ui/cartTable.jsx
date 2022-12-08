@@ -21,7 +21,7 @@ const CartTable = ({books}) => {
             path: 'name',
             name: 'Название',
             component: (book) => (
-                <Link to={`/all_books/${book.id}`}>{book.name}</Link>
+                <Link to={`/all_books/${book._id}`}>{book.name}</Link>
             )
         },
         author: {

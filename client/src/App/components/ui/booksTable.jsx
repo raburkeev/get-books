@@ -5,7 +5,7 @@ import Table from '../common/table/table'
 const BooksTable = ({books, onDelete, onEdit}) => {
     const columns = {
         id: {
-            path: 'id',
+            path: '_id',
             name: 'ID'
         },
         name: {
@@ -15,7 +15,7 @@ const BooksTable = ({books, onDelete, onEdit}) => {
         edit: {
             component: (book) => (
                 <button
-                    onClick={() => onEdit(book.id)}
+                    onClick={() => onEdit(book._id)}
                     className="btn btn-primary"
                 >
                     edit
@@ -25,7 +25,7 @@ const BooksTable = ({books, onDelete, onEdit}) => {
         delete: {
             component: (book) => (
                 <button
-                    onClick={() => onDelete(book.id)}
+                    onClick={() => onDelete(book._id)}
                     className="btn btn-danger"
                 >
                     delete

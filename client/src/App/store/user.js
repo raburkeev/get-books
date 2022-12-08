@@ -149,8 +149,7 @@ export const addItemToCart = (payload) => async (dispatch, getState) => {
     dispatch(addItemRequested())
     try {
         const {content} = await userService.addItem({userId: payload.userId, items: [...getState().user.entity.cart, ...payload.items]})
-        const newUserCart = content.map(el => Object.keys(el).map(index => el[index]).join(''))
-        dispatch(cartItemsAdded(newUserCart))
+        dispatch(cartItemsAdded(content))
     } catch (error) {
         dispatch(userAddItemFailed(error.message))
     }
@@ -160,8 +159,8 @@ export const clearUserCart = (payload) => async (dispatch) => {
     dispatch(clearCartRequested())
     try {
         const {content} = await userService.clearCart(payload)
-        const initialUserCart = content.map(el => Object.keys(el).map(index => el[index]).join(''))
-        dispatch(userCartCleared(initialUserCart))
+        // const initialUserCart = content.map(el => Object.keys(el).map(index => el[index]).join(''))
+        dispatch(userCartCleared(content))
         toast.success('Спасибо за покупку! Купленные книги Вы можете найти у себя в профиле.', {
             position: 'bottom-center',
             autoClose: 4000,
@@ -181,8 +180,8 @@ export const addPurchasedBooks = (payload) => async (dispatch) => {
     dispatch(userAddPurchasedBooksRequested())
     try {
         const {content} = await userService.addPurchasedBooks(payload)
-        const purchasedBooks = content.map(el => Object.keys(el).map(index => el[index]).join(''))
-        dispatch(userAddPurchasedBooksSucceeded(purchasedBooks))
+        // const purchasedBooks = content.map(el => Object.keys(el).map(index => el[index]).join(''))
+        dispatch(userAddPurchasedBooksSucceeded(content))
         dispatch(clearUserCart({userId: payload.userId}))
     } catch (error) {
         dispatch(userAddPurchasedBooksFailed(error.message))
@@ -197,8 +196,8 @@ export const userAddRatedBook = (payload) => async (dispatch, getState) => {
     }
     try {
         const {content} = await userService.addRatedBook({userId: payload.userId, items: [...updatedUser.ratedBooks, payload.bookId]})
-        const ratedBookId = content.map(el => Object.keys(el).map(index => el[index]).join(''))
-        dispatch(userBooksRated(ratedBookId))
+        // const ratedBookId = content.map(el => Object.keys(el).map(index => el[index]).join(''))
+        dispatch(userBooksRated(content))
     } catch (error) {
         dispatch(userAddRatedBookFailed(error.message))
     }

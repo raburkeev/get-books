@@ -90,7 +90,7 @@ export const deleteBook = (payload) => async (dispatch) => {
     dispatch(bookDeleteRequested())
     try {
         const {content} = await bookService.deleteBook(payload)
-        if (content === null) {
+        if (!content) {
             dispatch(bookDeleteSucceeded(payload.bookId))
         }
     } catch (error) {
@@ -132,13 +132,14 @@ export const createBook = (payload) => async (dispatch) => {
 
 export const updateBookRate = (payload) => async (dispatch, getState) => {
     dispatch(bookRateUpdateRequested())
-    const bookRating = [...getState().books.entities.find(el => el._id === payload.bookId).ratings]
-    bookRating[payload.rate]++
+    const state = JSON.parse(JSON.stringify(getState()))
+    const {ratings} = state.books.entities.find(el => el._id === payload.bookId)
+    ratings[payload.rate]++
     try {
-        const {content} = await bookService.updateRating({id: payload.bookId, bookRating})
-        if (JSON.stringify(content) === '[{},{},{},{},{}]') {
-            dispatch(bookRateUpdateSucceeded({bookId: payload.bookId, rate: payload.rate}))
-        }
+        await bookService.updateRating({bookId: payload.bookId, ratings})
+        // if (JSON.stringify(content) === '[{},{},{},{},{}]') {
+        dispatch(bookRateUpdateSucceeded({bookId: payload.bookId, rate: payload.rate}))
+        // }
         dispatch(userAddRatedBook({bookId: payload.bookId, userId: payload.userId}))
         toast.success('Спасибо за Вашу оценку!', {
             position: 'bottom-center',

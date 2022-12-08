@@ -10,7 +10,7 @@ const EditBooksList = () => {
     const history = useHistory()
     const [search, setSearch] = useState('')
     const books = useSelector(getBooksList())
-    const filteredBooks = books.filter(book => book.name.toLowerCase().includes(search.toLowerCase()) || book.id.toLowerCase().includes(search.toLowerCase()))
+    const filteredBooks = books.filter(book => book.name.toLowerCase().includes(search.toLowerCase()) || book._id.toLowerCase().includes(search.toLowerCase()))
     const isLoading = useSelector(getBooksLoadingStatus())
     const handleSearchChange = (event) => {
         setSearch(event.target.value)
@@ -23,7 +23,7 @@ const EditBooksList = () => {
     const handleEdit = (bookId) => {
         history.push(`/all_books/${bookId}/edit`)
     }
-
+    // todo: Сделать плашку на случай если список пуст (например после удаления книги)
     return !isLoading
         ? (
             <>

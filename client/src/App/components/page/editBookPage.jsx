@@ -20,7 +20,7 @@ const EditBookPage = () => {
     const isBooksLoading = useSelector(getBooksLoadingStatus())
     const isGenresLoading = useSelector(getGenresLoadingStatus())
 
-    const genresArray = !isGenresLoading ? genres.map(genre => ({label: genre.name, value: genre.id})) : []
+    const genresArray = !isGenresLoading ? genres.map(genre => ({label: genre.name, value: genre._id})) : []
     const [errors, setErrors] = useState({})
     const [data, setData] = useState({
         name: '',
