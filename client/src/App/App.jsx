@@ -11,6 +11,7 @@ import CartPage from './components/page/cartPage'
 import ProtectedRoute from './components/common/potectedRoute'
 import Reader from './components/ui/reader'
 import AdminPanel from './layouts/adminPanel'
+import EditBookPage from './components/page/editBookPage'
 
 const App = () => {
     return (
@@ -18,12 +19,13 @@ const App = () => {
             <AppLoader>
                 <NavBar/>
                 <Switch>
-                    <ProtectedRoute path="/admin/:type?" component={AdminPanel}/>
+                    <ProtectedRoute path="/admin/:type?" exact component={AdminPanel}/>
+                    <ProtectedRoute path="/admin/editBooksList/:bookId?" component={EditBookPage}/>
                     <Route path="/login" component={Login}/>
                     <ProtectedRoute path="/logout" component={Logout}/>
                     <ProtectedRoute path="/cart" isAdmin component={CartPage}/>
                     <ProtectedRoute path="/user/:userId" component={UserPage}/>
-                    <Route path="/all_books/:bookId?/:edit?" component={Books}/>
+                    <Route path="/all_books/:bookId?" component={Books}/>
                     <Route path="/reader/:bookId" component={Reader}/>
                     <Redirect to="/all_books"/>
                 </Switch>

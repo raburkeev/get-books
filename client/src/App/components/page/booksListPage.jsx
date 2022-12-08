@@ -23,6 +23,7 @@ const BooksListPage = () => {
 
     const handlePageChange = (pageIndex) => {
         setCurrentPage(pageIndex)
+        window.scrollTo(0, 0)
     }
 
     const handleSearchChange = (event) => {

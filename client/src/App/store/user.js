@@ -62,6 +62,12 @@ const userSlice = createSlice({
         cartItemsAdded: (state, action) => {
             state.entity.cart = action.payload
         },
+        cartItemRemoved: (state, action) => {
+            state.entity.cart = action.payload
+        },
+        cartItemRemoveFailed: (state, action) => {
+            state.error = action.payload
+        },
         userCartCleared: (state, action) => {
             state.entity.cart = action.payload
         },
@@ -94,9 +100,27 @@ const addItemRequested = createAction('user/addItemRequested')
 const clearCartRequested = createAction('user/clearCartRequested')
 const userAddPurchasedBooksRequested = createAction('user/userAddPurchasedBooksRequested')
 const userAddRatedBookRequested = createAction('user/userAddRatedBookRequested')
+const removeItemFromCartRequested = createAction('user/removeItemFromCartRequested')
 
 const {reducer: userReducer, actions} = userSlice
-const {authRequestSucceeded, authRequestFailed, userRequested, userRequestSucceeded, userRequestFailed, userLoggedOut, userAddItemFailed, cartItemsAdded, userCartCleared, userCartClearRequestFailed, userAddPurchasedBooksSucceeded, userAddPurchasedBooksFailed, userBooksRated, userAddRatedBookFailed} = actions
+const {
+    authRequestSucceeded,
+    authRequestFailed,
+    userRequested,
+    userRequestSucceeded,
+    userRequestFailed,
+    userLoggedOut,
+    userAddItemFailed,
+    cartItemsAdded,
+    cartItemRemoved,
+    cartItemRemoveFailed,
+    userCartCleared,
+    userCartClearRequestFailed,
+    userAddPurchasedBooksSucceeded,
+    userAddPurchasedBooksFailed,
+    userBooksRated,
+    userAddRatedBookFailed
+} = actions
 
 export const loadUser = () => async (dispatch) => {
     dispatch(userRequested())
@@ -155,11 +179,21 @@ export const addItemToCart = (payload) => async (dispatch, getState) => {
     }
 }
 
+export const remoteItemFromCart = (payload) => async (dispatch) => {
+    dispatch(removeItemFromCartRequested())
+    try {
+        const {content} = await userService.removeItem(payload)
+        console.log(content)
+        dispatch(cartItemRemoved(content))
+    } catch (error) {
+        dispatch(cartItemRemoveFailed(error.message))
+    }
+}
+
 export const clearUserCart = (payload) => async (dispatch) => {
     dispatch(clearCartRequested())
     try {
         const {content} = await userService.clearCart(payload)
-        // const initialUserCart = content.map(el => Object.keys(el).map(index => el[index]).join(''))
         dispatch(userCartCleared(content))
         toast.success('Спасибо за покупку! Купленные книги Вы можете найти у себя в профиле.', {
             position: 'bottom-center',
@@ -180,7 +214,6 @@ export const addPurchasedBooks = (payload) => async (dispatch) => {
     dispatch(userAddPurchasedBooksRequested())
     try {
         const {content} = await userService.addPurchasedBooks(payload)
-        // const purchasedBooks = content.map(el => Object.keys(el).map(index => el[index]).join(''))
         dispatch(userAddPurchasedBooksSucceeded(content))
         dispatch(clearUserCart({userId: payload.userId}))
     } catch (error) {
@@ -196,7 +229,6 @@ export const userAddRatedBook = (payload) => async (dispatch, getState) => {
     }
     try {
         const {content} = await userService.addRatedBook({userId: payload.userId, items: [...updatedUser.ratedBooks, payload.bookId]})
-        // const ratedBookId = content.map(el => Object.keys(el).map(index => el[index]).join(''))
         dispatch(userBooksRated(content))
     } catch (error) {
         dispatch(userAddRatedBookFailed(error.message))
@@ -214,7 +246,7 @@ export const getUserLoadingStatus = () => (state) => state.user.isLoading
 export const getUserError = () => (state) => state.user.error
 export const getUserId = () => (state) => state.user.auth ? state.user.auth.userId : null
 export const getIsLoggedIn = () => (state) => state.user.isLoggedIn
-export const getUserCart = () => (state) => state.user.entity ? state.user.entity.cart : ['init']
+export const getUserCart = () => (state) => state.user.entity ? state.user.entity.cart : []
 export const getUserPurchasedBooks = () => (state) => state.user?.entity?.purchasedBooks ? state.user.entity.purchasedBooks : []
 export const getIsAdmin = () => (state) => state.user.entity ? state.user.entity.isAdmin : null
 export const getRatedBooks = () => (state) => state.user?.entity?.ratedBooks ? state.user.entity.ratedBooks : []

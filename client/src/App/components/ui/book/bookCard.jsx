@@ -19,13 +19,13 @@ const BookCard = ({book, isCatalogCard}) => {
             <div className="card-body">
                 <div className="d-flex flex-column align-items-center text-center">
                     <img src={book.imgUrl} className="book_img" width="250" alt="pic"/>
-                    <div className="mt-3">
+                    <div className="mt-3 w-100">
                         <span className="d-inline-block text-truncate">
                             {book.name}
                         </span>
                         <p className="text-secondary mb-1 text-truncate">{book.author}</p>
                         <p className="text-secondary text-truncate">{`(${book.year}г.)`}</p>
-                        {isCatalogCard && <div className="d-flex justify-content-between">
+                        {isCatalogCard && <div className="d-flex justify-content-between align-items-center">
                             <div className="fs-5">
                                 <i className="bi bi-star"/>
                                 {' '}

@@ -19,6 +19,10 @@ const userService = {
         const {data} = await httpService.patch(`${userEndpoint}${payload.userId}/cart`, [])
         return data
     },
+    removeItem: async (payload) => {
+        const {data} = await httpService.patch(`${userEndpoint}${payload.userId}/cart`, payload.items)
+        return data
+    },
     addPurchasedBooks: async (payload) => {
         const {data} = await httpService.patch(`${userEndpoint}${payload.userId}/purchasedBooks`, [...payload.purchasedItems, ...payload.items])
         return data

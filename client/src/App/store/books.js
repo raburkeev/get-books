@@ -137,9 +137,7 @@ export const updateBookRate = (payload) => async (dispatch, getState) => {
     ratings[payload.rate]++
     try {
         await bookService.updateRating({bookId: payload.bookId, ratings})
-        // if (JSON.stringify(content) === '[{},{},{},{},{}]') {
         dispatch(bookRateUpdateSucceeded({bookId: payload.bookId, rate: payload.rate}))
-        // }
         dispatch(userAddRatedBook({bookId: payload.bookId, userId: payload.userId}))
         toast.success('Спасибо за Вашу оценку!', {
             position: 'bottom-center',

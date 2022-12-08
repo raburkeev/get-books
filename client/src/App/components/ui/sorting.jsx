@@ -26,6 +26,7 @@ const Sorting = ({onSort, selectedSort}) => {
                     <li
                         className="list-group-item"
                         key={i}
+                        type="button"
                         onClick={() => onSort(item.name)}
                     >
                         {item.label}

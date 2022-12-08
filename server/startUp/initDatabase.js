@@ -25,6 +25,7 @@ async function createInitialEntityGenres(Model, data) {
                 await newItem.save()
                 return newItem
             } catch (error) {
+                console.log(error.message)
                 return error
             }
         })
@@ -44,6 +45,7 @@ async function createInitialEntityBooks(Model, data) {
                 await newItem.save()
                 return newItem
             } catch (error) {
+                console.log(error.message)
                 return error
             }
         })
