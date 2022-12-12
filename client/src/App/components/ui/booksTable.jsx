@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Table from '../common/table/table'
+import {Link} from 'react-router-dom'
 
 const BooksTable = ({books, onDelete, onEdit}) => {
     const columns = {
@@ -10,7 +11,12 @@ const BooksTable = ({books, onDelete, onEdit}) => {
         },
         name: {
             path: 'name',
-            name: 'Название'
+            name: 'Название',
+            component: (book) => (
+                <Link to={`/all_books/${book._id}`}>
+                    {book.name}
+                </Link>
+            )
         },
         edit: {
             component: (book) => (
