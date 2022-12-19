@@ -16,7 +16,8 @@ const NavBar = () => {
             {path: '/all_books', label: 'Каталог книг'}
         ]
         : [
-            {path: '/all_books', label: 'Каталог книг'}
+            {path: '/all_books', label: 'Каталог книг'},
+            {path: '/info', label: 'Доп. информация'}
         ]
 
     const getStylesForNavItem = (path) => {

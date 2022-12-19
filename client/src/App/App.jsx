@@ -12,6 +12,7 @@ import ProtectedRoute from './components/common/potectedRoute'
 import Reader from './components/ui/reader'
 import AdminPanel from './layouts/adminPanel'
 import EditBookPage from './components/page/editBookPage'
+import Info from './layouts/info'
 
 const App = () => {
     return (
@@ -27,6 +28,7 @@ const App = () => {
                     <ProtectedRoute path="/user/:userId" component={UserPage}/>
                     <Route path="/all_books/:bookId?" component={Books}/>
                     <Route path="/reader/:bookId" component={Reader}/>
+                    <Route path="/info" component={Info}/>
                     <Redirect to="/all_books"/>
                 </Switch>
                 <ToastContainer/>
