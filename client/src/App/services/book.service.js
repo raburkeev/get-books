@@ -8,15 +8,15 @@ const bookService = {
         return data
     },
     update: async (payload) => {
-        const {data} = await httpService.patch(`${bookEndPoint}${payload.id}`, payload)
+        const {data} = await httpService.patch(`${bookEndPoint}${payload._id}`, payload)
         return data
     },
     addBook: async (payload) => {
-        const {data} = await httpService.put(`${bookEndPoint}${payload.id}`, payload)
+        const {data} = await httpService.post(`${bookEndPoint}`, payload)
         return data
     },
     updateRating: async (payload) => {
-        const {data} = await httpService.put(`${bookEndPoint}${payload.id}/ratings`, payload.bookRating)
+        const {data} = await httpService.patch(`${bookEndPoint}${payload.bookId}/ratings`, payload.bookRating)
         return data
     },
     deleteBook: async (payload) => {

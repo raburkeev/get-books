@@ -62,6 +62,12 @@ const userSlice = createSlice({
         cartItemsAdded: (state, action) => {
             state.entity.cart = action.payload
         },
+        cartItemRemoved: (state, action) => {
+            state.entity.cart = action.payload
+        },
+        cartItemRemoveFailed: (state, action) => {
+            state.error = action.payload
+        },
         userCartCleared: (state, action) => {
             state.entity.cart = action.payload
         },
@@ -90,14 +96,31 @@ const userSlice = createSlice({
 })
 
 const authRequested = createAction('user/authRequested')
-const userCreateRequested = createAction('user/userCreateRequested')
 const addItemRequested = createAction('user/addItemRequested')
 const clearCartRequested = createAction('user/clearCartRequested')
 const userAddPurchasedBooksRequested = createAction('user/userAddPurchasedBooksRequested')
 const userAddRatedBookRequested = createAction('user/userAddRatedBookRequested')
+const removeItemFromCartRequested = createAction('user/removeItemFromCartRequested')
 
 const {reducer: userReducer, actions} = userSlice
-const {authRequestSucceeded, authRequestFailed, userCreated, userCreateFailed, userRequested, userRequestSucceeded, userRequestFailed, userLoggedOut, userAddItemFailed, cartItemsAdded, userCartCleared, userCartClearRequestFailed, userAddPurchasedBooksSucceeded, userAddPurchasedBooksFailed, userBooksRated, userAddRatedBookFailed} = actions
+const {
+    authRequestSucceeded,
+    authRequestFailed,
+    userRequested,
+    userRequestSucceeded,
+    userRequestFailed,
+    userLoggedOut,
+    userAddItemFailed,
+    cartItemsAdded,
+    cartItemRemoved,
+    cartItemRemoveFailed,
+    userCartCleared,
+    userCartClearRequestFailed,
+    userAddPurchasedBooksSucceeded,
+    userAddPurchasedBooksFailed,
+    userBooksRated,
+    userAddRatedBookFailed
+} = actions
 
 export const loadUser = () => async (dispatch) => {
     dispatch(userRequested())
@@ -110,18 +133,13 @@ export const loadUser = () => async (dispatch) => {
     }
 }
 
-export const signUp = ({email, password, ...rest}) => async (dispatch) => {
+export const signUp = (payload) => async (dispatch) => {
     dispatch(authRequested())
     try {
-        const data = await authService.register({email, password})
+        const data = await authService.register(payload)
         localStorageService.setTokens(data)
-        dispatch(authRequestSucceeded({userId: data.localId}))
-        dispatch(createUser({
-            id: data.localId,
-            email,
-            img: `https://avatars.dicebear.com/api/avataaars/${(Math.random() + 1).toString(36).substring(7)}.svg`,
-            ...rest
-        }))
+        dispatch(authRequestSucceeded({userId: data.userId}))
+        history.push('/all_books')
     } catch (error) {
         dispatch(authRequestFailed(error.message))
     }
@@ -132,7 +150,7 @@ export const signIn = (payload) => async (dispatch) => {
     const {email, password} = payload
     try {
         const data = await authService.login({email, password})
-        dispatch(authRequestSucceeded({userId: data.localId}))
+        dispatch(authRequestSucceeded({userId: data.userId}))
         localStorageService.setTokens(data)
 
         const userId = localStorageService.getUserId()
@@ -155,10 +173,20 @@ export const addItemToCart = (payload) => async (dispatch, getState) => {
     dispatch(addItemRequested())
     try {
         const {content} = await userService.addItem({userId: payload.userId, items: [...getState().user.entity.cart, ...payload.items]})
-        const newUserCart = content.map(el => Object.keys(el).map(index => el[index]).join(''))
-        dispatch(cartItemsAdded(newUserCart))
+        dispatch(cartItemsAdded(content))
     } catch (error) {
         dispatch(userAddItemFailed(error.message))
+    }
+}
+
+export const remoteItemFromCart = (payload) => async (dispatch) => {
+    dispatch(removeItemFromCartRequested())
+    try {
+        const {content} = await userService.removeItem(payload)
+        console.log(content)
+        dispatch(cartItemRemoved(content))
+    } catch (error) {
+        dispatch(cartItemRemoveFailed(error.message))
     }
 }
 
@@ -166,8 +194,7 @@ export const clearUserCart = (payload) => async (dispatch) => {
     dispatch(clearCartRequested())
     try {
         const {content} = await userService.clearCart(payload)
-        const initialUserCart = content.map(el => Object.keys(el).map(index => el[index]).join(''))
-        dispatch(userCartCleared(initialUserCart))
+        dispatch(userCartCleared(content))
         toast.success('Спасибо за покупку! Купленные книги Вы можете найти у себя в профиле.', {
             position: 'bottom-center',
             autoClose: 4000,
@@ -187,8 +214,7 @@ export const addPurchasedBooks = (payload) => async (dispatch) => {
     dispatch(userAddPurchasedBooksRequested())
     try {
         const {content} = await userService.addPurchasedBooks(payload)
-        const purchasedBooks = content.map(el => Object.keys(el).map(index => el[index]).join(''))
-        dispatch(userAddPurchasedBooksSucceeded(purchasedBooks))
+        dispatch(userAddPurchasedBooksSucceeded(content))
         dispatch(clearUserCart({userId: payload.userId}))
     } catch (error) {
         dispatch(userAddPurchasedBooksFailed(error.message))
@@ -203,23 +229,9 @@ export const userAddRatedBook = (payload) => async (dispatch, getState) => {
     }
     try {
         const {content} = await userService.addRatedBook({userId: payload.userId, items: [...updatedUser.ratedBooks, payload.bookId]})
-        const ratedBookId = content.map(el => Object.keys(el).map(index => el[index]).join(''))
-        dispatch(userBooksRated(ratedBookId))
+        dispatch(userBooksRated(content))
     } catch (error) {
         dispatch(userAddRatedBookFailed(error.message))
-    }
-}
-
-function createUser(payload) {
-    return async (dispatch) => {
-        dispatch(userCreateRequested())
-        try {
-            const {content} = await userService.create(payload)
-            dispatch(userCreated(content))
-            history.push('/all_books')
-        } catch (error) {
-            dispatch(userCreateFailed(error.message))
-        }
     }
 }
 
@@ -234,7 +246,7 @@ export const getUserLoadingStatus = () => (state) => state.user.isLoading
 export const getUserError = () => (state) => state.user.error
 export const getUserId = () => (state) => state.user.auth ? state.user.auth.userId : null
 export const getIsLoggedIn = () => (state) => state.user.isLoggedIn
-export const getUserCart = () => (state) => state.user.entity ? state.user.entity.cart : ['init']
+export const getUserCart = () => (state) => state.user.entity ? state.user.entity.cart : []
 export const getUserPurchasedBooks = () => (state) => state.user?.entity?.purchasedBooks ? state.user.entity.purchasedBooks : []
 export const getIsAdmin = () => (state) => state.user.entity ? state.user.entity.isAdmin : null
 export const getRatedBooks = () => (state) => state.user?.entity?.ratedBooks ? state.user.entity.ratedBooks : []

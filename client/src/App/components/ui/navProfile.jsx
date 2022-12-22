@@ -10,7 +10,7 @@ const NavProfile = () => {
     const [isOpen, setIsOpen] = useState(false)
     const userCart = useSelector(getUserCart())
 
-    const items = userCart.length - 1
+    const items = userCart.length
 
     const handleCartBtnClick = () => {
         history.push('/cart')
