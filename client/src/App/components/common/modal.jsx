@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Modal = ({modalTitle, desc, buttonLabel, onCloseClick, onAcceptClick}) => {
+const Modal = ({modalTitle, buttonLabel, onCloseClick, onAcceptClick, children}) => {
     const modalStyle = {
         display: 'block',
         backgroundColor: 'rgba(0, 0, 0, 0.7)'
@@ -16,10 +16,10 @@ const Modal = ({modalTitle, desc, buttonLabel, onCloseClick, onAcceptClick}) => 
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={onCloseClick}/>
                     </div>
                     <div className="modal-body">
-                        <p>{desc}</p>
+                        {children}
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={onCloseClick}>Close</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={onCloseClick}>Закрыть</button>
                         <button type="button" className="btn btn-success" onClick={onAcceptClick}>{buttonLabel}</button>
                     </div>
                 </div>
@@ -30,10 +30,10 @@ const Modal = ({modalTitle, desc, buttonLabel, onCloseClick, onAcceptClick}) => 
 
 Modal.propTypes = {
     modalTitle: PropTypes.string.isRequired,
-    desc: PropTypes.string.isRequired,
     buttonLabel: PropTypes.string.isRequired,
     onCloseClick: PropTypes.func.isRequired,
-    onAcceptClick: PropTypes.func.isRequired
+    onAcceptClick: PropTypes.func.isRequired,
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
 }
 
 export default Modal

@@ -1,21 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Table from '../common/table/table'
+import {Link} from 'react-router-dom'
 
 const BooksTable = ({books, onDelete, onEdit}) => {
     const columns = {
         id: {
-            path: 'id',
+            path: '_id',
             name: 'ID'
         },
         name: {
             path: 'name',
-            name: 'Название'
+            name: 'Название',
+            component: (book) => (
+                <Link to={`/all_books/${book._id}`}>
+                    {book.name}
+                </Link>
+            )
         },
         edit: {
             component: (book) => (
                 <button
-                    onClick={() => onEdit(book.id)}
+                    onClick={() => onEdit(book._id)}
                     className="btn btn-primary"
                 >
                     edit
@@ -25,7 +31,7 @@ const BooksTable = ({books, onDelete, onEdit}) => {
         delete: {
             component: (book) => (
                 <button
-                    onClick={() => onDelete(book.id)}
+                    onClick={() => onDelete(book._id)}
                     className="btn btn-danger"
                 >
                     delete

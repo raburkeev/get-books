@@ -16,7 +16,8 @@ const NavBar = () => {
             {path: '/all_books', label: 'Каталог книг'}
         ]
         : [
-            {path: '/all_books', label: 'Каталог книг'}
+            {path: '/all_books', label: 'Каталог книг'},
+            {path: '/info', label: 'Доп. информация'}
         ]
 
     const getStylesForNavItem = (path) => {
@@ -24,7 +25,7 @@ const NavBar = () => {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg bg-light">
+        <nav className="navbar navbar-expand bg-light">
             <div className="container-fluid">
                 <div className="collapse justify-content-between navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mb-2 mb-lg-0">

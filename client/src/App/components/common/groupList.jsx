@@ -20,7 +20,7 @@ const GroupList = ({items, selectedItem, onItemSelect, valueProperty, contentPro
 }
 
 GroupList.defaultProps = {
-    valueProperty: 'id',
+    valueProperty: '_id',
     contentProperty: 'name'
 }
 

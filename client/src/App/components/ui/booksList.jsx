@@ -6,7 +6,7 @@ const BooksList = ({books}) => {
     return (
         <div className="d-flex flex-wrap justify-content-between">
             {books.map(book => (
-                <BookCard book={book} key={book.id}/>
+                <BookCard book={book} key={book._id}/>
             ))}
         </div>
     )

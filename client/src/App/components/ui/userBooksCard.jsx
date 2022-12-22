@@ -27,7 +27,7 @@ const UserBooksCard = () => {
                                 <input className="form-control m-2" type="search" placeholder="Поиск..." aria-label="Search" onChange={handleChange}/>
                                 <div className="d-flex flex-wrap justify-content-between">
                                     {searchedBooks.map(book => (
-                                        <BookCard book={book} key={book.id} isCatalogCard={false}/>
+                                        <BookCard book={book} key={book._id} isCatalogCard={false}/>
                                     ))}
                                 </div>
                             </>

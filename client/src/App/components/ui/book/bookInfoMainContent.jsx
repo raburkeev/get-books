@@ -9,7 +9,7 @@ const BookInfoMainContent = ({name, author, genre, series, year, size, ageLimit,
     const genreObj = useSelector(getGenreById(genre))
 
     return (
-        <div className="card mb-2 shadow">
+        <div className="card mb-2 shadow w-100">
             <div className="card-body">
                 <AgeLimitBadge ageLimit={ageLimit} />
                 <div>

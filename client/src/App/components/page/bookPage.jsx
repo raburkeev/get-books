@@ -6,13 +6,20 @@ import BookInfoMainContent from '../ui/book/bookInfoMainContent'
 import Loader from '../common/loader'
 import {useDispatch, useSelector} from 'react-redux'
 import {getBookById} from '../../store/books'
-import {addItemToCart, getRatedBooks, getUser, getUserCart, getUserId, getUserPurchasedBooks} from '../../store/user'
+import {
+    addItemToCart,
+    getRatedBooks,
+    getUser,
+    getUserCart,
+    getUserId,
+    getUserPurchasedBooks
+} from '../../store/user'
 import AddToCartButton from '../ui/addToCartButton'
 import RateBook from '../ui/rateBook'
 import Modal from '../common/modal'
 
 const BookPage = () => {
-    const [modal, setModal] = useState(false)
+    const [authModal, setAuthModal] = useState(false)
     const dispatch = useDispatch()
     const userId = useSelector(getUserId())
     const history = useHistory()
@@ -29,15 +36,15 @@ const BookPage = () => {
         if (user) {
             dispatch(addItemToCart({userId, items: [bookId]}))
         } else {
-            setModal(true)
+            setAuthModal(true)
         }
     }
 
-    const handleCloseClick = () => {
-        setModal(prevState => !prevState)
+    const handleAuthModalCloseClick = () => {
+        setAuthModal(prevState => !prevState)
     }
 
-    const handleAcceptClick = () => {
+    const handleAuthModalAcceptClick = () => {
         history.push('/login')
     }
 
@@ -57,13 +64,16 @@ const BookPage = () => {
                         </div>
                     </div>
                 </div>
-                {modal ? <Modal
-                    modalTitle={'Внимание'}
-                    desc={'Перед тем как добавить книгу в корзину, пожалуйста, войтите в систему или зарегистрируйтесь'}
-                    buttonLabel={'Войти в систему / Зарегистрироваться'}
-                    onCloseClick={handleCloseClick}
-                    onAcceptClick={handleAcceptClick}
-                /> : null}
+                {authModal ? (
+                    <Modal
+                        modalTitle={'Внимание'}
+                        buttonLabel={'Войти в систему / Зарегистрироваться'}
+                        onCloseClick={handleAuthModalCloseClick}
+                        onAcceptClick={handleAuthModalAcceptClick}>
+                        <p>Перед тем как добавить книгу в корзину, пожалуйста, войтите в систему или зарегистрируйтесь</p>
+                    </Modal>
+                )
+                    : null}
             </div>
 
         )

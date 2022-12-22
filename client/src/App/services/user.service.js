@@ -12,19 +12,23 @@ const userService = {
         return data
     },
     addItem: async (payload) => {
-        const {data} = await httpService.put(`${userEndpoint}${payload.userId}/cart`, payload.items)
+        const {data} = await httpService.patch(`${userEndpoint}${payload.userId}/cart`, payload.items)
         return data
     },
     clearCart: async (payload) => {
-        const {data} = await httpService.put(`${userEndpoint}${payload.userId}/cart`, ['init'])
+        const {data} = await httpService.patch(`${userEndpoint}${payload.userId}/cart`, [])
+        return data
+    },
+    removeItem: async (payload) => {
+        const {data} = await httpService.patch(`${userEndpoint}${payload.userId}/cart`, payload.items)
         return data
     },
     addPurchasedBooks: async (payload) => {
-        const {data} = await httpService.put(`${userEndpoint}${payload.userId}/purchasedBooks`, [...payload.purchasedItems, ...payload.items])
+        const {data} = await httpService.patch(`${userEndpoint}${payload.userId}/purchasedBooks`, [...payload.purchasedItems, ...payload.items])
         return data
     },
     addRatedBook: async (payload) => {
-        const {data} = await httpService.put(`${userEndpoint}${payload.userId}/ratedBooks`, payload.items)
+        const {data} = await httpService.patch(`${userEndpoint}${payload.userId}/ratedBooks`, payload.items)
         return data
     }
 }

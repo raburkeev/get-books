@@ -9,9 +9,12 @@ const schema = new Schema({
     imgUrl: {type: String},
     price: {type: Number},
     ratings: {type: Object},
+    numberOfRatings: {type: Number},
     series: {type: String},
     size: {type: Number},
     year: {type: Number}
+}, {
+    timestamps: true
 })
 
 module.exports = model('Book', schema)

@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getBooksByIds, getBooksLoadingStatus} from '../../store/books'
 import Loader from '../common/loader'
 import CartTable from '../ui/cartTable'
-import {addPurchasedBooks, getUserPurchasedBooks, getUserCart, getUserId} from '../../store/user'
+import {addPurchasedBooks, getUserPurchasedBooks, getUserCart, getUserId, remoteItemFromCart} from '../../store/user'
 import {Link} from 'react-router-dom'
 import CartFooter from '../ui/cartFooter'
 
@@ -19,9 +19,14 @@ const CartPage = () => {
     const handleClick = () => {
         dispatch(addPurchasedBooks({
             userId,
-            items: userCart.filter(el => el !== 'init'),
+            items: userCart,
             purchasedItems: purchasedBooks
         }))
+    }
+
+    const handleDelete = (bookId) => {
+        const newUserCart = userCart.filter(item => item !== bookId)
+        dispatch(remoteItemFromCart({userId, items: newUserCart}))
     }
 
     return !isBooksLoading
@@ -29,7 +34,7 @@ const CartPage = () => {
             booksFromCart.length
                 ? (
                     <div className="container mt-3">
-                        <CartTable books={indexedBooksFromCart}/>
+                        <CartTable books={indexedBooksFromCart} onDelete={handleDelete}/>
                         <CartFooter data={indexedBooksFromCart}/>
                         <div className="d-flex justify-content-center">
                             <button className="btn btn-primary w-25" onClick={handleClick}>Оплатить</button>

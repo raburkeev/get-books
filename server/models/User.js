@@ -6,7 +6,9 @@ const schema = new Schema({
     password: {type: String},
     img: String,
     isAdmin: {type: Boolean},
-    cart: [{type: Schema.Types.ObjectId, ref: 'Book'}]
+    cart: [{type: Schema.Types.ObjectId, ref: 'Book'}],
+    purchasedBooks: [{type: Schema.Types.ObjectId, ref: 'Book'}],
+    ratedBooks: [{type: Schema.Types.ObjectId, ref: 'Book'}]
 }, {
     timestamps: true
 })

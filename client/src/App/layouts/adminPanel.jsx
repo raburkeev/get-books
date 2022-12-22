@@ -6,6 +6,7 @@ import {getIsAdmin, getUserLoadingStatus} from '../store/user'
 import EditBooksList from '../components/ui/editBooksList'
 import Loader from '../components/common/loader'
 import AddBookForm from '../components/ui/addBookForm'
+import config from '../config.json'
 
 const AdminPanel = () => {
     const isAdmin = useSelector(getIsAdmin())
@@ -20,8 +21,9 @@ const AdminPanel = () => {
 
     const listItems = [
         {id: 0, label: 'Перейти к инициализации первоначальных данных', path: 'initialize'},
-        {id: 1, label: 'Перейти к редактированию списка книг', path: 'editBooksList'},
-        {id: 2, label: 'Перейти к форме добавления новой книги', path: 'add_book'}
+        {id: 1, label: 'Перейти к форме добавления новой книги', path: 'add_book'},
+        {id: 2, label: 'Перейти к редактированию списка книг', path: 'editBooksList'}
+
     ]
 
     return !isLoading
@@ -47,7 +49,7 @@ const AdminPanel = () => {
                                     {type === 'initialize' && (
                                         <div className="alert alert-warning" role="alert">
                                             <p>Если вы хотите проинициализировать исходные данные в FireBase нажмите красную кнопку</p>
-                                            <button className="btn btn-danger" onClick={handleClick}>Начать инициализацию</button>
+                                            <button className="btn btn-danger" disabled={!config.isFireBase} onClick={handleClick}>{config.isFireBase ? 'Начать инициализацию' : 'Временно недоступно'}</button>
                                             <h1>Нажимать только с умом!</h1>
                                         </div>
                                     )}

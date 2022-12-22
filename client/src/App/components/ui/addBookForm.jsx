@@ -27,7 +27,7 @@ const AddBookForm = () => {
     const [errors, setErrors] = useState({})
     const genres = useSelector(getGenresList())
     const isLoading = useSelector(getGenresLoadingStatus())
-    const genresArray = genres.map(genre => ({label: genre.name, value: genre.id}))
+    const genresArray = genres.map(genre => ({label: genre.name, value: genre._id}))
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -40,7 +40,13 @@ const AddBookForm = () => {
             size: +data.size,
             numberOfRatings: 0,
             rate: 0,
-            ratings: [0, 0, 0, 0, 0]
+            ratings: {
+                0: 0,
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0
+            }
         }))
     }
 

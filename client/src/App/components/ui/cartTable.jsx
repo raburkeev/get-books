@@ -4,7 +4,7 @@ import Table from '../common/table/table'
 import {Link} from 'react-router-dom'
 import BookCartImg from './bookCartImg'
 
-const CartTable = ({books}) => {
+const CartTable = ({books, onDelete}) => {
     const columns = {
         index: {
             path: 'index',
@@ -21,7 +21,7 @@ const CartTable = ({books}) => {
             path: 'name',
             name: 'Название',
             component: (book) => (
-                <Link to={`/all_books/${book.id}`}>{book.name}</Link>
+                <Link to={`/all_books/${book._id}`}>{book.name}</Link>
             )
         },
         author: {
@@ -31,6 +31,16 @@ const CartTable = ({books}) => {
         price: {
             path: 'price',
             name: 'Цена'
+        },
+        delete: {
+            component: (book) => (
+                <button
+                    onClick={() => onDelete(book._id)}
+                    className="btn btn-danger"
+                >
+                    <i className="bi bi-x-lg"/>
+                </button>
+            )
         }
     }
 
@@ -38,7 +48,8 @@ const CartTable = ({books}) => {
 }
 
 CartTable.propTypes = {
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    onDelete: PropTypes.func
 }
 
 export default CartTable
