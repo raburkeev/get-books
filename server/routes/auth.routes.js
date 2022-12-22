@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 const {check, validationResult} = require('express-validator')
 const User = require('../models/User')
 const tokenService = require('../services/tokenService')
+const {generateUserData} = require('../utils/generateUserData')
 const router = express.Router({mergeParams: true})
 
 router.post('/signUp', [
@@ -16,11 +17,11 @@ router.post('/signUp', [
                     error: {
                         message: 'INVALID_DATA',
                         code: 400,
-                        // errors: errors.array()
                     }
                 })
             }
 
+            req.body.email = req.body.email.toLowerCase()
             const {email, password} = req.body
 
             const existingUser = await User.findOne({email})
@@ -37,6 +38,7 @@ router.post('/signUp', [
             const hashedPassword = await bcrypt.hash(password, 12)
 
             const newUser = await User.create({
+                ...generateUserData(),
                 ...req.body,
                 password: hashedPassword
             })
@@ -67,11 +69,13 @@ router.post('/signInWithPassword', [
                 res.status(400).json({
                     error: {
                         message: 'INVALID_DATA',
-                        code: 400
+                        code: 400,
+                        errors: errors.array()
                     }
                 })
             }
 
+            req.body.email = req.body.email.toLowerCase()
             const {email, password} = req.body
 
             const existingUser = await User.findOne({email})

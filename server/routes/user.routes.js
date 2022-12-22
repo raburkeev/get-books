@@ -15,7 +15,7 @@ router.get('/:userId', auth, async (req, res) => {
     }
 })
 
-router.put('/:userId/cart', auth, async (req, res) => {
+router.patch('/:userId/cart', auth, async (req, res) => {
     try {
         const {userId} = req.params
         const payload = req.body
@@ -29,7 +29,7 @@ router.put('/:userId/cart', auth, async (req, res) => {
 
 })
 
-router.put('/:userId/purchasedBooks', auth, async (req, res) => {
+router.patch('/:userId/purchasedBooks', auth, async (req, res) => {
     try {
         const {userId} = req.params
         const payload = req.body
@@ -42,7 +42,7 @@ router.put('/:userId/purchasedBooks', auth, async (req, res) => {
     }
 })
 
-router.put('/:userId/ratedBooks', auth, async (req, res) => {
+router.patch('/:userId/ratedBooks', auth, async (req, res) => {
     try {
         const {userId} = req.params
         const payload = req.body

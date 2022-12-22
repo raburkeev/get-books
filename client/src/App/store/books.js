@@ -26,7 +26,7 @@ const booksSlice = createSlice({
             state.error = action.payload
         },
         bookUpdateSucceeded: (state, action) => {
-            const bookIndex = state.entities.findIndex(book => book.id === action.payload.id)
+            const bookIndex = state.entities.findIndex(book => book._id === action.payload._id)
             state.entities[bookIndex] = action.payload
         },
         bookUpdateFailed: (state, action) => {
@@ -39,13 +39,13 @@ const booksSlice = createSlice({
             state.error = action.payload
         },
         bookRateUpdateSucceeded: (state, action) => {
-            state.entities.find(book => book.id === action.payload.bookId).ratings[action.payload.rate]++
+            state.entities.find(book => book._id === action.payload.bookId).ratings[action.payload.rate]++
         },
         bookRateUpdateFailed: (state, action) => {
             state.error = action.payload
         },
         bookDeleteSucceeded: (state, action) => {
-            state.entities = state.entities.filter(book => book.id !== action.payload)
+            state.entities = state.entities.filter(book => book._id !== action.payload)
         },
         bookDeleteFailed: (state, action) => {
             state.error = action.payload
@@ -90,7 +90,7 @@ export const deleteBook = (payload) => async (dispatch) => {
     dispatch(bookDeleteRequested())
     try {
         const {content} = await bookService.deleteBook(payload)
-        if (content === null) {
+        if (!content) {
             dispatch(bookDeleteSucceeded(payload.bookId))
         }
     } catch (error) {
@@ -132,13 +132,12 @@ export const createBook = (payload) => async (dispatch) => {
 
 export const updateBookRate = (payload) => async (dispatch, getState) => {
     dispatch(bookRateUpdateRequested())
-    const bookRating = [...getState().books.entities.find(el => el.id === payload.bookId).ratings]
-    bookRating[payload.rate]++
+    const state = JSON.parse(JSON.stringify(getState()))
+    const {ratings} = state.books.entities.find(el => el._id === payload.bookId)
+    ratings[payload.rate]++
     try {
-        const {content} = await bookService.updateRating({id: payload.bookId, bookRating})
-        if (JSON.stringify(content) === '[{},{},{},{},{}]') {
-            dispatch(bookRateUpdateSucceeded({bookId: payload.bookId, rate: payload.rate}))
-        }
+        await bookService.updateRating({bookId: payload.bookId, ratings})
+        dispatch(bookRateUpdateSucceeded({bookId: payload.bookId, rate: payload.rate}))
         dispatch(userAddRatedBook({bookId: payload.bookId, userId: payload.userId}))
         toast.success('Спасибо за Вашу оценку!', {
             position: 'bottom-center',
@@ -158,14 +157,14 @@ export const updateBookRate = (payload) => async (dispatch, getState) => {
 export const getBooksList = () => (state) => state.books.entities
 export const getBooksLoadingStatus = () => (state) => state.books.isLoading
 export const getBookById = (bookId) => (state) => {
-    return state.books.entities ? state.books.entities.find(book => book.id === bookId) : ''
+    return state.books.entities ? state.books.entities.find(book => book._id === bookId) : ''
 }
 export const getBooksByIds = (booksIds) => (state) => {
     if (state.books.entities) {
         const resultBooks = []
         for (const bookId of booksIds) {
             for (const book of state.books.entities) {
-                if (book.id === bookId) {
+                if (book._id === bookId) {
                     resultBooks.push(book)
                 }
             }

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, Redirect} from 'react-router-dom'
 import TextField from '../common/form/textField'
 import TextAreaField from '../common/form/textAreaField'
 import Loader from '../common/loader'
@@ -10,17 +10,23 @@ import {useDispatch, useSelector} from 'react-redux'
 import {getBookById, getBooksLoadingStatus, updateBook} from '../../store/books'
 import {getGenresList, getGenresLoadingStatus} from '../../store/genres'
 import BackHistoryButton from '../common/backHistoryButton'
+import {getIsAdmin} from '../../store/user'
 
 const EditBookPage = () => {
     const dispatch = useDispatch()
     const {bookId} = useParams()
+    const isAdmin = useSelector(getIsAdmin())
+
+    if (!isAdmin) {
+        return <Redirect to={`/all_books/${bookId}`}/>
+    }
 
     const book = useSelector(getBookById(bookId))
     const genres = useSelector(getGenresList())
     const isBooksLoading = useSelector(getBooksLoadingStatus())
     const isGenresLoading = useSelector(getGenresLoadingStatus())
 
-    const genresArray = !isGenresLoading ? genres.map(genre => ({label: genre.name, value: genre.id})) : []
+    const genresArray = !isGenresLoading ? genres.map(genre => ({label: genre.name, value: genre._id})) : []
     const [errors, setErrors] = useState({})
     const [data, setData] = useState({
         name: '',
