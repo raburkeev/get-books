@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+  'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+  'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+/*book images in bookCard.jsx*/
+.book_img {
+  width: 150px;
+  height: 230px;
+}
+
+/*book images in bookCartImg.jsx*/
+.book_cart_img {
+  width: 50px;
+  height: 80px;
+}
+
+.text-truncate {
+  max-width: 150px;
+}
+
+.book_card {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.book_card:hover {
+  opacity: 0.7;
+}

@@ -1,0 +1,5 @@
+{
+  "apiFirebaseEndPoint": "https://get-books-b6ec7-default-rtdb.europe-west1.firebasedatabase.app/",
+  "isFireBase": false,
+  "apiEndPoint": "http://localhost:8090/api/"
+}
