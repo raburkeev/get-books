@@ -17,7 +17,7 @@ router.patch('/:bookId/ratings', async (req, res) => {
     try {
         const {bookId} = req.params
         const payload = req.body
-        const book = Book.findByIdAndUpdate(bookId, {ratings: payload}, {new: true})
+        const book = await Book.findByIdAndUpdate(bookId, {ratings: payload}, {new: true})
         res.status(200).send(book.ratings)
     } catch (error) {
         res.status(500).json({

@@ -172,6 +172,7 @@ const EditBookPage = () => {
                                     name="description"
                                     value={data.description}
                                     onChange={handleChange}
+                                    error={errors.description}
                                 />
                                 <button className="btn btn-primary w-100 mx-auto" disabled={isValid}>Обновить</button>
                             </form>
